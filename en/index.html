@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vwake for VTubers — Record once, get paid every time a fan wakes up</title>
+<meta name="description" content="Vwake VTuber listing invitation. Voice pack × alarm app integration. Record once, earn long-term revenue share. Monthly payouts.">
+<link rel="alternate" hreflang="zh-TW" href="https://vwake.app/">
+<link rel="alternate" hreflang="en" href="https://vwake.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://vwake.app/">
+<script>
+(function(){try{
+  if(localStorage.getItem('hoca_lang')) return;
+  var p=location.pathname, inEn=p.indexOf('/en')===0;
+  var zh=(navigator.language||'').toLowerCase().indexOf('zh')===0;
+  if(zh && inEn){
+    var t=p.replace(/^\/en/,'')||'/';
+    location.replace(t);
+  }
+}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1C1E' stroke='%237C5CBF' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Inter,sans-serif' font-size='34' font-weight='900' fill='%239D7FD6' text-anchor='middle' letter-spacing='-1'%3EV%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #1C1C1E;
+    --surface-2: #2C2C2E;
+    --accent: #7C5CBF;
+    --accent-light: #9D7FD6;
+    --accent-dark: #5E3FA3;
+    --text: #FFFFFF;
+    --text-muted: #8E8E93;
+    --text-label: #555;
+    --gradient: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 50%, #5E3FA3 100%);
+    --gradient-soft: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 100%);
+    --glow: 0 8px 32px rgba(124, 92, 191, 0.3);
+    --glow-sm: 0 4px 20px rgba(124, 92, 191, 0.25);
+    --radius-card: 20px;
+    --radius-btn: 14px;
+    --radius-chip: 999px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* Section label (Vwake signature) */
+  .section-label {
+    font-size: 12px; color: var(--text-label);
+    letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500; margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 42px; font-weight: 800;
+    letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 640px; line-height: 1.7;
+  }
+  .divider {
+    width: 40px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 12px auto;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 32px; z-index: 50;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between; height: 68px;
+  }
+  .nav-logo { font-size: 24px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+  .nav-logo .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .lang-switch {
+    display: flex; align-items: center; gap: 2px;
+    font-size: 12px; font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 999px; padding: 3px;
+  }
+  .lang-switch a {
+    color: var(--text-muted); padding: 5px 12px; border-radius: 999px;
+    transition: all 0.2s ease; line-height: 1;
+  }
+  .lang-switch a:hover { color: var(--text); }
+  .lang-switch a.active {
+    color: var(--text); background: var(--gradient-soft);
+    box-shadow: 0 2px 10px rgba(124, 92, 191, 0.35);
+  }
+  .nav-cta {
+    font-size: 13px; font-weight: 600; padding: 10px 18px;
+    border-radius: var(--radius-btn);
+    background: var(--gradient-soft); color: var(--text);
+    box-shadow: var(--glow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(124, 92, 191, 0.4); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 100px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 100px 32px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; left: 50%;
+    transform: translateX(-50%); width: 900px; height: 700px;
+    background: radial-gradient(ellipse at center, rgba(124, 92, 191, 0.22) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent-light); font-weight: 600;
+    padding: 8px 18px; border-radius: 999px;
+    background: rgba(124, 92, 191, 0.12);
+    border: 1px solid rgba(124, 92, 191, 0.3);
+    margin-bottom: 28px;
+  }
+  .hero-wordmark {
+    font-size: 72px; font-weight: 900; letter-spacing: -2.5px;
+    line-height: 0.95; margin-bottom: 14px;
+  }
+  .hero-wordmark .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-tagline {
+    font-size: 30px; font-weight: 700; letter-spacing: -0.5px;
+    line-height: 1.35; max-width: 760px; margin-bottom: 20px;
+  }
+  .hero-desc {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 580px; line-height: 1.8; margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    font-size: 15px; font-weight: 600; padding: 14px 28px;
+    border-radius: var(--radius-btn);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary { background: var(--gradient-soft); color: var(--text); box-shadow: var(--glow-sm); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124, 92, 191, 0.45); }
+  .btn-ghost {
+    background: var(--surface); color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .btn-ghost:hover { background: var(--surface-2); border-color: rgba(124, 92, 191, 0.4); }
+
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 56px; flex-wrap: wrap; justify-content: center;
+    padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%; max-width: 720px;
+  }
+  .stat .stat-num {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.5px;
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .stat .stat-label {
+    font-size: 12px; color: var(--text-muted); letter-spacing: 2px;
+    text-transform: uppercase; margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-wordmark { font-size: 52px; letter-spacing: -2px; }
+    .hero-tagline { font-size: 22px; }
+    .hero-stats { gap: 24px; }
+    .stat .stat-num { font-size: 24px; }
+  }
+
+  /* SECTION wrapper */
+  .section { padding: 120px 0; position: relative; }
+  .section-header { text-align: center; margin-bottom: 72px; }
+  .section-header .section-desc { margin: 0 auto; }
+  @media (max-width: 768px) {
+    .section { padding: 80px 0; }
+    .section-title { font-size: 30px; }
+  }
+
+  /* PILLARS */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 880px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+  .pillar {
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    padding: 40px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle at top right, rgba(124, 92, 191, 0.15), transparent 70%);
+    pointer-events: none;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 92, 191, 0.4);
+    background: var(--surface-2);
+  }
+  .pillar-num {
+    font-size: 13px; letter-spacing: 4px; font-weight: 700;
+    color: var(--accent-light); margin-bottom: 16px;
+  }
+  .pillar-title {
+    font-size: 26px; font-weight: 800; letter-spacing: -0.8px;
+    line-height: 1.25; margin-bottom: 14px;
+  }
+  .pillar-quote {
+    font-size: 17px; font-weight: 500; color: var(--text);
+    margin-bottom: 18px; padding-left: 14px;
+    border-left: 2px solid var(--accent); line-height: 1.5;
+  }
+  .pillar-desc {
+    font-size: 15px; color: var(--text-muted);
+    line-height: 1.75; margin-bottom: 20px;
+  }
+  .pillar-points { list-style: none; padding: 0; margin: 0; }
+  .pillar-points li {
+    font-size: 14px; color: var(--text-muted);
+    padding: 8px 0 8px 24px; position: relative;
+    line-height: 1.6;
+  }
+  .pillar-points li::before {
+    content: '→'; position: absolute; left: 0; top: 8px;
+    color: var(--accent-light); font-weight: 700;
+  }
+
+  /* ROSTER (marquee) */
+  .roster-marquee {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .roster-track {
+    display: flex;
+    gap: 14px;
+    width: max-content;
+    animation: roster-scroll 60s linear infinite;
+  }
+  .roster-track:hover { animation-play-state: paused; }
+  @keyframes roster-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .roster-track { animation: none; }
+  }
+
+  .roster-card {
+    flex: 0 0 auto;
+    width: 132px;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 16px 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+  }
+  .roster-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-soft);
+    margin: 0 auto 10px;
+    border: 2px solid rgba(124, 92, 191, 0.3);
+    overflow: hidden;
+  }
+  .roster-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .roster-name {
+    font-size: 13px; font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .roster-meta {
+    font-size: 11px; color: var(--text-muted);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* APP PREVIEW STRIP */
+  .preview-frame { position: relative; }
+  .preview-wrap {
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .preview-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(28, 28, 30, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  }
+  .preview-nav:hover:not(:disabled) {
+    background: var(--gradient-soft);
+    border-color: rgba(124, 92, 191, 0.5);
+  }
+  .preview-nav:active:not(:disabled) { transform: translateY(-50%) scale(0.94); }
+  .preview-nav:disabled {
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+  }
+  .preview-nav-prev { left: 8px; }
+  .preview-nav-next { right: 8px; }
+  @media (max-width: 540px) {
+    .preview-nav { width: 40px; height: 40px; }
+    .preview-nav-prev { left: 4px; }
+    .preview-nav-next { right: 4px; }
+  }
+  .preview-strip {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 80px;
+    padding: 8px 80px 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(124, 92, 191, 0.5) transparent;
+  }
+  @media (max-width: 540px) {
+    .preview-strip {
+      padding: 8px 56px 24px;
+      scroll-padding-inline: 56px;
+    }
+  }
+  .preview-strip::-webkit-scrollbar { height: 8px; }
+  .preview-strip::-webkit-scrollbar-track { background: transparent; }
+  .preview-strip::-webkit-scrollbar-thumb {
+    background: rgba(124, 92, 191, 0.4);
+    border-radius: 999px;
+  }
+  .preview-strip::-webkit-scrollbar-thumb:hover { background: rgba(124, 92, 191, 0.7); }
+  .preview-tile {
+    flex: 0 0 clamp(260px, 32vw, 380px);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0;
+  }
+  .preview-tile:hover { transform: translateY(-6px); }
+  .preview-tile img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    display: block;
+    background: #0a0a0a;
+  }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    counter-reset: step;
+  }
+  @media (max-width: 1024px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .steps { grid-template-columns: 1fr; } }
+
+  .step {
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    padding: 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    counter-increment: step;
+    position: relative;
+  }
+  .step::before {
+    content: '0' counter(step);
+    font-size: 56px; font-weight: 900;
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: -2px; line-height: 1;
+    margin-bottom: 16px; display: block;
+    opacity: 0.85;
+  }
+  .step-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* FAQ */
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 24px 0;
+  }
+  .faq-q {
+    font-size: 17px; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::after {
+    content: '+'; font-size: 24px; color: var(--accent-light);
+    font-weight: 300; transition: transform 0.2s ease;
+  }
+  details[open] .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 15px; color: var(--text-muted);
+    line-height: 1.75; margin-top: 14px;
+    padding-right: 32px;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--surface);
+    border-radius: 32px;
+    padding: 80px 48px;
+    text-align: center;
+    border: 1px solid rgba(124, 92, 191, 0.2);
+    position: relative; overflow: hidden;
+  }
+  .final-cta::before {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(124, 92, 191, 0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .final-cta > * { position: relative; }
+  .final-cta-title {
+    font-size: 40px; font-weight: 800; letter-spacing: -1px;
+    line-height: 1.2; margin-bottom: 16px; max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+  .final-cta-desc {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 560px; margin: 0 auto 36px; line-height: 1.7;
+  }
+  .final-cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+  @media (max-width: 768px) {
+    .final-cta { padding: 56px 28px; }
+    .final-cta-title { font-size: 28px; }
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 48px 0 32px;
+    margin-top: 120px;
+  }
+  .footer-inner {
+    display: flex; flex-direction: column; gap: 20px;
+    text-align: center;
+    font-size: 13px; color: var(--text-muted);
+  }
+  .footer-legal {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .footer-legal a:hover { color: var(--text); }
+  .footer-legal-app { color: var(--accent-light); font-weight: 600; }
+
+  /* Hidden anchor offset for sticky nav */
+  section[id] { scroll-margin-top: 100px; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">
+        <span class="accent">V</span>wake
+      </a>
+      <div class="nav-links">
+        <a href="#preview">App Preview</a>
+        <a href="#why">Why Vwake</a>
+        <a href="#roster">VTubers on Vwake</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <a href="/" onclick="localStorage.setItem('hoca_lang','zh')" aria-label="切換到中文">中</a>
+          <a href="/en/" onclick="localStorage.setItem('hoca_lang','en')" class="active" aria-current="true">EN</a>
+        </div>
+        <a href="#cta" class="nav-cta">Join Vwake</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-eyebrow">VWAKE FOR VTUBERS</div>
+  <h1 class="hero-wordmark"><span class="accent">V</span>wake</h1>
+  <p class="hero-tagline">
+    Be the first second<br>your fans wake up to.
+  </p>
+  <p class="hero-desc">
+    Vwake is a VTuber voice alarm app.<br>
+    Fans pay to use your voice as their daily wake-up call —<br>
+    you record a few clips, we handle listing, sales, and payments.
+  </p>
+  <div class="hero-ctas">
+    <a href="#cta" class="btn btn-primary">
+      Join Vwake
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#why" class="btn btn-ghost">
+      See why Vwake first
+    </a>
+  </div>
+</section>
+
+<!-- ============ APP PREVIEW ============ -->
+<section class="section" id="preview">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Inside the App</div>
+      <h2 class="section-title">Here's what your fans will see every morning.</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        Vwake for iOS launches soon.<br>
+        Below is what fans see when they open the app, pick you, and wake up to your voice.
+      </p>
+    </div>
+
+    <div class="preview-frame">
+      <button class="preview-nav preview-nav-prev" type="button" aria-label="Previous" disabled>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="preview-wrap">
+        <div class="preview-strip">
+          <figure class="preview-tile"><img src="/store_preview/storepreview1.png" alt="Vwake alarm list" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview2.png" alt="Vwake VTuber store" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview3.png" alt="Vwake full-screen alarm ringing" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview4.png" alt="Vwake VTuber profile page" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview5.png" alt="Vwake app launch screen" loading="lazy"></figure>
+        </div>
+      </div>
+      <button class="preview-nav preview-nav-next" type="button" aria-label="Next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY VWAKE / PILLARS ============ -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Why Vwake</div>
+      <h2 class="section-title">Not selling voice packs. Selling your daily presence.</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        Other platforms end the moment a fan downloads a file.<br>
+        Vwake makes you the first second of their morning.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      <!-- Pillar 1: Daily Reach -->
+      <div class="pillar">
+        <div class="pillar-num">— 01 / DAILY REACH —</div>
+        <h3 class="pillar-title">Not heard once. Heard every day.</h3>
+        <p class="pillar-quote">
+          When fans set your voice as their alarm, you show up at 7am every single morning.
+        </p>
+        <p class="pillar-desc">
+          On Booth or Fanbox, fans download a voice pack, listen a few times, and forget. Vwake makes you part of their daily ritual — the first voice they hear when they wake, the nickname they hit when they turn off the alarm.
+        </p>
+        <ul class="pillar-points">
+          <li>Daily exposure, passively earned</li>
+          <li>Reach equals retention, not one-time consumption</li>
+          <li>Fans go from "occasionally remembering" to "daily habit"</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 2: Integration -->
+      <div class="pillar">
+        <div class="pillar-num">— 02 / INTEGRATION —</div>
+        <h3 class="pillar-title">The first platform to integrate voice packs into the alarm app itself.</h3>
+        <p class="pillar-quote">
+          Fans don't switch apps. Don't transcode files. Buy and set as alarm in one tap.
+        </p>
+        <p class="pillar-desc">
+          Other platforms: download file → manage it yourself → find an alarm app → import. Vwake is built into the app — fans tap once to buy, once to set. Lower friction means more conversion.
+        </p>
+        <ul class="pillar-points">
+          <li>Buy and use, all without leaving the app</li>
+          <li>No file transcoding, no app-switching</li>
+          <li>Lower friction = more potential fans buying</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Second row: Passive Revenue + Revenue Model -->
+    <div class="pillars-grid" style="margin-top: 24px;">
+      <!-- Pillar 3: Passive Revenue -->
+      <div class="pillar">
+        <div class="pillar-num">— 03 / PASSIVE REVENUE —</div>
+        <h3 class="pillar-title">Record once, earn long-term.</h3>
+        <p class="pillar-quote">
+          Your voice keeps making money while you sleep.
+        </p>
+        <p class="pillar-desc">
+          Record once, sell for the long run. We handle listing, sales, payments, and customer support. No ads to buy, no change to your creative rhythm — just one more revenue stream from the audience you already have.
+        </p>
+        <ul class="pillar-points">
+          <li>No ad spend required</li>
+          <li>No change to your creative rhythm</li>
+          <li>Listing, sales, payments, support — all handled by Vwake</li>
+          <li>Another monetization channel for your existing fan base</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 4: Revenue Model -->
+      <div class="pillar">
+        <div class="pillar-num">— 04 / REVENUE MODEL —</div>
+        <h3 class="pillar-title">One-time purchase, long-term revenue share.</h3>
+        <p class="pillar-quote">
+          Not a subscription — fans buy once, you earn from every sale.
+        </p>
+        <p class="pillar-desc">
+          Fans pay once for your voice pack, and you receive a share of every sale. Monthly payouts via bank transfer.
+        </p>
+        <ul class="pillar-points">
+          <li>One-time purchase, not monthly subscription</li>
+          <li>Cumulative sales = ongoing passive income</li>
+          <li>Monthly payouts via bank transfer</li>
+          <li>Specific revenue split and payout details shared with the contract</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROSTER / VTubers on Vwake ============ -->
+<section class="section" id="roster">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">On Vwake · VTubers Already Listed</div>
+      <h2 class="section-title">First-wave creators are already here.</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        First-wave VTubers are joining continuously.<br>
+        These creators built Vwake from the ground up with us.
+      </p>
+    </div>
+
+    <div class="roster-marquee">
+      <div class="roster-track">
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/pyonchan.png" alt="Pyonchan"></div><div class="roster-name">ぴょんちゃん兔兔</div><div class="roster-meta">Pyonchan</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/fingla.png" alt="Fingla"></div><div class="roster-name">Fingla 芬格拉</div><div class="roster-meta">Fingla</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/afeng.png" alt="Maple"></div><div class="roster-name">阿楓轟炸</div><div class="roster-meta">Maple</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/ohara-shiori.png" alt="Ohara Shiori"></div><div class="roster-name">小原栞</div><div class="roster-meta">Ohara Shiori</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/skymeowu.png" alt="SkyMeowu"></div><div class="roster-name">仙喵 SkyMeowu</div><div class="roster-meta">SkyMeowu</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/chimera.png" alt="Chimera"></div><div class="roster-name">奇美拉圈圈</div><div class="roster-meta">Chimera</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/maruru.png" alt="Maruru"></div><div class="roster-name">瑪露露 Maruru</div><div class="roster-meta">Maruru</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/shirakuma-koiyuki.png" alt="Koiyuki"></div><div class="roster-name">白熊戀雪</div><div class="roster-meta">Koiyuki</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/ribi.png" alt="Ribi"></div><div class="roster-name">莉比 Ribi</div><div class="roster-meta">Ribi</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/yukime.jpg" alt="Yukime"></div><div class="roster-name">雪迎</div><div class="roster-meta">Yukime</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/aquarius.png" alt="Aquarius"></div><div class="roster-name">水瓶罐子</div><div class="roster-meta">Aquarius</div></div>
+
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/pyonchan.png" alt=""></div><div class="roster-name">ぴょんちゃん兔兔</div><div class="roster-meta">Pyonchan</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/fingla.png" alt=""></div><div class="roster-name">Fingla 芬格拉</div><div class="roster-meta">Fingla</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/afeng.png" alt=""></div><div class="roster-name">阿楓轟炸</div><div class="roster-meta">Maple</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/ohara-shiori.png" alt=""></div><div class="roster-name">小原栞</div><div class="roster-meta">Ohara Shiori</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/skymeowu.png" alt=""></div><div class="roster-name">仙喵 SkyMeowu</div><div class="roster-meta">SkyMeowu</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/chimera.png" alt=""></div><div class="roster-name">奇美拉圈圈</div><div class="roster-meta">Chimera</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/maruru.png" alt=""></div><div class="roster-name">瑪露露 Maruru</div><div class="roster-meta">Maruru</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/shirakuma-koiyuki.png" alt=""></div><div class="roster-name">白熊戀雪</div><div class="roster-meta">Koiyuki</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/ribi.png" alt=""></div><div class="roster-name">莉比 Ribi</div><div class="roster-meta">Ribi</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/yukime.jpg" alt=""></div><div class="roster-name">雪迎</div><div class="roster-meta">Yukime</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/aquarius.png" alt=""></div><div class="roster-name">水瓶罐子</div><div class="roster-meta">Aquarius</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">How it works · Listing Process</div>
+      <h2 class="section-title">4 steps from inquiry to revenue.</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        From the moment you tap "Join Vwake" to your first payout, here's the path we walk together.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Submit inquiry</div>
+        <div class="step-desc">Tell us your channel, the moods you want to try, your timeline. Takes 3 minutes. We'll reply within 48 hours.</div>
+      </div>
+      <div class="step">
+        <div class="step-title">Contract sent + signed</div>
+        <div class="step-desc">Full partnership terms, revenue details, and rights protections sent as PDF. Electronic signature — no paper back-and-forth.</div>
+      </div>
+      <div class="step">
+        <div class="step-title">Record remotely</div>
+        <div class="step-desc">Record 3 clips × 10–15 seconds each (gentle / energetic / tsundere) at home. We provide mood guidance, not a script — you know your fans best.</div>
+      </div>
+      <div class="step">
+        <div class="step-title">Launch + earn</div>
+        <div class="step-desc">App listing test → public launch → your voice goes on sale → monthly payouts on the 30th.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">FAQ · Frequently Asked Questions</div>
+      <h2 class="section-title">What you'll want to know before listing</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">Will my voice be used to train AI?</summary>
+        <p class="faq-a">
+          <strong>No.</strong> Without your written consent, Vwake will never train AI voice models on your recordings, never synthesize content you didn't personally record, and never extend usage beyond the contract scope. Your audio is only downloaded and played within the Vwake app per the contract terms. If Vwake develops new AI-related features in the future, we will obtain your consent and renegotiate revenue terms — your prior authorization will not silently extend.
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Can I delist anytime? What happens after termination?</summary>
+        <p class="faq-a">
+          Yes. After contract termination, we remove your audio from our system and servers and provide a deletion certificate. Specific termination terms are shared with the contract.
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How does revenue share work? When do I get paid?</summary>
+        <p class="faq-a">
+          Revenue share model — every fan purchase earns you a cut. Specific revenue split, pricing, and payout details (bank transfer / tax handling) are shared with the partnership contract. <strong>Monthly payouts.</strong>
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Is this exclusive? Can I still sell on Booth?</summary>
+        <p class="faq-a">
+          <strong>Not exclusive.</strong> The traditional static voice packs you sell on Booth or Fanbox are different from Vwake's in-app alarm voice format. Vwake doesn't restrict you from continuing to sell traditional packs elsewhere — we only require app-internal usage rights for the 3 clips you record for us.
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How many clips do I need to record? What's the format?</summary>
+        <p class="faq-a">
+          <strong>3 clips (3 moods × 1 each)</strong> performs best with fans. If recording conditions are limited, 1–2 clips is also fine — pricing and revenue share don't change.<br><br>
+          Each clip is 10–15 seconds, recommended moods are gentle / energetic / tsundere, with wake-up greeting or "five more minutes" themes (content is freeform). The recording bar is low — <strong>your phone's built-in mic in a quiet room is enough</strong>. No professional studio needed.
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">My subscriber count is small. Can I still list?</summary>
+        <p class="faq-a">
+          <strong>Absolutely welcome!</strong> Vwake's mission has always been to bring together creators of all kinds. If you're interested in collaborating on voice content, that's wonderful news for us. We're excited to see more diverse voices joining the platform.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section" id="cta">
+  <div class="container">
+    <div class="final-cta">
+      <h2 class="final-cta-title">
+        Make your voice<br>
+        your fans' favorite first second of the day.
+      </h2>
+      <p class="final-cta-desc">
+        Record 3 clips × 10–15 seconds. We handle listing, sales, payments, and support.<br>
+        Submit the inquiry — we'll reply within 48 hours.
+      </p>
+      <div class="final-cta-buttons">
+        <a href="mailto:contact@hocatech.com?subject=%5BVwake%20Listing%20Inquiry%5D&body=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20listing%20on%20Vwake.%0A%0AChannel%20name%3A%0ASubscriber%20%2F%20audience%20size%3A%0AContact%20method%20(Discord%20%2F%20Twitter%20%2F%20Email)%3A%0A%0AThanks%21" class="btn btn-primary">
+          Join Vwake
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        Vwake by <a href="https://hocatech.com/en/" style="color:var(--accent-light);">Hocatech</a> · © 2026 All rights reserved.
+      </div>
+      <div class="footer-legal">
+        <span class="footer-legal-app">Vwake</span>
+        <a href="/en/privacy.html">Privacy Policy</a>
+        <span style="color:var(--text-label);">·</span>
+        <a href="/en/terms.html">Terms of Service</a>
+        <span style="color:var(--text-label);">·</span>
+        <a href="/en/eula.html">End User License Agreement</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var strip = document.querySelector('.preview-strip');
+  var prev = document.querySelector('.preview-nav-prev');
+  var next = document.querySelector('.preview-nav-next');
+  if (!strip || !prev || !next) return;
+
+  function stepSize() {
+    var tile = strip.querySelector('.preview-tile');
+    if (!tile) return strip.clientWidth * 0.8;
+    var gapStr = getComputedStyle(strip).columnGap || getComputedStyle(strip).gap || '0';
+    var gap = parseFloat(gapStr) || 0;
+    return tile.getBoundingClientRect().width + gap;
+  }
+
+  function scrollByStep(dir) {
+    strip.scrollBy({ left: dir * stepSize(), behavior: 'smooth' });
+  }
+
+  prev.addEventListener('click', function () { scrollByStep(-1); });
+  next.addEventListener('click', function () { scrollByStep(1); });
+
+  function update() {
+    var maxScroll = strip.scrollWidth - strip.clientWidth;
+    prev.disabled = strip.scrollLeft <= 2;
+    next.disabled = strip.scrollLeft >= maxScroll - 2;
+  }
+  strip.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

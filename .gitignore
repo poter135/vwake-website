@@ -1,0 +1,10 @@
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Cloudflare Pages 本地快取(若之後用 wrangler dev)
+.wrangler/
+node_modules/

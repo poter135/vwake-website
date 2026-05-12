@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vwake Terms of Service · Hocatech</title>
+<meta name="description" content="Terms of Service for the Vwake mobile application — developed and operated by Hocatech.">
+<meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="zh-TW" href="https://vwake.app/terms.html">
+<link rel="alternate" hreflang="en" href="https://vwake.app/en/terms.html">
+<link rel="alternate" hreflang="x-default" href="https://vwake.app/terms.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1C1E' stroke='%237C5CBF' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Inter,sans-serif' font-size='34' font-weight='900' fill='%239D7FD6' text-anchor='middle' letter-spacing='-1'%3EH%3C/text%3E%3C/svg%3E">
+<script>
+(function(){try{
+  if(localStorage.getItem('hoca_lang')) return;
+  var p=location.pathname, inEn=p.indexOf('/en')===0;
+  var zh=(navigator.language||'').toLowerCase().indexOf('zh')===0;
+  if(zh && inEn){ location.replace(p.replace(/^\/en/,'')||'/'); }
+}catch(e){}})();
+</script>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #1C1C1E;
+    --surface-2: #2C2C2E;
+    --accent: #7C5CBF;
+    --accent-light: #9D7FD6;
+    --accent-dark: #5E3FA3;
+    --text: #FFFFFF;
+    --text-muted: #8E8E93;
+    --text-label: #555;
+    --gradient: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 50%, #5E3FA3 100%);
+    --gradient-soft: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 100%);
+    --glow-sm: 0 4px 20px rgba(124, 92, 191, 0.25);
+    --radius-card: 20px;
+    --radius-btn: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .nav-logo .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    padding: 3px;
+  }
+
+  .lang-switch a {
+    color: var(--text-muted);
+    padding: 5px 12px;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+
+  .lang-switch a:hover { color: var(--text); }
+
+  .lang-switch a.active {
+    color: var(--text);
+    background: var(--gradient-soft);
+    box-shadow: 0 2px 10px rgba(124, 92, 191, 0.35);
+  }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: var(--radius-btn);
+    background: var(--gradient-soft);
+    color: var(--text);
+    box-shadow: var(--glow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(124, 92, 191, 0.4);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+  }
+
+  .legal-hero {
+    padding: 80px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .legal-hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, rgba(124, 92, 191, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .legal-hero > * { position: relative; z-index: 1; }
+
+  .legal-eyebrow {
+    font-size: 12px;
+    color: var(--text-label);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .legal-eyebrow .accent {
+    color: var(--accent-light);
+    margin-right: 10px;
+    letter-spacing: 1px;
+  }
+
+  .legal-title {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .legal-meta {
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .legal-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-light);
+    transition: color 0.2s ease;
+  }
+
+  .legal-back:hover { color: var(--text); }
+
+  @media (max-width: 768px) {
+    .legal-title { font-size: 38px; letter-spacing: -1.5px; }
+    .legal-hero { padding: 56px 0 24px; }
+  }
+
+  .legal-body {
+    padding: 32px 0 80px;
+  }
+
+  .legal-content {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-card);
+    padding: 48px 52px;
+  }
+
+  .legal-intro {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.9;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .legal-section {
+    margin-bottom: 32px;
+  }
+
+  .legal-section:last-child { margin-bottom: 0; }
+
+  .legal-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.2px;
+    margin-bottom: 14px;
+  }
+
+  .legal-section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+
+  .legal-section p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 10px;
+  }
+
+  .legal-section p:last-child { margin-bottom: 0; }
+
+  .legal-section ul {
+    list-style: none;
+    margin: 8px 0 12px 4px;
+  }
+
+  .legal-section ul li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 6px;
+  }
+
+  .legal-section ul li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .legal-section a {
+    color: var(--accent-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(157, 127, 214, 0.4);
+    word-break: break-all;
+  }
+
+  .legal-section a:hover {
+    color: var(--text);
+    text-decoration-color: var(--text);
+  }
+
+  @media (max-width: 768px) {
+    .legal-content { padding: 32px 24px; border-radius: 16px; }
+    .legal-section h2 { font-size: 16px; }
+    .legal-section p, .legal-section ul li { font-size: 14px; }
+  }
+
+  .legal-related {
+    max-width: 760px;
+    margin: 28px auto 0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .legal-related a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  .legal-related a:hover {
+    color: var(--text);
+    border-color: rgba(124, 92, 191, 0.4);
+  }
+
+  .legal-related a.current {
+    color: var(--accent-light);
+    border-color: rgba(124, 92, 191, 0.4);
+    background: rgba(124, 92, 191, 0.08);
+  }
+
+  .footer {
+    padding: 40px 0 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .footer-logo {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-logo .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer-right {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--accent-light); }
+  .footer-right a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="https://hocatech.com/en/" class="nav-logo"><span class="accent">Hoca</span><span>tech</span></a>
+    <nav class="nav-links">
+      <a href="https://hocatech.com/en/#services">Services</a>
+      <a href="https://hocatech.com/en/#works">Works</a>
+      <a href="https://hocatech.com/en/#about">About</a>
+      <a href="https://hocatech.com/en/#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <a href="/terms.html" onclick="localStorage.setItem('hoca_lang','zh')">中</a>
+        <a href="/en/terms.html" onclick="localStorage.setItem('hoca_lang','en')" class="active" aria-current="true">EN</a>
+      </div>
+      <a href="mailto:contact@hocatech.com" class="nav-cta">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-eyebrow"><span class="accent">Vwake</span>Terms of Service</div>
+    <h1 class="legal-title">Terms of Service</h1>
+    <div class="legal-meta">Last updated: April 2026</div>
+    <a href="https://hocatech.com/en/" class="legal-back">← Back to Hocatech</a>
+  </div>
+</section>
+
+<article class="legal-body">
+  <div class="container">
+    <div class="legal-content">
+      <p class="legal-intro">Welcome to Vwake. By using the Application, you agree to the following terms.</p>
+
+      <section class="legal-section">
+        <h2>1. Service Description</h2>
+        <p>Vwake is a VTuber voice alarm application that provides pre-recorded voice packs for users to set as alarms.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>2. In-App Purchases</h2>
+        <ul>
+          <li>Voice packs are non-consumable, one-time purchases. Once purchased, they remain available permanently.</li>
+          <li>Purchases are non-refundable, except where required by applicable law.</li>
+          <li>Free voice packs may be used permanently without purchase.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>3. Usage Restrictions</h2>
+        <ul>
+          <li>You may not copy, distribute, or resell the voice content within the Application.</li>
+          <li>Voice content is for personal alarm use only.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>4. Intellectual Property</h2>
+        <p>All voice content, designs, and trademarks are owned by Vwake or are used under proper license.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>5. Disclaimer</h2>
+        <ul>
+          <li>The Application is provided "as is" without any guarantee that the alarm will function correctly on all devices.</li>
+          <li>Battery saver settings on some Android devices may affect alarm functionality.</li>
+          <li>We are not liable for any losses caused by an alarm failing to ring.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>6. Termination</h2>
+        <p>We reserve the right to terminate or modify the service at any time. Purchased content remains usable for as long as the Application is available.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>7. Governing Law</h2>
+        <p>These terms are governed by the laws of Taiwan (Republic of China).</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>8. Contact</h2>
+        <p>For any questions, please contact us at <a href="mailto:contact@hocatech.com">contact@hocatech.com</a>.</p>
+      </section>
+    </div>
+
+    <nav class="legal-related" aria-label="Related documents">
+      <a href="/en/privacy.html">Privacy Policy</a>
+      <a href="/en/terms.html" class="current">Terms of Service</a>
+      <a href="/en/eula.html">End User License Agreement</a>
+    </nav>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <span class="footer-logo"><span class="accent">Hoca</span>tech</span>
+      <span>© 2026 Hocatech Studio. All rights reserved.</span>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:contact@hocatech.com">contact@hocatech.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

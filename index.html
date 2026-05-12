@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vwake for VTubers — 一次錄音,讓你的聲音長期替你賺錢</title>
+<meta name="description" content="Vwake VTuber 上架邀請。語音包 × 鬧鐘 App 整合,一次錄音長期分潤,每月準時結款。">
+<link rel="alternate" hreflang="zh-TW" href="https://vwake.app/">
+<link rel="alternate" hreflang="en" href="https://vwake.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://vwake.app/">
+<script>
+(function(){try{
+  if(localStorage.getItem('hoca_lang')) return;
+  var p=location.pathname, inEn=p.indexOf('/en')===0;
+  var zh=(navigator.language||'').toLowerCase().indexOf('zh')===0;
+  if(!zh && !inEn){
+    var t='/en'+(p==='/'||p===''?'/':p);
+    location.replace(t);
+  }
+}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1C1E' stroke='%237C5CBF' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Inter,sans-serif' font-size='34' font-weight='900' fill='%239D7FD6' text-anchor='middle' letter-spacing='-1'%3EV%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #1C1C1E;
+    --surface-2: #2C2C2E;
+    --accent: #7C5CBF;
+    --accent-light: #9D7FD6;
+    --accent-dark: #5E3FA3;
+    --text: #FFFFFF;
+    --text-muted: #8E8E93;
+    --text-label: #555;
+    --gradient: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 50%, #5E3FA3 100%);
+    --gradient-soft: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 100%);
+    --glow: 0 8px 32px rgba(124, 92, 191, 0.3);
+    --glow-sm: 0 4px 20px rgba(124, 92, 191, 0.25);
+    --radius-card: 20px;
+    --radius-btn: 14px;
+    --radius-chip: 999px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* Section label (Vwake signature) */
+  .section-label {
+    font-size: 12px; color: var(--text-label);
+    letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500; margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 42px; font-weight: 800;
+    letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 640px; line-height: 1.7;
+  }
+  .divider {
+    width: 40px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 12px auto;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 32px; z-index: 50;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between; height: 68px;
+  }
+  .nav-logo { font-size: 24px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+  .nav-logo .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .lang-switch {
+    display: flex; align-items: center; gap: 2px;
+    font-size: 12px; font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 999px; padding: 3px;
+  }
+  .lang-switch a {
+    color: var(--text-muted); padding: 5px 12px; border-radius: 999px;
+    transition: all 0.2s ease; line-height: 1;
+  }
+  .lang-switch a:hover { color: var(--text); }
+  .lang-switch a.active {
+    color: var(--text); background: var(--gradient-soft);
+    box-shadow: 0 2px 10px rgba(124, 92, 191, 0.35);
+  }
+  .nav-cta {
+    font-size: 13px; font-weight: 600; padding: 10px 18px;
+    border-radius: var(--radius-btn);
+    background: var(--gradient-soft); color: var(--text);
+    box-shadow: var(--glow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(124, 92, 191, 0.4); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 100px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 100px 32px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; left: 50%;
+    transform: translateX(-50%); width: 900px; height: 700px;
+    background: radial-gradient(ellipse at center, rgba(124, 92, 191, 0.22) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent-light); font-weight: 600;
+    padding: 8px 18px; border-radius: 999px;
+    background: rgba(124, 92, 191, 0.12);
+    border: 1px solid rgba(124, 92, 191, 0.3);
+    margin-bottom: 28px;
+  }
+  .hero-wordmark {
+    font-size: 72px; font-weight: 900; letter-spacing: -2.5px;
+    line-height: 0.95; margin-bottom: 14px;
+  }
+  .hero-wordmark .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-tagline {
+    font-size: 30px; font-weight: 700; letter-spacing: -0.5px;
+    line-height: 1.35; max-width: 760px; margin-bottom: 20px;
+  }
+  .hero-desc {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 580px; line-height: 1.8; margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    font-size: 15px; font-weight: 600; padding: 14px 28px;
+    border-radius: var(--radius-btn);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary { background: var(--gradient-soft); color: var(--text); box-shadow: var(--glow-sm); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124, 92, 191, 0.45); }
+  .btn-ghost {
+    background: var(--surface); color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .btn-ghost:hover { background: var(--surface-2); border-color: rgba(124, 92, 191, 0.4); }
+
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 56px; flex-wrap: wrap; justify-content: center;
+    padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%; max-width: 720px;
+  }
+  .stat .stat-num {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.5px;
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .stat .stat-label {
+    font-size: 12px; color: var(--text-muted); letter-spacing: 2px;
+    text-transform: uppercase; margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-wordmark { font-size: 52px; letter-spacing: -2px; }
+    .hero-tagline { font-size: 22px; }
+    .hero-stats { gap: 24px; }
+    .stat .stat-num { font-size: 24px; }
+  }
+
+  /* SECTION wrapper */
+  .section { padding: 120px 0; position: relative; }
+  .section-header { text-align: center; margin-bottom: 72px; }
+  .section-header .section-desc { margin: 0 auto; }
+  @media (max-width: 768px) {
+    .section { padding: 80px 0; }
+    .section-title { font-size: 30px; }
+  }
+
+  /* PILLARS */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 880px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+  .pillar {
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    padding: 40px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle at top right, rgba(124, 92, 191, 0.15), transparent 70%);
+    pointer-events: none;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 92, 191, 0.4);
+    background: var(--surface-2);
+  }
+  .pillar-num {
+    font-size: 13px; letter-spacing: 4px; font-weight: 700;
+    color: var(--accent-light); margin-bottom: 16px;
+  }
+  .pillar-title {
+    font-size: 26px; font-weight: 800; letter-spacing: -0.8px;
+    line-height: 1.25; margin-bottom: 14px;
+  }
+  .pillar-quote {
+    font-size: 17px; font-weight: 500; color: var(--text);
+    margin-bottom: 18px; padding-left: 14px;
+    border-left: 2px solid var(--accent); line-height: 1.5;
+  }
+  .pillar-desc {
+    font-size: 15px; color: var(--text-muted);
+    line-height: 1.75; margin-bottom: 20px;
+  }
+  .pillar-points { list-style: none; padding: 0; margin: 0; }
+  .pillar-points li {
+    font-size: 14px; color: var(--text-muted);
+    padding: 8px 0 8px 24px; position: relative;
+    line-height: 1.6;
+  }
+  .pillar-points li::before {
+    content: '→'; position: absolute; left: 0; top: 8px;
+    color: var(--accent-light); font-weight: 700;
+  }
+
+  /* ROSTER (marquee) */
+  .roster-marquee {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .roster-track {
+    display: flex;
+    gap: 14px;
+    width: max-content;
+    animation: roster-scroll 60s linear infinite;
+  }
+  .roster-track:hover { animation-play-state: paused; }
+  @keyframes roster-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .roster-track { animation: none; }
+  }
+
+  .roster-card {
+    flex: 0 0 auto;
+    width: 132px;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 16px 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+  }
+  .roster-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-soft);
+    margin: 0 auto 10px;
+    border: 2px solid rgba(124, 92, 191, 0.3);
+    overflow: hidden;
+  }
+  .roster-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .roster-name {
+    font-size: 13px; font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .roster-meta {
+    font-size: 11px; color: var(--text-muted);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* APP PREVIEW STRIP */
+  .preview-frame { position: relative; }
+  .preview-wrap {
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .preview-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(28, 28, 30, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  }
+  .preview-nav:hover:not(:disabled) {
+    background: var(--gradient-soft);
+    border-color: rgba(124, 92, 191, 0.5);
+  }
+  .preview-nav:active:not(:disabled) { transform: translateY(-50%) scale(0.94); }
+  .preview-nav:disabled {
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+  }
+  .preview-nav-prev { left: 8px; }
+  .preview-nav-next { right: 8px; }
+  @media (max-width: 540px) {
+    .preview-nav { width: 40px; height: 40px; }
+    .preview-nav-prev { left: 4px; }
+    .preview-nav-next { right: 4px; }
+  }
+  .preview-strip {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 80px;
+    padding: 8px 80px 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(124, 92, 191, 0.5) transparent;
+  }
+  @media (max-width: 540px) {
+    .preview-strip {
+      padding: 8px 56px 24px;
+      scroll-padding-inline: 56px;
+    }
+  }
+  .preview-strip::-webkit-scrollbar { height: 8px; }
+  .preview-strip::-webkit-scrollbar-track { background: transparent; }
+  .preview-strip::-webkit-scrollbar-thumb {
+    background: rgba(124, 92, 191, 0.4);
+    border-radius: 999px;
+  }
+  .preview-strip::-webkit-scrollbar-thumb:hover { background: rgba(124, 92, 191, 0.7); }
+  .preview-tile {
+    flex: 0 0 clamp(260px, 32vw, 380px);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0;
+  }
+  .preview-tile:hover { transform: translateY(-6px); }
+  .preview-tile img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    display: block;
+    background: #0a0a0a;
+  }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    counter-reset: step;
+  }
+  @media (max-width: 1024px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .steps { grid-template-columns: 1fr; } }
+
+  .step {
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    padding: 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    counter-increment: step;
+    position: relative;
+  }
+  .step::before {
+    content: '0' counter(step);
+    font-size: 56px; font-weight: 900;
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: -2px; line-height: 1;
+    margin-bottom: 16px; display: block;
+    opacity: 0.85;
+  }
+  .step-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* FAQ */
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 24px 0;
+  }
+  .faq-q {
+    font-size: 17px; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::after {
+    content: '+'; font-size: 24px; color: var(--accent-light);
+    font-weight: 300; transition: transform 0.2s ease;
+  }
+  details[open] .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 15px; color: var(--text-muted);
+    line-height: 1.75; margin-top: 14px;
+    padding-right: 32px;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--surface);
+    border-radius: 32px;
+    padding: 80px 48px;
+    text-align: center;
+    border: 1px solid rgba(124, 92, 191, 0.2);
+    position: relative; overflow: hidden;
+  }
+  .final-cta::before {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(124, 92, 191, 0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .final-cta > * { position: relative; }
+  .final-cta-title {
+    font-size: 40px; font-weight: 800; letter-spacing: -1px;
+    line-height: 1.2; margin-bottom: 16px; max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+  .final-cta-desc {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 560px; margin: 0 auto 36px; line-height: 1.7;
+  }
+  .final-cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+  @media (max-width: 768px) {
+    .final-cta { padding: 56px 28px; }
+    .final-cta-title { font-size: 28px; }
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 48px 0 32px;
+    margin-top: 120px;
+  }
+  .footer-inner {
+    display: flex; flex-direction: column; gap: 20px;
+    text-align: center;
+    font-size: 13px; color: var(--text-muted);
+  }
+  .footer-legal {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .footer-legal a:hover { color: var(--text); }
+  .footer-legal-app { color: var(--accent-light); font-weight: 600; }
+
+  /* Hidden anchor offset for sticky nav */
+  section[id] { scroll-margin-top: 100px; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="accent">V</span>wake
+      </a>
+      <div class="nav-links">
+        <a href="#preview">App 預覽</a>
+        <a href="#why">為什麼選 Vwake</a>
+        <a href="#roster">已上架 VTuber</a>
+        <a href="#how">流程</a>
+        <a href="#faq">常見問題</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <a href="/" onclick="localStorage.setItem('hoca_lang','zh')" class="active" aria-current="true">中</a>
+          <a href="/en/" onclick="localStorage.setItem('hoca_lang','en')" aria-label="Switch to English">EN</a>
+        </div>
+        <a href="#cta" class="nav-cta">我要上架</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-eyebrow">VWAKE FOR VTUBERS</div>
+  <h1 class="hero-wordmark"><span class="accent">V</span>wake</h1>
+  <p class="hero-tagline">
+    讓你的聲音,<br>成為粉絲每天醒來的第一秒。
+  </p>
+  <p class="hero-desc">
+    Vwake 是 VTuber 語音鬧鐘 App。<br>
+    粉絲付費購買你的聲音當鬧鐘 ——<br>
+    你只要錄幾段聲音,上架、銷售、金流全交給我們。
+  </p>
+  <div class="hero-ctas">
+    <a href="#cta" class="btn btn-primary">
+      我要上架
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#why" class="btn btn-ghost">
+      先看為什麼選 Vwake
+    </a>
+  </div>
+</section>
+
+<!-- ============ APP PREVIEW ============ -->
+<section class="section" id="preview">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Inside the App · App 實際畫面</div>
+      <h2 class="section-title">這是粉絲每天會看到的畫面。</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        Vwake iOS 版即將上架。<br>
+        以下是粉絲打開 App、選擇你、鬧鐘響起時的實際畫面。
+      </p>
+    </div>
+
+    <div class="preview-frame">
+      <button class="preview-nav preview-nav-prev" type="button" aria-label="上一張" disabled>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="preview-wrap">
+        <div class="preview-strip">
+          <figure class="preview-tile"><img src="/store_preview/storepreview1.png" alt="Vwake 鬧鐘列表畫面" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview2.png" alt="Vwake VTuber 商店畫面" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview3.png" alt="Vwake 鬧鐘響起時的全螢幕畫面" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview4.png" alt="Vwake VTuber 角色詳情頁" loading="lazy"></figure>
+          <figure class="preview-tile"><img src="/store_preview/storepreview5.png" alt="Vwake App 啟動畫面" loading="lazy"></figure>
+        </div>
+      </div>
+      <button class="preview-nav preview-nav-next" type="button" aria-label="下一張">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY VWAKE / PILLARS ============ -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Why Vwake · 為什麼選 Vwake</div>
+      <h2 class="section-title">不是賣語音包,是賣你的日常存在。</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        其他平台賣完一個檔案就結束;Vwake 把你變成粉絲每天起床第一秒。
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      <!-- Pillar 1: 每日觸達 -->
+      <div class="pillar">
+        <div class="pillar-num">— 01 / 每日觸達 —</div>
+        <h3 class="pillar-title">不是聽一次,是每天聽。</h3>
+        <p class="pillar-quote">
+          粉絲設你的聲音當鬧鐘 = 你每天 7 點都出現一次。
+        </p>
+        <p class="pillar-desc">
+          Booth、Fanbox 賣語音包,粉絲下載後會聽兩三次然後忘掉。Vwake 把你變成日常 — 起床第一秒就是你,關掉鬧鐘的瞬間是對你的暱稱。
+        </p>
+        <ul class="pillar-points">
+          <li>每天觸達一次,曝光是被動的</li>
+          <li>觸達 = 留存,不是一次性消費</li>
+          <li>粉絲對你的依附從「偶爾想到」變成「每天習慣」</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 2: 整合 = 摩擦最低 -->
+      <div class="pillar">
+        <div class="pillar-num">— 02 / 整合 / Integration —</div>
+        <h3 class="pillar-title">第一個將語音包與鬧鐘 App 整合的平台。</h3>
+        <p class="pillar-quote">
+          粉絲不用切換 App、不用轉檔。買完直接設成鬧鐘。
+        </p>
+        <p class="pillar-desc">
+          其他平台買語音包 = 下載檔案 + 自己處理 + 找鬧鐘 App 設定。Vwake 直接內建在 App 裡,粉絲一鍵購買、一鍵設定。摩擦越低,你的轉換越高。
+        </p>
+        <ul class="pillar-points">
+          <li>購買到使用,粉絲不需離開 App</li>
+          <li>沒有檔案轉碼、沒有跨 App 切換</li>
+          <li>降低使用門檻 = 你的潛在客戶更多</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Second row: 一次上架 + 收益分潤 -->
+    <div class="pillars-grid" style="margin-top: 24px;">
+      <!-- Pillar 3: 一次上架,長期被動收入 -->
+      <div class="pillar">
+        <div class="pillar-num">— 03 / 被動收入 / Passive Revenue —</div>
+        <h3 class="pillar-title">一次上架,長期受益。</h3>
+        <p class="pillar-quote">
+          你睡覺時,你的聲音也在替你賺錢。
+        </p>
+        <p class="pillar-desc">
+          錄一次,賣很久。我們負責上架、銷售、金流、客服。你不需要買廣告、不需要改變創作節奏 — 你既有的粉絲流量直接多一個變現管道。
+        </p>
+        <ul class="pillar-points">
+          <li>不需要買廣告</li>
+          <li>不需要改變創作節奏</li>
+          <li>上架、銷售、金流、客服全由 Vwake 處理</li>
+          <li>多一個變現管道,既有粉絲流量直接受益</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 4: 收益模式 -->
+      <div class="pillar">
+        <div class="pillar-num">— 04 / 收益模式 / Revenue —</div>
+        <h3 class="pillar-title">純買斷,粉絲一次付費你長期分潤。</h3>
+        <p class="pillar-quote">
+          不是訂閱制 — 粉絲一次買斷,你的聲音長期銷售分潤。
+        </p>
+        <p class="pillar-desc">
+          粉絲一次買斷你的語音包,你拿銷售分潤。每月準時結款,銀行轉帳。
+        </p>
+        <ul class="pillar-points">
+          <li>純買斷:粉絲一次性購買,不是月費訂閱</li>
+          <li>累積銷售長期分潤,被動收入</li>
+          <li>每月固定結款,銀行轉帳</li>
+          <li>具體分潤比例與撥款細節於合約寄送時說明</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROSTER / 已上架 VTuber ============ -->
+<section class="section" id="roster">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">On Vwake · 已上架 VTuber</div>
+      <h2 class="section-title">第一批已經在這裡了。</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        首波合作 VTuber 持續更新中。<br>
+        這些創作者跟我們一起把 Vwake 從零做起來。
+      </p>
+    </div>
+
+    <div class="roster-marquee">
+      <div class="roster-track">
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/pyonchan.png" alt="ぴょんちゃん兔兔"></div><div class="roster-name">ぴょんちゃん兔兔</div><div class="roster-meta">Pyonchan</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/fingla.png" alt="芬格拉 Fingla"></div><div class="roster-name">芬格拉 Fingla</div><div class="roster-meta">Fingla</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/afeng.png" alt="阿楓轟炸"></div><div class="roster-name">阿楓轟炸</div><div class="roster-meta">Maple</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/ohara-shiori.png" alt="小原栞"></div><div class="roster-name">小原栞</div><div class="roster-meta">Ohara Shiori</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/skymeowu.png" alt="仙喵 SkyMeowu"></div><div class="roster-name">仙喵 SkyMeowu</div><div class="roster-meta">SkyMeowu</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/chimera.png" alt="奇美拉圈圈"></div><div class="roster-name">奇美拉圈圈</div><div class="roster-meta">Chimera</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/maruru.png" alt="瑪露露 Maruru"></div><div class="roster-name">瑪露露 Maruru</div><div class="roster-meta">Maruru</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/shirakuma-koiyuki.png" alt="白熊戀雪"></div><div class="roster-name">白熊戀雪</div><div class="roster-meta">Koiyuki</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/ribi.png" alt="莉比 Ribi"></div><div class="roster-name">莉比 Ribi</div><div class="roster-meta">Ribi</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/yukime.jpg" alt="雪迎"></div><div class="roster-name">雪迎</div><div class="roster-meta">Yukime</div></div>
+        <div class="roster-card"><div class="roster-avatar"><img src="assets/creators/avatars/aquarius.png" alt="水瓶罐子"></div><div class="roster-name">水瓶罐子</div><div class="roster-meta">Aquarius</div></div>
+
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/pyonchan.png" alt=""></div><div class="roster-name">ぴょんちゃん兔兔</div><div class="roster-meta">Pyonchan</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/fingla.png" alt=""></div><div class="roster-name">芬格拉 Fingla</div><div class="roster-meta">Fingla</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/afeng.png" alt=""></div><div class="roster-name">阿楓轟炸</div><div class="roster-meta">Maple</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/ohara-shiori.png" alt=""></div><div class="roster-name">小原栞</div><div class="roster-meta">Ohara Shiori</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/skymeowu.png" alt=""></div><div class="roster-name">仙喵 SkyMeowu</div><div class="roster-meta">SkyMeowu</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/chimera.png" alt=""></div><div class="roster-name">奇美拉圈圈</div><div class="roster-meta">Chimera</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/maruru.png" alt=""></div><div class="roster-name">瑪露露 Maruru</div><div class="roster-meta">Maruru</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/shirakuma-koiyuki.png" alt=""></div><div class="roster-name">白熊戀雪</div><div class="roster-meta">Koiyuki</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/ribi.png" alt=""></div><div class="roster-name">莉比 Ribi</div><div class="roster-meta">Ribi</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/yukime.jpg" alt=""></div><div class="roster-name">雪迎</div><div class="roster-meta">Yukime</div></div>
+        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="assets/creators/avatars/aquarius.png" alt=""></div><div class="roster-name">水瓶罐子</div><div class="roster-meta">Aquarius</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">How it works · 上架流程</div>
+      <h2 class="section-title">4 步驟,從詢問到收益。</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        從你按下「我要上架」那一秒開始,到你收到第一筆分成,我們會一起走的路。
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">填詢問表單</div>
+        <div class="step-desc">告訴我們你的頻道、想嘗試的語氣、上架時間。3 分鐘內填完,我們 48 小時內回信。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">寄合約 + 簽約</div>
+        <div class="step-desc">完整合作條款、分潤說明、權利保護承諾以 PDF 寄送。電子簽署完成,省去紙本往返。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">遠端錄音檔</div>
+        <div class="step-desc">在家錄 3 段 × 10-15 秒(溫柔 / 有活力 / 傲嬌)。我們提供情境指引,但不限制創作 — 你最知道粉絲喜歡什麼。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">上線開始收益</div>
+        <div class="step-desc">App 上架測試 → 公開上線 → 你的聲音開始販售 → 每月 30 號結款。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">FAQ · 常見問題</div>
+      <h2 class="section-title">上架前你會想知道的事</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">我的聲音會被拿去訓練 AI 嗎?</summary>
+        <p class="faq-a">
+          <strong>不會。</strong>未經你的書面同意,Vwake 絕對不會用你的音檔訓練 AI 語音模型、不會合成你沒親自錄過的內容、不會擴展到合約範圍外的用途。音檔僅在 Vwake App 內依合約約定被使用者下載與播放。若 Vwake 未來開發 AI 相關新功能,我們會重新徵得你的同意、另議分潤,不會預設你先前的授權自動延伸。
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">我可以隨時下架嗎?合約終止會怎樣?</summary>
+        <p class="faq-a">
+          可以。合約終止後,我們會從系統與伺服器上下架你的音檔,並提供刪除證明。具體終止條款於合約寄送時說明。
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">分潤怎麼算?多久結一次?</summary>
+        <p class="faq-a">
+          採用銷售分潤模式 — 粉絲每筆購買,你都會抽成。具體分潤比例、售價、撥款細節(銀行轉帳 / 稅務處理)會於我們寄出合作合約時詳細說明。<strong>每月固定結款</strong>。
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">需要排他授權嗎?我能同時在 Booth 賣嗎?</summary>
+        <p class="faq-a">
+          <strong>不排他。</strong>你在 Booth、Fanbox 賣的傳統靜態語音包與我們的 Vwake App 鬧鐘語音是不同產品。Vwake 不限制你在其他平台繼續賣傳統語音包 — 我們只要求你錄製給我們的這 3 段音檔的 App 內使用授權。
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">音檔需要錄幾段?有什麼格式要求?</summary>
+        <p class="faq-a">
+          <strong>建議 3 段(3 種語氣 × 各 1 段)</strong>最能吸引粉絲。若錄音條件有限,1-2 段也可以,售價與分潤不變。<br><br>
+          每段長度 10-15 秒,語氣建議溫柔 / 有活力 / 傲嬌,情境主題為起床問候或賴床提醒(內容自由發揮)。錄音門檻不高,<strong>手機內建麥克風只要在安靜環境錄製也能通過</strong>,不需要專業錄音棚。
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">我的訂閱數很少,還可以上架嗎?</summary>
+        <p class="faq-a">
+          <strong>我們非常歡迎!</strong>Vwake 的初衷就是希望集結各路優秀的創作者。既然你有意願參與聲音內容的合作,這對我們來說是非常棒的消息,也很期待能有更多元的聲音進駐。歡迎填表單跟我們聊聊。
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section" id="cta">
+  <div class="container">
+    <div class="final-cta">
+      <h2 class="final-cta-title">
+        把你的聲音,<br>
+        變成粉絲每天最期待的第一秒。
+      </h2>
+      <p class="final-cta-desc">
+        錄 3 段 10-15 秒,我們處理上架、銷售、金流、客服。<br>
+        填完表單,我們 48 小時內回你。
+      </p>
+      <div class="final-cta-buttons">
+        <a href="mailto:contact@hocatech.com?subject=【Vwake 上架詢問】&body=Hi,我想了解 Vwake 上架流程。%0A%0A頻道名稱:%0A訂閱數 / 觀眾規模:%0A連絡方式(Discord / Twitter / Email):%0A%0A謝謝!" class="btn btn-primary">
+          我要上架
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        Vwake 由 <a href="https://hocatech.com/" style="color:var(--accent-light);">Hocatech</a> 開發 · © 2026 All rights reserved.
+      </div>
+      <div class="footer-legal">
+        <span class="footer-legal-app">Vwake</span>
+        <a href="/privacy.html">隱私政策</a>
+        <span style="color:var(--text-label);">·</span>
+        <a href="/terms.html">服務條款</a>
+        <span style="color:var(--text-label);">·</span>
+        <a href="/eula.html">使用者授權合約</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var strip = document.querySelector('.preview-strip');
+  var prev = document.querySelector('.preview-nav-prev');
+  var next = document.querySelector('.preview-nav-next');
+  if (!strip || !prev || !next) return;
+
+  function stepSize() {
+    var tile = strip.querySelector('.preview-tile');
+    if (!tile) return strip.clientWidth * 0.8;
+    var gapStr = getComputedStyle(strip).columnGap || getComputedStyle(strip).gap || '0';
+    var gap = parseFloat(gapStr) || 0;
+    return tile.getBoundingClientRect().width + gap;
+  }
+
+  function scrollByStep(dir) {
+    strip.scrollBy({ left: dir * stepSize(), behavior: 'smooth' });
+  }
+
+  prev.addEventListener('click', function () { scrollByStep(-1); });
+  next.addEventListener('click', function () { scrollByStep(1); });
+
+  function update() {
+    var maxScroll = strip.scrollWidth - strip.clientWidth;
+    prev.disabled = strip.scrollLeft <= 2;
+    next.disabled = strip.scrollLeft >= maxScroll - 2;
+  }
+  strip.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

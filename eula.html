@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vwake 使用者授權合約 (EULA) · Hocatech</title>
+<meta name="description" content="Vwake 終端使用者授權合約 (EULA) — 由霍卡工作室 Hocatech 開發與營運。">
+<meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="zh-TW" href="https://vwake.app/eula.html">
+<link rel="alternate" hreflang="en" href="https://vwake.app/en/eula.html">
+<link rel="alternate" hreflang="x-default" href="https://vwake.app/eula.html">
+<script>
+(function(){try{
+  if(localStorage.getItem('hoca_lang')) return;
+  var p=location.pathname, inEn=p.indexOf('/en')===0;
+  var zh=(navigator.language||'').toLowerCase().indexOf('zh')===0;
+  if(!zh && !inEn){ location.replace('/en'+p); }
+}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1C1E' stroke='%237C5CBF' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Inter,sans-serif' font-size='34' font-weight='900' fill='%239D7FD6' text-anchor='middle' letter-spacing='-1'%3EH%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #1C1C1E;
+    --surface-2: #2C2C2E;
+    --accent: #7C5CBF;
+    --accent-light: #9D7FD6;
+    --accent-dark: #5E3FA3;
+    --text: #FFFFFF;
+    --text-muted: #8E8E93;
+    --text-label: #555;
+    --gradient: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 50%, #5E3FA3 100%);
+    --gradient-soft: linear-gradient(135deg, #9D7FD6 0%, #7C5CBF 100%);
+    --glow-sm: 0 4px 20px rgba(124, 92, 191, 0.25);
+    --radius-card: 20px;
+    --radius-btn: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .nav-logo .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    padding: 3px;
+  }
+
+  .lang-switch a {
+    color: var(--text-muted);
+    padding: 5px 12px;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+
+  .lang-switch a:hover { color: var(--text); }
+
+  .lang-switch a.active {
+    color: var(--text);
+    background: var(--gradient-soft);
+    box-shadow: 0 2px 10px rgba(124, 92, 191, 0.35);
+  }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: var(--radius-btn);
+    background: var(--gradient-soft);
+    color: var(--text);
+    box-shadow: var(--glow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(124, 92, 191, 0.4);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+  }
+
+  .legal-hero {
+    padding: 80px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .legal-hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, rgba(124, 92, 191, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .legal-hero > * { position: relative; z-index: 1; }
+
+  .legal-eyebrow {
+    font-size: 12px;
+    color: var(--text-label);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .legal-eyebrow .accent {
+    color: var(--accent-light);
+    margin-right: 10px;
+    letter-spacing: 1px;
+  }
+
+  .legal-title {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .legal-meta {
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .legal-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-light);
+    transition: color 0.2s ease;
+  }
+
+  .legal-back:hover { color: var(--text); }
+
+  @media (max-width: 768px) {
+    .legal-title { font-size: 38px; letter-spacing: -1.5px; }
+    .legal-hero { padding: 56px 0 24px; }
+  }
+
+  .legal-body {
+    padding: 32px 0 80px;
+  }
+
+  .legal-content {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-card);
+    padding: 48px 52px;
+  }
+
+  .legal-intro {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.9;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .legal-section {
+    margin-bottom: 32px;
+  }
+
+  .legal-section:last-child { margin-bottom: 0; }
+
+  .legal-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.2px;
+    margin-bottom: 14px;
+  }
+
+  .legal-section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+
+  .legal-section p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 10px;
+  }
+
+  .legal-section p:last-child { margin-bottom: 0; }
+
+  .legal-section ul {
+    list-style: none;
+    margin: 8px 0 12px 4px;
+  }
+
+  .legal-section ul li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 6px;
+  }
+
+  .legal-section ul li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .legal-section a {
+    color: var(--accent-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(157, 127, 214, 0.4);
+    word-break: break-all;
+  }
+
+  .legal-section a:hover {
+    color: var(--text);
+    text-decoration-color: var(--text);
+  }
+
+  @media (max-width: 768px) {
+    .legal-content { padding: 32px 24px; border-radius: 16px; }
+    .legal-section h2 { font-size: 16px; }
+    .legal-section p, .legal-section ul li { font-size: 14px; }
+  }
+
+  .legal-related {
+    max-width: 760px;
+    margin: 28px auto 0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .legal-related a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  .legal-related a:hover {
+    color: var(--text);
+    border-color: rgba(124, 92, 191, 0.4);
+  }
+
+  .legal-related a.current {
+    color: var(--accent-light);
+    border-color: rgba(124, 92, 191, 0.4);
+    background: rgba(124, 92, 191, 0.08);
+  }
+
+  .footer {
+    padding: 40px 0 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .footer-logo {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-logo .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer-right {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--accent-light); }
+  .footer-right a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="https://hocatech.com/" class="nav-logo"><span class="accent">Hoca</span><span>tech</span></a>
+    <nav class="nav-links">
+      <a href="https://hocatech.com/#services">Services</a>
+      <a href="https://hocatech.com/#works">Works</a>
+      <a href="https://hocatech.com/#about">About</a>
+      <a href="https://hocatech.com/#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <a href="/eula.html" onclick="localStorage.setItem('hoca_lang','zh')" class="active" aria-current="true">中</a>
+        <a href="/en/eula.html" onclick="localStorage.setItem('hoca_lang','en')">EN</a>
+      </div>
+      <a href="mailto:contact@hocatech.com" class="nav-cta">開始合作</a>
+    </div>
+  </div>
+</header>
+
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-eyebrow"><span class="accent">Vwake</span>End User License Agreement</div>
+    <h1 class="legal-title">使用者授權合約</h1>
+    <div class="legal-meta">最後更新日期：2026 年 4 月</div>
+    <a href="https://hocatech.com/" class="legal-back">← 返回 Hocatech 首頁</a>
+  </div>
+</section>
+
+<article class="legal-body">
+  <div class="container">
+    <div class="legal-content">
+      <p class="legal-intro">請在使用 Vwake（以下稱「本應用程式」）前仔細閱讀本合約。下載、安裝或使用本應用程式，即表示您同意受本合約之條款約束。</p>
+
+      <section class="legal-section">
+        <h2>1. 授權範圍</h2>
+        <p>本應用程式授予您一項有限的、非獨占性的、不可轉讓的授權，僅供個人、非商業用途於您的行動裝置上使用本應用程式。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>2. 第三方內容與智慧財產權</h2>
+        <p>本應用程式包含由第三方創作者（包括但不限於 VTuber、聲優、內容創作者）提供之語音內容（以下稱「第三方內容」）。</p>
+
+        <h3>2.1 版權歸屬</h3>
+        <p>各第三方內容之著作權及相關智慧財產權均歸屬其原始創作者或其所屬團體/事務所所有。Vwake 已依合約取得合法授權，於本應用程式內提供該等內容。</p>
+
+        <h3>2.2 使用限制</h3>
+        <p>您不得：</p>
+        <ul>
+          <li>複製、錄音、擷取或以任何方式重製第三方內容之音訊檔案</li>
+          <li>將第三方內容上傳、散布、分享或公開播放於任何平台</li>
+          <li>將第三方內容用於商業用途，包括但不限於營利性影片、直播或廣告</li>
+          <li>修改、編輯、混音或以其他方式製作第三方內容之衍生著作</li>
+          <li>對第三方內容進行逆向工程、反編譯或反組譯</li>
+          <li>將第三方內容自本應用程式中提取至外部裝置或服務</li>
+        </ul>
+
+        <h3>2.3 授權終止</h3>
+        <p>若任一創作者撤回授權，相關語音包可能會自本應用程式中下架。已購買但下架之語音包，在您裝置上已下載之內容將維持可用，但不再提供重新下載。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>3. 應用程式內購買</h2>
+        <p><strong style="color: var(--text);">3.1</strong> 語音包購買為一次性付款（非消耗性），成功購買後可永久使用。</p>
+        <p><strong style="color: var(--text);">3.2</strong> 所有付款透過 Apple App Store 或 Google Play Store 處理，適用其退款政策。</p>
+        <p><strong style="color: var(--text);">3.3</strong> 虛擬貨幣（V 幣）一經購買即不可退款，除非當地法律另有規定。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>4. 使用者義務</h2>
+        <p><strong style="color: var(--text);">4.1</strong> 您同意僅將本應用程式用於合法目的，且符合所有適用法律及法規。</p>
+        <p><strong style="color: var(--text);">4.2</strong> 您不得利用本應用程式從事任何侵害他人智慧財產權之行為。</p>
+        <p><strong style="color: var(--text);">4.3</strong> 您瞭解並同意，違反第三方內容之使用限制可能構成著作權侵權，需承擔法律責任。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>5. 免責聲明</h2>
+        <p><strong style="color: var(--text);">5.1</strong> 本應用程式按「現狀」及「現有」基礎提供，不提供任何明示或默示之保證。</p>
+        <p><strong style="color: var(--text);">5.2</strong> 我們不保證鬧鐘功能在所有裝置與系統版本上均能正常運作。</p>
+        <p><strong style="color: var(--text);">5.3</strong> 對於因裝置省電模式、系統限制或其他因素導致鬧鐘未能如期觸發，我們不承擔責任。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>6. 責任限制</h2>
+        <p>在法律允許之最大範圍內，Vwake 及其開發者對於因使用或無法使用本應用程式所產生之任何直接、間接、附帶、特別或衍生性損害不承擔責任。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>7. 合約修改</h2>
+        <p>我們保留隨時修改本合約之權利。修改後之合約將透過應用程式更新或通知方式告知。繼續使用本應用程式即視為接受修改後之條款。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>8. 準據法與管轄</h2>
+        <p>本合約受中華民國（台灣）法律管轄，並以台灣台北地方法院為第一審管轄法院。</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>9. 聯繫方式</h2>
+        <p>如有任何關於本合約之問題，請透過 <a href="mailto:contact@hocatech.com">contact@hocatech.com</a> 聯繫我們。</p>
+      </section>
+    </div>
+
+    <nav class="legal-related" aria-label="相關文件">
+      <a href="/privacy.html">隱私權政策</a>
+      <a href="/terms.html">服務條款</a>
+      <a href="/eula.html" class="current">使用者授權合約</a>
+    </nav>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <span class="footer-logo"><span class="accent">Hoca</span>tech</span>
+      <span>© 2026 霍卡工作室. All rights reserved.</span>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:contact@hocatech.com">contact@hocatech.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
