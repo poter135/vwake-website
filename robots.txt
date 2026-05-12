@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vwake.app/sitemap.xml
