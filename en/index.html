@@ -17,13 +17,13 @@
 <meta property="og:url" content="https://vwake.app/en/">
 <meta property="og:title" content="Vwake | VTuber Alarm Clock App — Record once, earn long-term">
 <meta property="og:description" content="A voice alarm clock app built for VTubers. Voice pack × alarm integration. Record once, earn recurring revenue share.">
-<meta property="og:image" content="https://vwake.app/store_preview/storepreview1.png">
+<meta property="og:image" content="https://vwake.app/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vwake | VTuber Alarm Clock App">
 <meta name="twitter:description" content="A voice alarm clock app built for VTubers. Record once, earn recurring revenue share.">
-<meta name="twitter:image" content="https://vwake.app/store_preview/storepreview1.png">
+<meta name="twitter:image" content="https://vwake.app/assets/og-card.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,7 +33,7 @@
       "@id": "https://vwake.app/#org",
       "name": "Vwake",
       "url": "https://vwake.app/",
-      "logo": "https://vwake.app/store_preview/storepreview1.png"
+      "logo": "https://vwake.app/assets/icons/icon-512.png"
     },
     {
       "@type": "WebSite",
@@ -51,7 +51,7 @@
       "operatingSystem": "iOS, Android",
       "description": "A voice alarm clock app built for VTubers. Voice pack × alarm integration, record once and earn recurring revenue share.",
       "url": "https://vwake.app/en/",
-      "image": "https://vwake.app/store_preview/storepreview1.png",
+      "image": "https://vwake.app/assets/icons/icon-512.png",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
   ]
@@ -60,7 +60,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1C1E' stroke='%237C5CBF' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Inter,sans-serif' font-size='34' font-weight='900' fill='%239D7FD6' text-anchor='middle' letter-spacing='-1'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/icon-512.png">
 <style>
   :root {
     --bg: #0a0a0a;
@@ -591,7 +596,7 @@
     transition: background 0.2s ease, color 0.2s ease;
   }
   .apply-modal-close:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-  .apply-modal-header { margin-bottom: 22px; }
+  .apply-modal-header { margin-bottom: 18px; }
   .apply-modal-title {
     font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
     margin-bottom: 6px;
@@ -599,7 +604,31 @@
   .apply-modal-sub {
     font-size: 14px; color: var(--text-muted); line-height: 1.6;
   }
+  .apply-tabs {
+    display: flex; gap: 4px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .apply-tab {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    color: var(--text-muted);
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .apply-tab:hover:not(.is-active) { color: var(--text); }
+  .apply-tab.is-active {
+    background: var(--gradient-soft);
+    color: var(--text);
+    box-shadow: 0 2px 10px rgba(124, 92, 191, 0.25);
+  }
+  .apply-tab-pane[hidden] { display: none; }
   .apply-form { display: flex; flex-direction: column; gap: 16px; }
+  .apply-tab-pane { display: flex; flex-direction: column; gap: 16px; }
   .apply-field { display: flex; flex-direction: column; gap: 6px; }
   .apply-field-label {
     font-size: 13px; font-weight: 600;
@@ -976,6 +1005,12 @@
           <strong>Absolutely welcome!</strong> Vwake's mission has always been to bring together creators of all kinds. If you're interested in collaborating on voice content, that's wonderful news for us. We're excited to see more diverse voices joining the platform.
         </p>
       </details>
+      <details class="faq-item">
+        <summary class="faq-q">I represent an agency / management company. How do we partner with Vwake?</summary>
+        <p class="faq-a">
+          We welcome agency partnerships. Open the apply form via the "Join Vwake" button above and switch to the "<strong>Agency / Management</strong>" tab to send us your agency details — we'll work with you on a multi-talent deal covering contract terms, revenue share, and rollout schedule under a single agreement. You can also email us directly at <a href="mailto:contact@hocatech.com" style="color:var(--accent-light);">contact@hocatech.com</a>.
+        </p>
+      </details>
     </div>
   </div>
 </section>
@@ -1030,29 +1065,60 @@
       <div class="apply-modal-title" id="applyModalTitle">Join Vwake</div>
       <div class="apply-modal-sub">We'll get back to you within 48 hours.</div>
     </div>
+    <div class="apply-tabs" role="tablist" aria-label="Application type">
+      <button type="button" class="apply-tab is-active" data-apply-tab="vtuber" role="tab" aria-selected="true">Individual VTuber</button>
+      <button type="button" class="apply-tab" data-apply-tab="agency" role="tab" aria-selected="false">Agency / Management</button>
+    </div>
     <form class="apply-form" id="applyForm" novalidate>
       <input type="hidden" name="access_key" value="dbab7937-0c31-47ad-889c-97cb9c92c930">
-      <input type="hidden" name="subject" value="[Vwake Application] from website form">
+      <input type="hidden" name="subject" id="applySubject" value="[Vwake Application] from website form">
       <input type="hidden" name="from_name" value="Vwake Website Form">
+      <input type="hidden" name="Apply Type" id="applyType" value="Individual VTuber">
       <input type="text" name="botcheck" class="apply-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <label class="apply-field">
-        <span class="apply-field-label">Channel name <span class="required">*</span></span>
-        <input class="apply-input" type="text" name="Channel Name" required autocomplete="off">
-      </label>
-      <label class="apply-field">
-        <span class="apply-field-label">Subscribers / audience size <span class="required">*</span></span>
-        <input class="apply-input" type="text" name="Audience Size" required placeholder="e.g. 5,000 subs / ~800 MAU" autocomplete="off">
-      </label>
-      <label class="apply-field">
-        <span class="apply-field-label">Contact <span class="required">*</span></span>
-        <input class="apply-input" type="text" name="Contact" required placeholder="Discord / X / Email — any one works" autocomplete="off">
-      </label>
-      <label class="apply-field">
-        <span class="apply-field-label">Channel link <span class="required">*</span></span>
-        <span class="apply-field-hint">YouTube / Twitch / X — so we know who you are</span>
-        <input class="apply-input" type="url" name="Channel Link" required placeholder="https://youtube.com/@yourchannel" autocomplete="off">
-      </label>
+      <div class="apply-tab-pane" data-apply-pane="vtuber">
+        <label class="apply-field">
+          <span class="apply-field-label">Channel name <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Channel Name" required autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Subscribers / audience size <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Audience Size" required placeholder="e.g. 5,000 subs / ~800 MAU" autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Contact <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Contact" required placeholder="Discord / X / Email — any one works" autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Channel link <span class="required">*</span></span>
+          <span class="apply-field-hint">YouTube / Twitch / X — so we know who you are</span>
+          <input class="apply-input" type="url" name="Channel Link" required placeholder="https://youtube.com/@yourchannel" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="apply-tab-pane" data-apply-pane="agency" hidden>
+        <label class="apply-field">
+          <span class="apply-field-label">Agency name <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Agency Name" required disabled autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Number of talents <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Talent Count" required disabled placeholder="e.g. 8 talents" autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Contact person <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Agency Contact Name" required disabled autocomplete="name">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Email <span class="required">*</span></span>
+          <input class="apply-input" type="email" name="Agency Email" required disabled placeholder="business@youragency.com" autocomplete="email">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Agency website / sample talent channel <span class="required">*</span></span>
+          <span class="apply-field-hint">Official site, or a channel link of any talent under your roster</span>
+          <input class="apply-input" type="url" name="Agency Link" required disabled placeholder="https://youragency.com" autocomplete="off">
+        </label>
+      </div>
 
       <div class="apply-status" id="applyStatus" role="status" aria-live="polite" hidden></div>
       <button type="submit" class="btn btn-primary apply-submit" id="applySubmit">
@@ -1075,6 +1141,19 @@
   if (!modal || !form) return;
 
   var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  var SUBJECT_BY_TAB = {
+    vtuber: '[Vwake Application] from website form',
+    agency: '[Vwake Agency Partnership] from website form'
+  };
+  var APPLY_TYPE_LABEL = {
+    vtuber: 'Individual VTuber',
+    agency: 'Agency / Management'
+  };
+
+  var subjectInput = document.getElementById('applySubject');
+  var applyTypeInput = document.getElementById('applyType');
+  var tabButtons = modal.querySelectorAll('[data-apply-tab]');
+  var tabPanes = modal.querySelectorAll('[data-apply-pane]');
 
   var lastFocus = null;
 
@@ -1090,13 +1169,41 @@
     statusEl.textContent = message;
   }
 
+  function activateTab(tabName, focusFirst) {
+    tabButtons.forEach(function (btn) {
+      var active = btn.getAttribute('data-apply-tab') === tabName;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    tabPanes.forEach(function (pane) {
+      var active = pane.getAttribute('data-apply-pane') === tabName;
+      pane.hidden = !active;
+      pane.querySelectorAll('input, textarea, select').forEach(function (input) {
+        input.disabled = !active;
+      });
+    });
+    if (subjectInput) subjectInput.value = SUBJECT_BY_TAB[tabName] || SUBJECT_BY_TAB.vtuber;
+    if (applyTypeInput) applyTypeInput.value = APPLY_TYPE_LABEL[tabName] || APPLY_TYPE_LABEL.vtuber;
+    setStatus(null);
+    if (focusFirst) {
+      var firstInput = modal.querySelector('[data-apply-pane="' + tabName + '"] input:not([type=hidden]):not(.apply-honey):not([disabled])');
+      if (firstInput) setTimeout(function () { firstInput.focus(); }, 60);
+    }
+  }
+
+  tabButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activateTab(btn.getAttribute('data-apply-tab'), true);
+    });
+  });
+
   function openModal(trigger) {
     lastFocus = trigger || document.activeElement;
-    setStatus(null);
+    activateTab('vtuber', false);
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('apply-modal-open');
-    var firstInput = form.querySelector('input:not([type=hidden]):not(.apply-honey), textarea');
+    var firstInput = modal.querySelector('[data-apply-pane="vtuber"] input:not([type=hidden]):not(.apply-honey):not([disabled])');
     if (firstInput) setTimeout(function () { firstInput.focus(); }, 80);
   }
 
@@ -1126,8 +1233,11 @@
 
     var honey = form.querySelector('input[name="botcheck"]');
     if (honey && honey.value) {
-      setStatus('success', "Submitted! We'll reply within 48 hours.");
+      var honeyTabBtn = modal.querySelector('.apply-tab.is-active');
+      var honeyTab = honeyTabBtn ? honeyTabBtn.getAttribute('data-apply-tab') : 'vtuber';
       form.reset();
+      activateTab(honeyTab, false);
+      setStatus('success', "Submitted! We'll reply within 48 hours.");
       return;
     }
 
@@ -1145,6 +1255,9 @@
     if (icon) icon.style.display = 'none';
     setStatus(null);
 
+    var submittedTabBtn = modal.querySelector('.apply-tab.is-active');
+    var submittedTab = submittedTabBtn ? submittedTabBtn.getAttribute('data-apply-tab') : 'vtuber';
+
     var formData = new FormData(form);
     fetch(FORM_ENDPOINT, {
       method: 'POST',
@@ -1155,8 +1268,9 @@
     }).then(function (data) {
       var ok = data && (data.success === true || data.success === 'true');
       if (ok) {
-        setStatus('success', "Submitted! We'll reply within 48 hours.");
         form.reset();
+        activateTab(submittedTab, false);
+        setStatus('success', "Submitted! We'll reply within 48 hours.");
       } else {
         setStatus('error', 'Submission failed. Please try again or email contact@hocatech.com directly.');
       }

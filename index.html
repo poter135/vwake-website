@@ -17,13 +17,13 @@
 <meta property="og:url" content="https://vwake.app/">
 <meta property="og:title" content="Vwake | VTuber 鬧鐘 App — 一次錄音,長期分潤">
 <meta property="og:description" content="專為 VTuber 打造的語音鬧鐘 App。語音包 × 鬧鐘整合,一次錄音長期分潤,每月準時結款。">
-<meta property="og:image" content="https://vwake.app/store_preview/storepreview1.png">
+<meta property="og:image" content="https://vwake.app/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vwake | VTuber 鬧鐘 App">
 <meta name="twitter:description" content="專為 VTuber 打造的語音鬧鐘 App。語音包 × 鬧鐘整合,一次錄音長期分潤。">
-<meta name="twitter:image" content="https://vwake.app/store_preview/storepreview1.png">
+<meta name="twitter:image" content="https://vwake.app/assets/og-card.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,7 +33,7 @@
       "@id": "https://vwake.app/#org",
       "name": "Vwake",
       "url": "https://vwake.app/",
-      "logo": "https://vwake.app/store_preview/storepreview1.png"
+      "logo": "https://vwake.app/assets/icons/icon-512.png"
     },
     {
       "@type": "WebSite",
@@ -51,7 +51,7 @@
       "operatingSystem": "iOS, Android",
       "description": "專為 VTuber 打造的語音鬧鐘 App。語音包 × 鬧鐘整合,一次錄音長期分潤。",
       "url": "https://vwake.app/",
-      "image": "https://vwake.app/store_preview/storepreview1.png",
+      "image": "https://vwake.app/assets/icons/icon-512.png",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" }
     }
   ]
@@ -60,7 +60,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1C1E' stroke='%237C5CBF' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Inter,sans-serif' font-size='34' font-weight='900' fill='%239D7FD6' text-anchor='middle' letter-spacing='-1'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/icon-512.png">
 <style>
   :root {
     --bg: #0a0a0a;
@@ -591,7 +596,7 @@
     transition: background 0.2s ease, color 0.2s ease;
   }
   .apply-modal-close:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-  .apply-modal-header { margin-bottom: 22px; }
+  .apply-modal-header { margin-bottom: 18px; }
   .apply-modal-title {
     font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
     margin-bottom: 6px;
@@ -599,7 +604,31 @@
   .apply-modal-sub {
     font-size: 14px; color: var(--text-muted); line-height: 1.6;
   }
+  .apply-tabs {
+    display: flex; gap: 4px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .apply-tab {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    color: var(--text-muted);
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .apply-tab:hover:not(.is-active) { color: var(--text); }
+  .apply-tab.is-active {
+    background: var(--gradient-soft);
+    color: var(--text);
+    box-shadow: 0 2px 10px rgba(124, 92, 191, 0.25);
+  }
+  .apply-tab-pane[hidden] { display: none; }
   .apply-form { display: flex; flex-direction: column; gap: 16px; }
+  .apply-tab-pane { display: flex; flex-direction: column; gap: 16px; }
   .apply-field { display: flex; flex-direction: column; gap: 6px; }
   .apply-field-label {
     font-size: 13px; font-weight: 600;
@@ -975,6 +1004,12 @@
           <strong>我們非常歡迎!</strong>Vwake 的初衷就是希望集結各路優秀的創作者。既然你有意願參與聲音內容的合作,這對我們來說是非常棒的消息,也很期待能有更多元的聲音進駐。歡迎填表單跟我們聊聊。
         </p>
       </details>
+      <details class="faq-item">
+        <summary class="faq-q">我是事務所 / 經紀公司,要怎麼合作?</summary>
+        <p class="faq-a">
+          歡迎事務所合作。請按上方「我要上架」開啟申請表單,切換到「<strong>事務所合作</strong>」分頁填寫事務所資訊 — 我們會以批量合作方式與你討論合約條款、分潤比例、上架排程等細節，同一份合約可涵蓋旗下多位 talent。也可以直接寄信到 <a href="mailto:contact@hocatech.com" style="color:var(--accent-light);">contact@hocatech.com</a>。
+        </p>
+      </details>
     </div>
   </div>
 </section>
@@ -1029,29 +1064,60 @@
       <div class="apply-modal-title" id="applyModalTitle">我要上架 Vwake</div>
       <div class="apply-modal-sub">填完後我們會在 48 小時內回覆。</div>
     </div>
+    <div class="apply-tabs" role="tablist" aria-label="申請類型">
+      <button type="button" class="apply-tab is-active" data-apply-tab="vtuber" role="tab" aria-selected="true">個人 VTuber</button>
+      <button type="button" class="apply-tab" data-apply-tab="agency" role="tab" aria-selected="false">事務所合作</button>
+    </div>
     <form class="apply-form" id="applyForm" novalidate>
       <input type="hidden" name="access_key" value="dbab7937-0c31-47ad-889c-97cb9c92c930">
-      <input type="hidden" name="subject" value="【Vwake 上架詢問】來自網站表單">
+      <input type="hidden" name="subject" id="applySubject" value="【Vwake 上架詢問】來自網站表單">
       <input type="hidden" name="from_name" value="Vwake 網站表單">
+      <input type="hidden" name="Apply Type" id="applyType" value="個人 VTuber">
       <input type="text" name="botcheck" class="apply-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <label class="apply-field">
-        <span class="apply-field-label">頻道名稱 <span class="required">*</span></span>
-        <input class="apply-input" type="text" name="Channel Name" required autocomplete="off">
-      </label>
-      <label class="apply-field">
-        <span class="apply-field-label">訂閱數 <span class="required">*</span></span>
-        <input class="apply-input" type="text" name="Audience Size" required placeholder="例:5,000 訂閱" autocomplete="off">
-      </label>
-      <label class="apply-field">
-        <span class="apply-field-label">Email <span class="required">*</span></span>
-        <input class="apply-input" type="email" name="Contact" required placeholder="your@email.com" autocomplete="email">
-      </label>
-      <label class="apply-field">
-        <span class="apply-field-label">頻道連結 <span class="required">*</span></span>
-        <span class="apply-field-hint">YouTube / Twitch / X 都可以</span>
-        <input class="apply-input" type="url" name="Channel Link" required placeholder="https://youtube.com/@yourchannel" autocomplete="off">
-      </label>
+      <div class="apply-tab-pane" data-apply-pane="vtuber">
+        <label class="apply-field">
+          <span class="apply-field-label">頻道名稱 <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Channel Name" required autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">訂閱數 <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Audience Size" required placeholder="例:5,000 訂閱" autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Email <span class="required">*</span></span>
+          <input class="apply-input" type="email" name="Contact" required placeholder="your@email.com" autocomplete="email">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">頻道連結 <span class="required">*</span></span>
+          <span class="apply-field-hint">YouTube / Twitch / X 都可以</span>
+          <input class="apply-input" type="url" name="Channel Link" required placeholder="https://youtube.com/@yourchannel" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="apply-tab-pane" data-apply-pane="agency" hidden>
+        <label class="apply-field">
+          <span class="apply-field-label">事務所名稱 <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Agency Name" required disabled autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">旗下 VTuber 人數 <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Talent Count" required disabled placeholder="例:8 位" autocomplete="off">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">聯絡窗口姓名 <span class="required">*</span></span>
+          <input class="apply-input" type="text" name="Agency Contact Name" required disabled autocomplete="name">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">Email <span class="required">*</span></span>
+          <input class="apply-input" type="email" name="Agency Email" required disabled placeholder="business@youragency.com" autocomplete="email">
+        </label>
+        <label class="apply-field">
+          <span class="apply-field-label">事務所網站 / 旗下代表頻道 <span class="required">*</span></span>
+          <span class="apply-field-hint">官網或任一旗下 VTuber 的頻道連結都可以</span>
+          <input class="apply-input" type="url" name="Agency Link" required disabled placeholder="https://youragency.com" autocomplete="off">
+        </label>
+      </div>
 
       <div class="apply-status" id="applyStatus" role="status" aria-live="polite" hidden></div>
       <button type="submit" class="btn btn-primary apply-submit" id="applySubmit">
@@ -1074,6 +1140,19 @@
   if (!modal || !form) return;
 
   var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  var SUBJECT_BY_TAB = {
+    vtuber: '【Vwake 上架詢問】來自網站表單',
+    agency: '【Vwake 事務所合作】來自網站表單'
+  };
+  var APPLY_TYPE_LABEL = {
+    vtuber: '個人 VTuber',
+    agency: '事務所合作'
+  };
+
+  var subjectInput = document.getElementById('applySubject');
+  var applyTypeInput = document.getElementById('applyType');
+  var tabButtons = modal.querySelectorAll('[data-apply-tab]');
+  var tabPanes = modal.querySelectorAll('[data-apply-pane]');
 
   var lastFocus = null;
 
@@ -1089,13 +1168,41 @@
     statusEl.textContent = message;
   }
 
+  function activateTab(tabName, focusFirst) {
+    tabButtons.forEach(function (btn) {
+      var active = btn.getAttribute('data-apply-tab') === tabName;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    tabPanes.forEach(function (pane) {
+      var active = pane.getAttribute('data-apply-pane') === tabName;
+      pane.hidden = !active;
+      pane.querySelectorAll('input, textarea, select').forEach(function (input) {
+        input.disabled = !active;
+      });
+    });
+    if (subjectInput) subjectInput.value = SUBJECT_BY_TAB[tabName] || SUBJECT_BY_TAB.vtuber;
+    if (applyTypeInput) applyTypeInput.value = APPLY_TYPE_LABEL[tabName] || APPLY_TYPE_LABEL.vtuber;
+    setStatus(null);
+    if (focusFirst) {
+      var firstInput = modal.querySelector('[data-apply-pane="' + tabName + '"] input:not([type=hidden]):not(.apply-honey):not([disabled])');
+      if (firstInput) setTimeout(function () { firstInput.focus(); }, 60);
+    }
+  }
+
+  tabButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activateTab(btn.getAttribute('data-apply-tab'), true);
+    });
+  });
+
   function openModal(trigger) {
     lastFocus = trigger || document.activeElement;
-    setStatus(null);
+    activateTab('vtuber', false);
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('apply-modal-open');
-    var firstInput = form.querySelector('input:not([type=hidden]):not(.apply-honey), textarea');
+    var firstInput = modal.querySelector('[data-apply-pane="vtuber"] input:not([type=hidden]):not(.apply-honey):not([disabled])');
     if (firstInput) setTimeout(function () { firstInput.focus(); }, 80);
   }
 
@@ -1125,8 +1232,11 @@
 
     var honey = form.querySelector('input[name="botcheck"]');
     if (honey && honey.value) {
-      setStatus('success', '送出成功!我們會在 48 小時內回覆你。');
+      var honeyTabBtn = modal.querySelector('.apply-tab.is-active');
+      var honeyTab = honeyTabBtn ? honeyTabBtn.getAttribute('data-apply-tab') : 'vtuber';
       form.reset();
+      activateTab(honeyTab, false);
+      setStatus('success', '送出成功!我們會在 48 小時內回覆你。');
       return;
     }
 
@@ -1144,6 +1254,9 @@
     if (icon) icon.style.display = 'none';
     setStatus(null);
 
+    var submittedTabBtn = modal.querySelector('.apply-tab.is-active');
+    var submittedTab = submittedTabBtn ? submittedTabBtn.getAttribute('data-apply-tab') : 'vtuber';
+
     var formData = new FormData(form);
     fetch(FORM_ENDPOINT, {
       method: 'POST',
@@ -1154,8 +1267,9 @@
     }).then(function (data) {
       var ok = data && (data.success === true || data.success === 'true');
       if (ok) {
-        setStatus('success', '送出成功!我們會在 48 小時內回覆你。');
         form.reset();
+        activateTab(submittedTab, false);
+        setStatus('success', '送出成功!我們會在 48 小時內回覆你。');
       } else {
         setStatus('error', '送出失敗,請稍後再試,或直接寄信到 contact@hocatech.com。');
       }
