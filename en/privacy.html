@@ -428,7 +428,7 @@
   <div class="container">
     <div class="legal-eyebrow"><span class="accent">Vwake</span>Privacy Policy</div>
     <h1 class="legal-title">Privacy Policy</h1>
-    <div class="legal-meta">Last updated: April 2026</div>
+    <div class="legal-meta">Last updated: May 2026</div>
     <a href="https://hocatech.com/en/" class="legal-back">← Back to Hocatech</a>
   </div>
 </section>
@@ -441,24 +441,39 @@
       <section class="legal-section">
         <h2>1. Data Collection &amp; Storage</h2>
         <p><strong style="color: var(--text);">1.1 Local data:</strong> Alarm settings, nicknames, and preferences are stored in a local SQLite database on your device.</p>
-        <p><strong style="color: var(--text);">1.2 Cloud data:</strong> To enable purchase synchronization and the in-app virtual currency (V-Coin), the Application uses Firebase Authentication to create an anonymous account, and stores the following information through Google Cloud Firestore:</p>
+        <p><strong style="color: var(--text);">1.2 Cloud data:</strong> To enable purchase synchronization, the in-app virtual currency (V-Coin), and cross-device account recovery, the Application uses Firebase Authentication and Google Cloud Firestore to store the following information:</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--text);">Anonymous account</strong> (default, created automatically on first launch):</p>
         <ul>
           <li>Firebase anonymous user ID</li>
           <li>V-Coin balance</li>
           <li>Records of purchased voice packs</li>
+          <li>Referral code redemption record (if applicable)</li>
         </ul>
-        <p><strong style="color: var(--text);">1.3 Device information:</strong> The Application may collect basic device information (such as device model and operating system version) for debugging and compatibility purposes.</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--text);">Linked account</strong> (additionally stored when you choose to link Google or Apple via Settings → Link Account):</p>
+        <ul>
+          <li>Email address (when using Apple's "Hide My Email" feature, only the relay address provided by Apple is stored)</li>
+          <li>Display name (obtained only on first Apple link; not provided on subsequent sign-ins)</li>
+          <li>List of linked sign-in providers (e.g. google.com, apple.com)</li>
+          <li>Account link timestamp</li>
+        </ul>
+        <p>Linking an account is optional. Its purpose is to let you recover your V-Coins and voice packs by signing in with the same Google or Apple account after changing devices or reinstalling. You can sign out or delete your account in-app at any time.</p>
+        <p><strong style="color: var(--text);">1.3 Push token (FCM Token):</strong> To ensure alarms fire on time even when the Application is suspended by the operating system, the Application stores your device's Firebase Cloud Messaging push token in the Firestore <code>pending_alarms</code> collection. The token is used only for the Application's own alarm push notifications and is not shared with any other service or advertising platform.</p>
+        <p><strong style="color: var(--text);">1.4 Device information:</strong> The Application may collect basic device information (such as device model and operating system version) for debugging and compatibility purposes.</p>
       </section>
 
       <section class="legal-section">
         <h2>2. Third-Party Services</h2>
         <p>The Application uses the following Google Firebase services:</p>
         <ul>
-          <li>Firebase Authentication (anonymous account verification)</li>
+          <li>Firebase Authentication (anonymous sign-in, Sign in with Google, Sign in with Apple)</li>
           <li>Cloud Firestore (cloud data synchronization)</li>
+          <li>Cloud Functions (server-side purchase verification, settlement, and account deletion)</li>
+          <li>Firebase Cloud Messaging (alarm push notifications)</li>
           <li>Firebase Storage (voice pack audio file downloads)</li>
         </ul>
-        <p>The above services are governed by the Google Privacy Policy (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>).</p>
+        <p>The above Firebase services are governed by the Google Privacy Policy (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>).</p>
+        <p>When you use "Connect Google", the data exchange between you and Google is additionally governed by Google's Privacy Policy. The Application requests only your email address and basic profile information (such as display name) from Google.</p>
+        <p>When you use "Connect Apple", the data exchange between you and Apple is additionally governed by Apple's Privacy Policy (<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a>). You may use Apple's "Hide My Email" feature; in that case the Application only receives the relay email address generated by Apple and cannot learn your real email address.</p>
         <p>The Application does not use any advertising SDKs or third-party tracking/analytics tools.</p>
       </section>
 
@@ -480,8 +495,15 @@
       <section class="legal-section">
         <h2>6. Data Retention &amp; Deletion</h2>
         <p><strong style="color: var(--text);">6.1</strong> Cloud data is retained until you actively request its deletion.</p>
-        <p><strong style="color: var(--text);">6.2</strong> To delete your account and all related cloud data, please contact us using the contact information below. We will complete the deletion within 30 days.</p>
-        <p><strong style="color: var(--text);">6.3</strong> Uninstalling the Application will delete all local data, but cloud data must be deleted by separate request.</p>
+        <p><strong style="color: var(--text);">6.2</strong> You can delete your account at any time from inside the Application (Settings → Delete Account). Once confirmed, the server immediately performs the following:</p>
+        <ul>
+          <li>Deletes all data in your <code>users/{uid}</code> document (V-Coin balance, purchased voice pack records, linked sign-in records, etc.)</li>
+          <li>Deletes all of your pending alarm records in the <code>pending_alarms</code> collection</li>
+          <li>Deletes your user record from Firebase Authentication</li>
+        </ul>
+        <p>Once complete, you will continue using the Application as a fresh anonymous user; data from the deleted account cannot be recovered.</p>
+        <p><strong style="color: var(--text);">6.3</strong> If you cannot access the Application, you can also request deletion via <a href="mailto:contact@hocatech.com">contact@hocatech.com</a>. We will complete the deletion within 30 days.</p>
+        <p><strong style="color: var(--text);">6.4</strong> Uninstalling the Application will delete all local data, but cloud data must be deleted via one of the methods above.</p>
       </section>
 
       <section class="legal-section">

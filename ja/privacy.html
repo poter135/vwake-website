@@ -434,7 +434,7 @@
   <div class="container">
     <div class="legal-eyebrow"><span class="accent">Vwake</span>プライバシーポリシー</div>
     <h1 class="legal-title">プライバシーポリシー</h1>
-    <div class="legal-meta">最終更新: 2026年4月</div>
+    <div class="legal-meta">最終更新: 2026年5月</div>
     <a href="https://hocatech.com/ja/" class="legal-back">← Hocatech へ戻る</a>
   </div>
 </section>
@@ -447,24 +447,39 @@
       <section class="legal-section">
         <h2>1. データの収集と保存</h2>
         <p><strong style="color: var(--text);">1.1 ローカルデータ:</strong> アラーム設定、ニックネーム、各種設定は、お客様の端末内のローカル SQLite データベースに保存されます。</p>
-        <p><strong style="color: var(--text);">1.2 クラウドデータ:</strong> 購入情報の同期およびアプリ内仮想通貨（V-Coin）の機能を実現するため、本アプリケーションは Firebase Authentication を使用して匿名アカウントを作成し、Google Cloud Firestore を通じて以下の情報を保存します。</p>
+        <p><strong style="color: var(--text);">1.2 クラウドデータ:</strong> 購入情報の同期、アプリ内仮想通貨（V-Coin）の機能、および端末間でのアカウント復元を実現するため、本アプリケーションは Firebase Authentication と Google Cloud Firestore を使用し、以下の情報を保存します。</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--text);">匿名アカウント</strong>（初回起動時にデフォルトで自動作成）：</p>
         <ul>
           <li>Firebase 匿名ユーザー ID</li>
           <li>V-Coin 残高</li>
           <li>購入済みボイスパックの記録</li>
+          <li>紹介コードの利用記録（使用された場合）</li>
         </ul>
-        <p><strong style="color: var(--text);">1.3 端末情報:</strong> 本アプリケーションは、デバッグおよび互換性確認のため、基本的な端末情報（端末モデル、OS バージョンなど）を収集する場合があります。</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--text);">連携アカウント</strong>（「設定 → アカウントを連携」から Google または Apple を連携した場合、上記に加えて以下を保存）：</p>
+        <ul>
+          <li>メールアドレス（Apple の「メールを非公開」機能を利用された場合は、Apple が提供する中継アドレスのみを保存）</li>
+          <li>表示名（Apple 連携の初回のみ取得され、以降のサインインでは提供されません）</li>
+          <li>連携済みサインインプロバイダーの一覧（例: google.com、apple.com）</li>
+          <li>アカウント連携日時</li>
+        </ul>
+        <p>アカウント連携は任意の機能です。端末の機種変更や再インストール後も、同じ Google / Apple アカウントで V-Coin やボイスパックを復元できるようにするためのものです。アプリ内からいつでもサインアウトやアカウント削除を行えます。</p>
+        <p><strong style="color: var(--text);">1.3 プッシュトークン（FCM Token）:</strong> アプリケーションが OS によって一時停止された場合でもアラームを時刻どおりに鳴らすため、本アプリケーションは端末の Firebase Cloud Messaging プッシュトークンを Firestore の <code>pending_alarms</code> コレクションに保存します。このトークンは本アプリケーションのアラーム通知のみに使用され、他のサービスや広告プラットフォームと共有されることはありません。</p>
+        <p><strong style="color: var(--text);">1.4 端末情報:</strong> 本アプリケーションは、デバッグおよび互換性確認のため、基本的な端末情報（端末モデル、OS バージョンなど）を収集する場合があります。</p>
       </section>
 
       <section class="legal-section">
         <h2>2. 第三者サービス</h2>
         <p>本アプリケーションは、以下の Google Firebase サービスを利用しています。</p>
         <ul>
-          <li>Firebase Authentication（匿名アカウント認証）</li>
+          <li>Firebase Authentication（匿名認証、Sign in with Google、Sign in with Apple）</li>
           <li>Cloud Firestore（クラウドデータ同期）</li>
+          <li>Cloud Functions（サーバー側での購入検証、精算、アカウント削除などの処理）</li>
+          <li>Firebase Cloud Messaging（アラーム通知）</li>
           <li>Firebase Storage（ボイスパック音声ファイルのダウンロード）</li>
         </ul>
-        <p>上記サービスは Google プライバシーポリシー（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）に準拠します。</p>
+        <p>上記 Firebase サービスは Google プライバシーポリシー（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）に準拠します。</p>
+        <p>「Google と連携」機能をご利用の場合、お客様と Google との間のデータのやり取りには、別途 Google プライバシーポリシーが適用されます。本アプリケーションが Google に対して要求する情報は、お客様のメールアドレスと基本的なプロフィール情報（表示名など）のみです。</p>
+        <p>「Apple と連携」機能をご利用の場合、お客様と Apple との間のデータのやり取りには、別途 Apple プライバシーポリシー（<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a>）が適用されます。Apple の「メールを非公開」機能をご利用の場合、本アプリケーションが取得するのは Apple が生成した中継メールアドレスのみであり、お客様の実際のメールアドレスを知ることはできません。</p>
         <p>本アプリケーションは、広告 SDK や第三者によるトラッキング・解析ツールを一切使用していません。</p>
       </section>
 
@@ -486,8 +501,15 @@
       <section class="legal-section">
         <h2>6. データの保持と削除</h2>
         <p><strong style="color: var(--text);">6.1</strong> クラウドデータは、お客様が削除を申請されるまで保持されます。</p>
-        <p><strong style="color: var(--text);">6.2</strong> アカウントおよび関連するクラウドデータをすべて削除されたい場合は、本ポリシー末尾の連絡先までご連絡ください。当社は 30 日以内に削除を完了します。</p>
-        <p><strong style="color: var(--text);">6.3</strong> 本アプリケーションをアンインストールすると、すべてのローカルデータは削除されますが、クラウドデータは別途ご申請いただく必要があります。</p>
+        <p><strong style="color: var(--text);">6.2</strong> アプリ内からいつでもアカウントを削除できます（経路: 設定ページ → アカウントを削除）。確認後、サーバーは直ちに以下を実行します。</p>
+        <ul>
+          <li><code>users/{uid}</code> ドキュメントのすべてのデータ（V-Coin 残高、購入済みボイスパックの記録、連携サインイン情報など）を削除</li>
+          <li><code>pending_alarms</code> コレクション内のお客様の未配信アラーム記録をすべて削除</li>
+          <li>Firebase Authentication 内のお客様のユーザーレコードを削除</li>
+        </ul>
+        <p>完了後は、新しい匿名ユーザーとして本アプリケーションを引き続きご利用いただけます。削除されたアカウントのデータを復元することはできません。</p>
+        <p><strong style="color: var(--text);">6.3</strong> アプリにアクセスできない場合は、<a href="mailto:contact@hocatech.com">contact@hocatech.com</a> より削除をご申請いただくこともできます。当社は 30 日以内に削除を完了します。</p>
+        <p><strong style="color: var(--text);">6.4</strong> 本アプリケーションをアンインストールすると、すべてのローカルデータは削除されますが、クラウドデータは上記いずれかの方法で削除する必要があります。</p>
       </section>
 
       <section class="legal-section">

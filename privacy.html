@@ -428,7 +428,7 @@
   <div class="container">
     <div class="legal-eyebrow"><span class="accent">Vwake</span>Privacy Policy</div>
     <h1 class="legal-title">隱私權政策</h1>
-    <div class="legal-meta">最後更新日期：2026 年 4 月</div>
+    <div class="legal-meta">最後更新日期：2026 年 5 月</div>
     <a href="https://hocatech.com/" class="legal-back">← 返回 Hocatech 首頁</a>
   </div>
 </section>
@@ -441,24 +441,39 @@
       <section class="legal-section">
         <h2>1. 資料收集與儲存</h2>
         <p><strong style="color: var(--text);">1.1 本機資料：</strong>鬧鐘設定、暱稱和偏好設定儲存在您的裝置本機 SQLite 資料庫中。</p>
-        <p><strong style="color: var(--text);">1.2 雲端資料：</strong>為提供購買同步與虛擬貨幣（V 幣）功能，本應用程式使用 Firebase Authentication 建立匿名帳號，並透過 Google Cloud Firestore 儲存以下資訊：</p>
+        <p><strong style="color: var(--text);">1.2 雲端資料：</strong>為提供購買同步、虛擬貨幣（V 幣）功能及跨裝置帳號恢復，本應用程式使用 Firebase Authentication 與 Google Cloud Firestore 儲存以下資訊：</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--text);">匿名帳號</strong>（預設，首次啟動時自動建立）：</p>
         <ul>
           <li>Firebase 匿名使用者 ID</li>
           <li>V 幣餘額</li>
           <li>已購買的語音包記錄</li>
+          <li>推薦碼使用紀錄（若有使用）</li>
         </ul>
-        <p><strong style="color: var(--text);">1.3 裝置資訊：</strong>本應用程式可能收集基本裝置資訊（如裝置型號、作業系統版本）以用於除錯與相容性用途。</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--text);">連結帳號</strong>（您主動於「設定 → 連結帳號」連結 Google 或 Apple 後額外儲存）：</p>
+        <ul>
+          <li>電子郵件地址（使用 Apple「隱藏我的電子郵件」時，僅儲存 Apple 提供之中繼地址）</li>
+          <li>顯示名稱（僅 Apple 首次連結時取得，後續登入不再提供）</li>
+          <li>已連結之登入提供者清單（例如 google.com、apple.com）</li>
+          <li>帳號連結時間戳記</li>
+        </ul>
+        <p>連結帳號為選用功能，目的是讓您在更換裝置或重新安裝後，可透過同一個 Google / Apple 帳號恢復 V 幣與語音包。您可隨時於應用程式內登出或刪除帳號。</p>
+        <p><strong style="color: var(--text);">1.3 推播權杖（FCM Token）：</strong>為確保鬧鐘於應用程式被系統暫停時仍能準時觸發，本應用程式會儲存裝置的 Firebase Cloud Messaging 推播權杖至 Firestore 之 pending_alarms 集合。此權杖僅用於本應用程式自身的鬧鐘推播，不會分享至其他服務或廣告平台。</p>
+        <p><strong style="color: var(--text);">1.4 裝置資訊：</strong>本應用程式可能收集基本裝置資訊（如裝置型號、作業系統版本）以用於除錯與相容性用途。</p>
       </section>
 
       <section class="legal-section">
         <h2>2. 第三方服務</h2>
         <p>本應用程式使用以下 Google Firebase 服務：</p>
         <ul>
-          <li>Firebase Authentication（匿名帳號驗證）</li>
+          <li>Firebase Authentication（匿名驗證、Sign in with Google、Sign in with Apple）</li>
           <li>Cloud Firestore（雲端資料同步）</li>
+          <li>Cloud Functions（伺服器端購買驗證、結算與帳號刪除等運算）</li>
+          <li>Firebase Cloud Messaging（鬧鐘推播）</li>
           <li>Firebase Storage（語音包音訊檔案下載）</li>
         </ul>
-        <p>上述服務受 Google 隱私權政策約束（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）。</p>
+        <p>上述 Firebase 服務受 Google 隱私權政策約束（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）。</p>
+        <p>當您使用「連結 Google」功能時，您與 Google 之間的資料交換另受 Google 隱私權政策約束。本應用程式僅向 Google 索取您的電子郵件地址與基本個人資料（如顯示名稱）。</p>
+        <p>當您使用「連結 Apple」功能時，您與 Apple 之間的資料交換另受 Apple 隱私權政策約束（<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a>）。您可以使用 Apple 提供之「隱藏我的電子郵件」功能，本應用程式僅會取得 Apple 產生之中繼電子郵件地址，無法得知您的真實郵件地址。</p>
         <p>本應用程式不使用任何廣告 SDK 或第三方追蹤/分析工具。</p>
       </section>
 
@@ -480,8 +495,15 @@
       <section class="legal-section">
         <h2>6. 資料保留與刪除</h2>
         <p><strong style="color: var(--text);">6.1</strong> 雲端資料將持續保留至您主動要求刪除為止。</p>
-        <p><strong style="color: var(--text);">6.2</strong> 如需刪除帳號及所有相關雲端資料，請透過下方聯繫方式與我們聯繫，我們將在 30 日內完成刪除。</p>
-        <p><strong style="color: var(--text);">6.3</strong> 解除安裝應用程式將刪除所有本機資料，但雲端資料需另行申請刪除。</p>
+        <p><strong style="color: var(--text);">6.2</strong> 您可於應用程式內隨時刪除帳號（路徑：設定頁面 → 刪除帳號）。確認刪除後，伺服器將立即執行以下動作：</p>
+        <ul>
+          <li>刪除您在 users/{uid} 文件中的所有資料（V 幣餘額、已購買的語音包記錄、登入方式記錄等）</li>
+          <li>刪除您在 pending_alarms 集合中所有待發鬧鐘紀錄</li>
+          <li>刪除您在 Firebase Authentication 中的使用者紀錄</li>
+        </ul>
+        <p>完成後，您將以全新的匿名身份繼續使用本應用程式，原帳號之資料無法復原。</p>
+        <p><strong style="color: var(--text);">6.3</strong> 若您無法存取應用程式，亦可透過 <a href="mailto:contact@hocatech.com">contact@hocatech.com</a> 申請刪除，我們將在 30 日內完成。</p>
+        <p><strong style="color: var(--text);">6.4</strong> 解除安裝應用程式將刪除所有本機資料，但雲端資料需透過上述方式刪除。</p>
       </section>
 
       <section class="legal-section">
