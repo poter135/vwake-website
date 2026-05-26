@@ -8,3 +8,8 @@ desktop.ini
 # Cloudflare Pages 本地快取(若之後用 wrangler dev)
 .wrangler/
 node_modules/
+
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
