@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --accent:#7C5CBF; --accent-light:#9D7FD6;
+    --gradient:linear-gradient(135deg,#B79CE8 0%,#9D7FD6 45%,#7C5CBF 100%);
+    --text:#FFFFFF; --muted:#9A99A8;
+  }
+  html,body{ width:1200px; height:630px; }
+  body{
+    font-family:'Inter','Noto Sans TC',sans-serif;
+    background:#0c0c13;
+    color:var(--text);
+    position:relative; overflow:hidden;
+  }
+  .glow-purple{
+    position:absolute; top:-160px; left:-80px; width:760px; height:760px;
+    background:radial-gradient(circle at center, rgba(124,92,191,0.38) 0%, transparent 62%);
+    pointer-events:none;
+  }
+  .glow-warm{
+    position:absolute; bottom:-220px; right:-60px; width:620px; height:620px;
+    background:radial-gradient(circle at center, rgba(255,122,90,0.14) 0%, transparent 64%);
+    pointer-events:none;
+  }
+  .frame{
+    position:absolute; inset:24px; border:1px solid rgba(255,255,255,0.06);
+    border-radius:28px; pointer-events:none;
+  }
+  .stage{
+    position:relative; z-index:2; height:100%;
+    display:flex; align-items:center; gap:84px;
+    padding:0 96px;
+  }
+  .icon-wrap{ flex:0 0 auto; }
+  .icon-wrap img{
+    width:362px; height:362px; border-radius:80px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05),
+               0 0 90px rgba(124,92,191,0.35);
+  }
+  .content{ flex:1 1 auto; }
+  .eyebrow{
+    display:inline-block; font-size:17px; font-weight:600; letter-spacing:5px;
+    text-transform:uppercase; color:var(--accent-light);
+    padding:9px 20px; border-radius:999px;
+    background:rgba(124,92,191,0.12); border:1px solid rgba(124,92,191,0.32);
+    margin-bottom:26px;
+  }
+  .wordmark{
+    font-size:140px; font-weight:900; letter-spacing:-5px; line-height:0.9;
+    margin-bottom:24px;
+  }
+  .wordmark .v{
+    background:var(--gradient);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .tagline{
+    font-family:'Noto Sans TC',sans-serif;
+    font-size:40px; font-weight:700; letter-spacing:0.5px; line-height:1.45;
+    color:#F2F1F6; margin-bottom:34px;
+  }
+  .footer{ display:flex; align-items:center; gap:14px; }
+  .footer .dot{
+    width:34px; height:34px; border-radius:10px;
+    background:var(--gradient);
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; font-weight:900; color:#fff;
+  }
+  .footer .url{
+    font-size:24px; font-weight:600; letter-spacing:3px; color:var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="glow-purple"></div>
+  <div class="glow-warm"></div>
+  <div class="frame"></div>
+  <div class="stage">
+    <div class="icon-wrap">
+      <img src="data:image/png;base64,__ICON__" alt="Vwake">
+    </div>
+    <div class="content">
+      <div class="eyebrow">Vwake for VTubers</div>
+      <div class="wordmark"><span class="v">V</span>wake</div>
+      <div class="tagline">讓你的聲音,成為粉絲<br>每天醒來的第一秒。</div>
+      <div class="footer">
+        <span class="dot">V</span>
+        <span class="url">VWAKE.APP</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
