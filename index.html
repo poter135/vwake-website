@@ -146,6 +146,9 @@
   }
   .nav-links a:hover { color: var(--text); }
   .nav-right { display: flex; align-items: center; gap: 14px; }
+  .nav-login { font-size: 14px; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; white-space: nowrap; }
+  .nav-login:hover { color: var(--text); }
+  @media (max-width: 760px) { .nav-login { display: none; } }
   .lang-switch {
     display: flex; align-items: center; gap: 2px;
     font-size: 12px; font-weight: 600;
@@ -718,6 +721,7 @@
           <a href="/en/" onclick="localStorage.setItem('hoca_lang','en')" aria-label="Switch to English">EN</a>
           <a href="/ja/" onclick="localStorage.setItem('hoca_lang','ja')" aria-label="Switch to Japanese">日</a>
         </div>
+        <a class="nav-login" href="https://vwake-2026.web.app/join.html?mode=login">創作者登入</a>
         <button type="button" class="nav-cta" data-open-apply>我要上架</button>
       </div>
     </div>
@@ -1048,6 +1052,8 @@
       </div>
       <div class="footer-legal">
         <span class="footer-legal-app">Vwake</span>
+        <a href="https://vwake-2026.web.app/join.html?mode=login">創作者登入</a>
+        <span style="color:var(--text-label);">·</span>
         <a href="/privacy.html">隱私政策</a>
         <span style="color:var(--text-label);">·</span>
         <a href="/terms.html">服務條款</a>
