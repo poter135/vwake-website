@@ -933,29 +933,29 @@
   <div class="container">
     <div class="section-header">
       <div class="section-label">How it works · Listing Process</div>
-      <h2 class="section-title">4 steps from inquiry to revenue.</h2>
+      <h2 class="section-title">4 steps from sign-up to revenue.</h2>
       <div class="divider"></div>
       <p class="section-desc">
-        From the moment you tap "Join Vwake" to your first payout, here's the path we walk together.
+        From the moment you sign up to your first payout, you do it all yourself in the console.
       </p>
     </div>
 
     <div class="steps">
       <div class="step">
-        <div class="step-title">Submit inquiry</div>
-        <div class="step-desc">Tell us your channel, the moods you want to try, your timeline. Takes 3 minutes. We'll reply within 48 hours.</div>
+        <div class="step-title">Sign up & create your profile</div>
+        <div class="step-desc">Register with your email and fill in your creator profile (stage name, channel) in 3 minutes. No waiting for a reply — start right away.</div>
       </div>
       <div class="step">
-        <div class="step-title">Contract sent + signed</div>
-        <div class="step-desc">Full partnership terms, revenue details, and rights protections sent as PDF. Electronic signature — no paper back-and-forth.</div>
+        <div class="step-title">Sign the terms online</div>
+        <div class="step-desc">Read the full partnership terms and revenue details in the console, then sign with one click — no paper back-and-forth.</div>
       </div>
       <div class="step">
-        <div class="step-title">Record remotely</div>
-        <div class="step-desc">Record 3 clips × 10–15 seconds each (gentle / energetic / tsundere) at home. We provide mood guidance, not a script — you know your fans best.</div>
+        <div class="step-title">Record & upload</div>
+        <div class="step-desc">Record 3 clips × 10–15 seconds each (gentle / energetic / tsundere) at home and upload them right in the console. We provide mood guidance, not a script.</div>
       </div>
       <div class="step">
-        <div class="step-title">Launch + earn</div>
-        <div class="step-desc">App listing test → public launch → your voice goes on sale → monthly payouts on the 30th.</div>
+        <div class="step-title">Approved → go live & earn</div>
+        <div class="step-desc">We review your audio and identity; once approved, your voice goes live for sale → starts selling → monthly payouts on the 30th.</div>
       </div>
     </div>
   </div>
@@ -1005,13 +1005,13 @@
       <details class="faq-item">
         <summary class="faq-q">My subscriber count is small. Can I still list?</summary>
         <p class="faq-a">
-          <strong>Absolutely welcome!</strong> Vwake's mission has always been to bring together creators of all kinds. If you're interested in collaborating on voice content, that's wonderful news for us. We're excited to see more diverse voices joining the platform.
+          <strong>Absolutely welcome!</strong> Vwake's mission has always been to bring together creators of all kinds. If you're interested in collaborating on voice content, that's wonderful news for us. Go ahead and sign up to list your voice.
         </p>
       </details>
       <details class="faq-item">
         <summary class="faq-q">I represent an agency / management company. How do we partner with Vwake?</summary>
         <p class="faq-a">
-          We welcome agency partnerships. Open the apply form via the "Join Vwake" button above and switch to the "<strong>Agency / Management</strong>" tab to send us your agency details — we'll work with you on a multi-talent deal covering contract terms, revenue share, and rollout schedule under a single agreement. You can also email us directly at <a href="mailto:contact@hocatech.com" style="color:var(--accent-light);">contact@hocatech.com</a>.
+          We welcome agency partnerships. Agencies, please email us directly at <a href="mailto:contact@hocatech.com" style="color:var(--accent-light);">contact@hocatech.com</a> — we'll work with you on a multi-talent deal covering contract terms, revenue share, and rollout schedule under a single agreement covering multiple talents. (Individual talents are also welcome to sign up themselves via "Join Vwake.")
         </p>
       </details>
     </div>
@@ -1028,7 +1028,7 @@
       </h2>
       <p class="final-cta-desc">
         Record 3 clips × 10–15 seconds. We handle listing, sales, payments, and support.<br>
-        Submit the inquiry — we'll reply within 48 hours.
+        Sign up now and list your voice yourself.
       </p>
       <div class="final-cta-buttons">
         <button type="button" class="btn btn-primary" data-open-apply>
@@ -1059,231 +1059,12 @@
   </div>
 </footer>
 
-<!-- ============ APPLY MODAL ============ -->
-<div class="apply-modal" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="applyModalTitle" aria-hidden="true">
-  <div class="apply-modal-backdrop" data-apply-close></div>
-  <div class="apply-modal-panel">
-    <button type="button" class="apply-modal-close" data-apply-close aria-label="Close">×</button>
-    <div class="apply-modal-header">
-      <div class="apply-modal-title" id="applyModalTitle">Join Vwake</div>
-      <div class="apply-modal-sub">We'll get back to you within 48 hours.</div>
-    </div>
-    <div class="apply-tabs" role="tablist" aria-label="Application type">
-      <button type="button" class="apply-tab is-active" data-apply-tab="vtuber" role="tab" aria-selected="true">Individual VTuber</button>
-      <button type="button" class="apply-tab" data-apply-tab="agency" role="tab" aria-selected="false">Agency / Management</button>
-    </div>
-    <form class="apply-form" id="applyForm" novalidate>
-      <input type="hidden" name="access_key" value="dbab7937-0c31-47ad-889c-97cb9c92c930">
-      <input type="hidden" name="subject" id="applySubject" value="[Vwake Application] from website form">
-      <input type="hidden" name="from_name" value="Vwake Website Form">
-      <input type="hidden" name="Apply Type" id="applyType" value="Individual VTuber">
-      <input type="text" name="botcheck" class="apply-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <div class="apply-tab-pane" data-apply-pane="vtuber">
-        <label class="apply-field">
-          <span class="apply-field-label">Channel name <span class="required">*</span></span>
-          <input class="apply-input" type="text" name="Channel Name" required autocomplete="off">
-        </label>
-        <label class="apply-field">
-          <span class="apply-field-label">Subscribers / audience size <span class="required">*</span></span>
-          <input class="apply-input" type="text" name="Audience Size" required placeholder="e.g. 5,000 subs / ~800 MAU" autocomplete="off">
-        </label>
-        <label class="apply-field">
-          <span class="apply-field-label">Contact <span class="required">*</span></span>
-          <input class="apply-input" type="text" name="Contact" required placeholder="Discord / X / Email — any one works" autocomplete="off">
-        </label>
-        <label class="apply-field">
-          <span class="apply-field-label">Channel link <span class="required">*</span></span>
-          <span class="apply-field-hint">YouTube / Twitch / X — so we know who you are</span>
-          <input class="apply-input" type="url" name="Channel Link" required placeholder="https://youtube.com/@yourchannel" autocomplete="off">
-        </label>
-      </div>
-
-      <div class="apply-tab-pane" data-apply-pane="agency" hidden>
-        <label class="apply-field">
-          <span class="apply-field-label">Agency name <span class="required">*</span></span>
-          <input class="apply-input" type="text" name="Agency Name" required disabled autocomplete="off">
-        </label>
-        <label class="apply-field">
-          <span class="apply-field-label">Number of talents <span class="required">*</span></span>
-          <input class="apply-input" type="text" name="Talent Count" required disabled placeholder="e.g. 8 talents" autocomplete="off">
-        </label>
-        <label class="apply-field">
-          <span class="apply-field-label">Contact person <span class="required">*</span></span>
-          <input class="apply-input" type="text" name="Agency Contact Name" required disabled autocomplete="name">
-        </label>
-        <label class="apply-field">
-          <span class="apply-field-label">Email <span class="required">*</span></span>
-          <input class="apply-input" type="email" name="Agency Email" required disabled placeholder="business@youragency.com" autocomplete="email">
-        </label>
-        <label class="apply-field">
-          <span class="apply-field-label">Agency website / sample talent channel <span class="required">*</span></span>
-          <span class="apply-field-hint">Official site, or a channel link of any talent under your roster</span>
-          <input class="apply-input" type="url" name="Agency Link" required disabled placeholder="https://youragency.com" autocomplete="off">
-        </label>
-      </div>
-
-      <div class="apply-status" id="applyStatus" role="status" aria-live="polite" hidden></div>
-      <button type="submit" class="btn btn-primary apply-submit" id="applySubmit">
-        <span class="apply-submit-label">Submit</span>
-        <svg class="apply-submit-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </button>
-      <p class="apply-fallback">
-        Or email us directly at <a href="mailto:contact@hocatech.com">contact@hocatech.com</a>
-      </p>
-    </form>
-  </div>
-</div>
-
 <script>
 (function () {
-  var modal = document.getElementById('applyModal');
-  var form = document.getElementById('applyForm');
-  var statusEl = document.getElementById('applyStatus');
-  var submitBtn = document.getElementById('applySubmit');
-  if (!modal || !form) return;
-
-  var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
-  var SUBJECT_BY_TAB = {
-    vtuber: '[Vwake Application] from website form',
-    agency: '[Vwake Agency Partnership] from website form'
-  };
-  var APPLY_TYPE_LABEL = {
-    vtuber: 'Individual VTuber',
-    agency: 'Agency / Management'
-  };
-
-  var subjectInput = document.getElementById('applySubject');
-  var applyTypeInput = document.getElementById('applyType');
-  var tabButtons = modal.querySelectorAll('[data-apply-tab]');
-  var tabPanes = modal.querySelectorAll('[data-apply-pane]');
-
-  var lastFocus = null;
-
-  function setStatus(state, message) {
-    if (!message) {
-      statusEl.hidden = true;
-      statusEl.removeAttribute('data-state');
-      statusEl.textContent = '';
-      return;
-    }
-    statusEl.hidden = false;
-    statusEl.setAttribute('data-state', state);
-    statusEl.textContent = message;
-  }
-
-  function activateTab(tabName, focusFirst) {
-    tabButtons.forEach(function (btn) {
-      var active = btn.getAttribute('data-apply-tab') === tabName;
-      btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-    tabPanes.forEach(function (pane) {
-      var active = pane.getAttribute('data-apply-pane') === tabName;
-      pane.hidden = !active;
-      pane.querySelectorAll('input, textarea, select').forEach(function (input) {
-        input.disabled = !active;
-      });
-    });
-    if (subjectInput) subjectInput.value = SUBJECT_BY_TAB[tabName] || SUBJECT_BY_TAB.vtuber;
-    if (applyTypeInput) applyTypeInput.value = APPLY_TYPE_LABEL[tabName] || APPLY_TYPE_LABEL.vtuber;
-    setStatus(null);
-    if (focusFirst) {
-      var firstInput = modal.querySelector('[data-apply-pane="' + tabName + '"] input:not([type=hidden]):not(.apply-honey):not([disabled])');
-      if (firstInput) setTimeout(function () { firstInput.focus(); }, 60);
-    }
-  }
-
-  tabButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      activateTab(btn.getAttribute('data-apply-tab'), true);
-    });
-  });
-
-  function openModal(trigger) {
-    lastFocus = trigger || document.activeElement;
-    activateTab('vtuber', false);
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('apply-modal-open');
-    var firstInput = modal.querySelector('[data-apply-pane="vtuber"] input:not([type=hidden]):not(.apply-honey):not([disabled])');
-    if (firstInput) setTimeout(function () { firstInput.focus(); }, 80);
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('apply-modal-open');
-    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
-  }
-
+  // 「我要上架」→ self-serve creator onboarding (register / login).
+  var JOIN_URL = 'https://vwake-2026.web.app/join.html?lang=en';
   document.querySelectorAll('[data-open-apply]').forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      e.preventDefault();
-      openModal(el);
-    });
-  });
-  modal.querySelectorAll('[data-apply-close]').forEach(function (el) {
-    el.addEventListener('click', closeModal);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-  });
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (submitBtn.disabled) return;
-
-    var honey = form.querySelector('input[name="botcheck"]');
-    if (honey && honey.value) {
-      var honeyTabBtn = modal.querySelector('.apply-tab.is-active');
-      var honeyTab = honeyTabBtn ? honeyTabBtn.getAttribute('data-apply-tab') : 'vtuber';
-      form.reset();
-      activateTab(honeyTab, false);
-      setStatus('success', "Submitted! We'll reply within 48 hours.");
-      return;
-    }
-
-    if (!form.checkValidity()) {
-      setStatus('error', 'Please fill out all required (*) fields.');
-      form.reportValidity();
-      return;
-    }
-
-    submitBtn.disabled = true;
-    var label = submitBtn.querySelector('.apply-submit-label');
-    var icon = submitBtn.querySelector('.apply-submit-icon');
-    var originalLabel = label ? label.textContent : '';
-    if (label) label.textContent = 'Sending…';
-    if (icon) icon.style.display = 'none';
-    setStatus(null);
-
-    var submittedTabBtn = modal.querySelector('.apply-tab.is-active');
-    var submittedTab = submittedTabBtn ? submittedTabBtn.getAttribute('data-apply-tab') : 'vtuber';
-
-    var formData = new FormData(form);
-    fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: formData
-    }).then(function (res) {
-      return res.json().catch(function () { return { success: res.ok ? 'true' : 'false' }; });
-    }).then(function (data) {
-      var ok = data && (data.success === true || data.success === 'true');
-      if (ok) {
-        form.reset();
-        activateTab(submittedTab, false);
-        setStatus('success', "Submitted! We'll reply within 48 hours.");
-      } else {
-        setStatus('error', 'Submission failed. Please try again or email contact@hocatech.com directly.');
-      }
-    }).catch(function () {
-      setStatus('error', 'Network issue. Please try again or email contact@hocatech.com directly.');
-    }).then(function () {
-      submitBtn.disabled = false;
-      if (label) label.textContent = originalLabel || 'Submit';
-      if (icon) icon.style.display = '';
-    });
+    el.addEventListener('click', function (e) { e.preventDefault(); window.location.href = JOIN_URL; });
   });
 })();
 
