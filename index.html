@@ -268,6 +268,71 @@
   }
   @media (max-width: 880px) { .pillars-grid { grid-template-columns: 1fr; } }
 
+  /* ===== Morning Letters — dawn palette ===== */
+  :root {
+    --ml-coral: #FF8C7A;
+    --ml-apricot: #FFB78A;
+    --ml-lilac: #D49DFF;
+    --ml-dawn: linear-gradient(135deg, #FF8C7A 0%, #FFB78A 44%, #D49DFF 100%);
+  }
+  #letters { position: relative; isolation: isolate; }
+  #letters::before {
+    content: ''; position: absolute; left: 0; right: 0; top: 0; height: 560px;
+    background: radial-gradient(720px 340px at 50% -40px, rgba(255,140,122,0.15), rgba(212,157,255,0.07) 42%, transparent 72%);
+    pointer-events: none; z-index: -1;
+  }
+  .ml-defs { position: absolute; width: 0; height: 0; }
+  .ml-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 880px) { .ml-grid { grid-template-columns: 1fr; } }
+
+  .ml-card {
+    position: relative; overflow: hidden;
+    background: linear-gradient(180deg, rgba(42,26,45,0.5) 0%, var(--surface) 58%);
+    border: 1px solid rgba(255,140,122,0.14);
+    border-radius: var(--radius-card);
+    padding: 34px 30px 32px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .ml-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--ml-dawn); opacity: 0.65;
+  }
+  .ml-card:hover { transform: translateY(-4px); border-color: rgba(255,140,122,0.42); }
+
+  .ml-icon {
+    width: 54px; height: 54px; border-radius: 16px;
+    display: grid; place-items: center;
+    background: rgba(255,140,122,0.10);
+    border: 1px solid rgba(255,140,122,0.22);
+    box-shadow: 0 0 0 6px rgba(255,140,122,0.045), 0 10px 26px -14px rgba(255,140,122,0.5);
+    margin-bottom: 22px;
+  }
+  .ml-icon svg { width: 27px; height: 27px; }
+
+  .ml-label {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; color: var(--ml-apricot); margin-bottom: 12px;
+  }
+  .ml-title {
+    font-size: 23px; font-weight: 800; letter-spacing: -0.6px;
+    line-height: 1.3; margin-bottom: 14px; color: var(--text);
+  }
+  .ml-quote {
+    font-size: 15px; font-weight: 500; color: var(--text);
+    margin-bottom: 14px; padding-left: 13px;
+    border-left: 2px solid var(--ml-coral); line-height: 1.55;
+  }
+  .ml-desc { font-size: 14.5px; color: var(--text-muted); line-height: 1.75; margin: 0; }
+
+  .letters-banner {
+    margin-top: 44px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 60px -30px rgba(0,0,0,0.9);
+  }
+  .letters-banner img { width: 100%; height: auto; display: block; }
+
   .pillar {
     background: var(--surface);
     border-radius: var(--radius-card);
@@ -711,6 +776,7 @@
       <div class="nav-links">
         <a href="#preview">App 預覽</a>
         <a href="#why">為什麼選 Vwake</a>
+        <a href="#letters">早安信</a>
         <a href="#roster">已上架 VTuber</a>
         <a href="#how">流程</a>
         <a href="#faq">常見問題</a>
@@ -730,15 +796,16 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-eyebrow">VWAKE FOR VTUBERS</div>
+  <div class="hero-eyebrow">專為 VTUBER 而生</div>
   <h1 class="hero-wordmark"><span class="accent">V</span>wake</h1>
   <p class="hero-tagline">
-    讓你的聲音,<br>成為粉絲每天醒來的第一秒。
+    掌握粉絲每天起床的<br>第一個時刻。
   </p>
   <p class="hero-desc">
-    Vwake 是 VTuber 語音鬧鐘 App。<br>
-    粉絲付費購買你的聲音當鬧鐘 ——<br>
-    你只要錄幾段聲音,上架、銷售、金流全交給我們。
+    Vwake 是專為 VTuber 打造的全新互動模式。<br>
+    粉絲用你的聲音當鬧鐘醒來,再付費寄早安信給你 ——<br>
+    從起床的第一秒,到每天的一句對話,<br>
+    你只要錄音、回信。
   </p>
   <div class="hero-ctas">
     <button type="button" class="btn btn-primary" data-open-apply>
@@ -758,10 +825,6 @@
       <div class="section-label">Inside the App · App 實際畫面</div>
       <h2 class="section-title">這是粉絲每天會看到的畫面。</h2>
       <div class="divider"></div>
-      <p class="section-desc">
-        Vwake iOS 版已上架,Android 版即將推出。<br>
-        以下是粉絲打開 App、選擇你、鬧鐘響起時的實際畫面。
-      </p>
     </div>
 
     <div class="preview-frame">
@@ -807,11 +870,6 @@
         <p class="pillar-desc">
           Booth、Fanbox 賣語音包,粉絲下載後會聽兩三次然後忘掉。Vwake 把你變成日常 — 起床第一秒就是你,關掉鬧鐘的瞬間是對你的暱稱。
         </p>
-        <ul class="pillar-points">
-          <li>每天觸達一次,曝光是被動的</li>
-          <li>觸達 = 留存,不是一次性消費</li>
-          <li>粉絲對你的依附從「偶爾想到」變成「每天習慣」</li>
-        </ul>
       </div>
 
       <!-- Pillar 2: 整合 = 摩擦最低 -->
@@ -824,11 +882,6 @@
         <p class="pillar-desc">
           其他平台買語音包 = 下載檔案 + 自己處理 + 找鬧鐘 App 設定。Vwake 直接內建在 App 裡,粉絲一鍵購買、一鍵設定。摩擦越低,你的轉換越高。
         </p>
-        <ul class="pillar-points">
-          <li>購買到使用,粉絲不需離開 App</li>
-          <li>沒有檔案轉碼、沒有跨 App 切換</li>
-          <li>降低使用門檻 = 你的潛在客戶更多</li>
-        </ul>
       </div>
     </div>
 
@@ -842,14 +895,8 @@
           你睡覺時,你的聲音也在替你賺錢。
         </p>
         <p class="pillar-desc">
-          錄一次,賣很久。我們負責上架、銷售、金流、客服。你不需要買廣告、不需要改變創作節奏 — 你既有的粉絲流量直接多一個變現管道。
+          錄一次,賣很久。我們負責上架、銷售、金流、客服。語音包是你的被動底盤,錄一次賣很久、不需要改變創作節奏;早安信則是主動加乘,投入多少由你決定。兩層收益,你既有的粉絲流量直接受益。
         </p>
-        <ul class="pillar-points">
-          <li>不需要買廣告</li>
-          <li>不需要改變創作節奏</li>
-          <li>上架、銷售、金流、客服全由 Vwake 處理</li>
-          <li>多一個變現管道,既有粉絲流量直接受益</li>
-        </ul>
       </div>
 
       <!-- Pillar 4: 拓展觀眾 -->
@@ -862,13 +909,89 @@
         <p class="pillar-desc">
           Vwake 的核心流程是「每天起床被推叫醒」,鬧鐘解除後會自動進入語音商店,等於每位用戶每天必經商店一次。當其他箱粉絲、個人勢觀眾、剛入坑 VTuber 的新觀眾在商店瀏覽時,很容易因你的聲音特質與人設而產生興趣,進而成為新粉絲。
         </p>
-        <ul class="pillar-points">
-          <li>每位用戶每天必經商店一次</li>
-          <li>高重疊垂直受眾(都是對 VTuber 文化有興趣才下載)</li>
-          <li>跨箱粉、個人勢觀眾、新觀眾的自然導流</li>
-          <li>不只是變現,更是擴大粉絲基本盤</li>
-        </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORNING LETTERS / 早安信 ============ -->
+<section class="section" id="letters">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Morning Letters · 早安信</div>
+      <h2 class="section-title">你把粉絲叫醒之後,對話才剛開始。</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        鬧鐘讓你成為粉絲每天的第一秒;早安信讓那一秒延續成一段對話,並多開一條收益。<br>
+        起床、交流、變現 —— 同一個每日迴圈,三個好處。
+      </p>
+    </div>
+
+    <svg class="ml-defs" aria-hidden="true"><defs>
+      <linearGradient id="mlDawnGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FF8C7A"/>
+        <stop offset="0.5" stop-color="#FFB78A"/>
+        <stop offset="1" stop-color="#D49DFF"/>
+      </linearGradient>
+    </defs></svg>
+
+    <div class="ml-grid">
+      <!-- 起床第一刻 -->
+      <div class="ml-card">
+        <div class="ml-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#mlDawnGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.5 16a5.5 5.5 0 0 1 11 0"/>
+            <line x1="12" y1="3" x2="12" y2="5.5"/>
+            <line x1="4.4" y1="8.4" x2="6.1" y2="10.1"/>
+            <line x1="19.6" y1="8.4" x2="17.9" y2="10.1"/>
+            <line x1="2.5" y1="16" x2="5" y2="16"/>
+            <line x1="19" y1="16" x2="21.5" y2="16"/>
+            <line x1="3.5" y1="20" x2="20.5" y2="20"/>
+          </svg>
+        </div>
+        <div class="ml-label">起床第一刻</div>
+        <h3 class="ml-title">鬧鐘關掉的下一秒,他想跟你說話。</h3>
+        <p class="ml-quote">觸發點就長在鬧鐘之後,你不必另外導流。</p>
+        <p class="ml-desc">
+          粉絲被你的聲音叫醒、關掉鬧鐘 —— 那股餘溫正是他最想回應你的時刻。早安信的寄信窗口限定當地上午,接住的就是這段情緒。
+        </p>
+      </div>
+
+      <!-- 深度交流 -->
+      <div class="ml-card">
+        <div class="ml-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#mlDawnGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18.5 13.5a1.8 1.8 0 0 0 1.8-1.8V6.3a1.8 1.8 0 0 0-1.8-1.8H8.2a1.8 1.8 0 0 0-1.8 1.8"/>
+            <path d="M16 17.7a1.8 1.8 0 0 1-1.8 1.8H8.4L4.7 22.3v-11a1.8 1.8 0 0 1 1.8-1.8h7.7A1.8 1.8 0 0 1 16 11.3z"/>
+          </svg>
+        </div>
+        <div class="ml-label">深度交流</div>
+        <h3 class="ml-title">他不再只是聽你,他能被你聽見。</h3>
+        <p class="ml-quote">單向廣播,變成一對一、不公開的對話。</p>
+        <p class="ml-desc">
+          粉絲寄文字或語音給你,你在後台回文字,也可以直接錄音或上傳音檔回一段語音。回覆只有他看得到,是專屬於他的一句早安。
+        </p>
+      </div>
+
+      <!-- 流量變現 -->
+      <div class="ml-card">
+        <div class="ml-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#mlDawnGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="21" y1="3" x2="10.5" y2="13.5"/>
+            <polygon points="21 3 14.5 21 10.5 13.5 3 9.5 21 3"/>
+          </svg>
+        </div>
+        <div class="ml-label">流量變現</div>
+        <h3 class="ml-title">不用擁有你的鬧鐘,也能寄信給你。</h3>
+        <p class="ml-quote">剛在商店滑到你的新觀眾,就能付費寄出第一封信。</p>
+        <p class="ml-desc">
+          新粉的第一次付費不必先買鬧鐘 —— 一封早安信就能接住他。文字信與語音信分開定價,價格、每日名額都由你決定,想休息就關掉開關。
+        </p>
+      </div>
+    </div>
+
+    <div class="letters-banner">
+      <img src="/assets/letters/ml-banner-zh.png" alt="Vwake 早安信宣傳圖 — 在每天的早晨和你的推聊天吧" loading="lazy">
     </div>
   </div>
 </section>
@@ -981,15 +1104,15 @@
         </p>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">我可以隨時下架嗎?合約終止會怎樣?</summary>
-        <p class="faq-a">
-          可以。合約終止後,我們會從系統與伺服器上下架你的音檔,並提供刪除證明。具體終止條款於合約寄送時說明。
-        </p>
-      </details>
-      <details class="faq-item">
         <summary class="faq-q">分潤怎麼算?多久結一次?</summary>
         <p class="faq-a">
           採用銷售分潤模式 — 粉絲每筆購買,你都會抽成。具體分潤比例、售價、撥款細節(銀行轉帳 / 稅務處理)會於我們寄出合作合約時詳細說明。<strong>每月固定結款</strong>。
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">早安信我一定要回嗎?會不會變成負擔?</summary>
+        <p class="faq-a">
+          <strong>不會,主導權完全在你手上。</strong>早安信可以隨時開啟或關閉,每日收信名額上限由你自己設定 — 想少回就把名額調低,想休息就直接關掉開關。你只要在 <strong>48 小時內回覆</strong>即可;若沒回,系統會自動退款給粉絲,不會累積未結的壓力。你也可以封鎖特定用戶。這是一條額外的收益,而不是義務,<strong>完全不影響你的語音包銷售</strong>。
         </p>
       </details>
       <details class="faq-item">
@@ -1009,12 +1132,6 @@
         <summary class="faq-q">我的訂閱數很少,還可以上架嗎?</summary>
         <p class="faq-a">
           <strong>我們非常歡迎!</strong>Vwake 的初衷就是希望集結各路優秀的創作者。既然你有意願參與聲音內容的合作,這對我們來說是非常棒的消息,也很期待能有更多元的聲音進駐。歡迎直接註冊上架。
-        </p>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">我是事務所 / 經紀公司,要怎麼合作?</summary>
-        <p class="faq-a">
-          歡迎事務所合作。事務所請直接寄信到 <a href="mailto:contact@hocatech.com" style="color:var(--accent-light);">contact@hocatech.com</a> — 我們會以批量合作方式與你討論合約條款、分潤比例、上架排程等細節,同一份合約可涵蓋旗下多位 talent。(旗下個別創作者也可以直接從「我要上架」自行註冊。)
         </p>
       </details>
     </div>
