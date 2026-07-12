@@ -381,6 +381,14 @@
     color: var(--accent-light); font-weight: 700;
   }
 
+  /* ROSTER stats */
+  .roster-stats { display: flex; align-items: center; justify-content: center; gap: 48px; margin: 4px 0 22px; }
+  .rstat { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .rstat-num { font-size: 42px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rstat-label { font-size: 14px; color: var(--text-muted); letter-spacing: 0.5px; }
+  .rstat-sep { width: 1px; height: 46px; background: rgba(255,255,255,0.1); }
+  @media (max-width: 540px) { .roster-stats { gap: 30px; } .rstat-num { font-size: 34px; } }
+
   /* ROSTER (marquee) */
   .roster-marquee {
     position: relative;
@@ -1000,10 +1008,11 @@
       <div class="section-label">On Vwake · VTubers Already Listed</div>
       <h2 class="section-title">First-wave creators are already here.</h2>
       <div class="divider"></div>
-      <p class="section-desc">
-        First-wave VTubers are joining continuously.<br>
-        These creators built Vwake from the ground up with us.
-      </p>
+      <div class="roster-stats">
+        <div class="rstat"><span class="rstat-num">30+</span><span class="rstat-label">VTubers live</span></div>
+        <div class="rstat-sep"></div>
+        <div class="rstat"><span class="rstat-num">1000+</span><span class="rstat-label">users</span></div>
+      </div>
     </div>
 
     <div class="roster-marquee">
