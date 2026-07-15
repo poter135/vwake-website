@@ -795,7 +795,7 @@
           <a href="/en/" onclick="localStorage.setItem('hoca_lang','en')" aria-label="Switch to English">EN</a>
           <a href="/ja/" onclick="localStorage.setItem('hoca_lang','ja')" aria-label="Switch to Japanese">日</a>
         </div>
-        <a class="nav-login" href="https://vwake-2026.web.app/join.html?mode=login">創作者登入</a>
+        <a class="nav-login" href="https://vwake-2026.web.app/join.html?lang=zh&mode=login">創作者登入</a>
         <button type="button" class="nav-cta" data-open-apply>我要上架</button>
       </div>
     </div>
@@ -1161,7 +1161,7 @@
         <span class="footer-legal-app">Vwake</span>
         <a href="mailto:hello@vwake.app">Email：hello@vwake.app</a>
         <span style="color:var(--text-label);">·</span>
-        <a href="https://vwake-2026.web.app/join.html?mode=login">創作者登入</a>
+        <a href="https://vwake-2026.web.app/join.html?lang=zh&mode=login">創作者登入</a>
         <span style="color:var(--text-label);">·</span>
         <a href="/privacy.html">隱私政策</a>
         <span style="color:var(--text-label);">·</span>
@@ -1176,7 +1176,7 @@
 <script>
 (function () {
   // 「我要上架」→ self-serve creator onboarding (register / login).
-  var JOIN_URL = 'https://vwake-2026.web.app/join.html';
+  var JOIN_URL = 'https://vwake-2026.web.app/join.html?lang=zh';
   document.querySelectorAll('[data-open-apply]').forEach(function (el) {
     el.addEventListener('click', function (e) { e.preventDefault(); window.location.href = JOIN_URL; });
   });
