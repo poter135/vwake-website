@@ -1,27 +1,23 @@
-# TODO
+# 上線檢查清單
 
-## SEO 上線後手動步驟(我做不了,你要自己操作)
+公開網址與檔案可由開發工具檢查；需要登入 Google、Bing、商店或社群帳號的步驟需由帳號擁有者操作或授權。
 
-- [ ] **Google Search Console** — https://search.google.com/search-console
-  - [ ] 新增資源 `vwake.app`(建議用「網域」類型 + DNS TXT 驗證)
-  - [ ] 「Sitemap」→ 提交 `https://vwake.app/sitemap.xml`
-  - [ ] 「網址審查」→ `https://vwake.app/` → 要求建立索引
-  - [ ] 「網址審查」→ `https://vwake.app/en/` → 要求建立索引
-  - [ ] 「網址審查」→ `https://vwake.app/ja/` → 要求建立索引
+## 每次重要部署後
 
-- [ ] **Bing Webmaster Tools** — https://www.bing.com/webmasters
-  - [ ] 加入網站、提交 sitemap(可從 GSC 直接 import)
+- [ ] 確認 production 已部署預期的 Git commit。
+- [ ] 確認 `https://vwake.app/robots.txt` 與 `https://vwake.app/sitemap.xml` 回傳 200，且內容正確。
+- [ ] 用分享預覽工具檢查中、英、日首頁的標題、描述與 OG 圖。
+- [ ] 用 [Rich Results Test](https://search.google.com/test/rich-results) 檢查首頁 JSON-LD；有錯誤才列修正工作。
 
-- [ ] **OG 分享圖檢查**
-  - [x] 三語首頁使用專屬 OG 圖：`assets/og-card.png`、`assets/og-card-en.png`、`assets/og-card-ja.png`（皆為 1200×630）
-  - [ ] 用 https://www.opengraph.xyz/ 預覽分享效果
+## 搜尋服務設定（尚未設定時做一次）
 
-- [ ] **反向連結**(讓 Google 把這站認成「Vwake 官方」)
-  - [ ] App Store / Google Play 上架後,商店頁設定官網連結
-  - [ ] IG / X / Discord bio 加上 `vwake.app`
-  - [ ] 巴哈姆特 / 噗浪 / Threads 等 VTuber 圈常用平台發文
+- [ ] 在 [Google Search Console](https://search.google.com/search-console) 建立 `vwake.app` 網域資源並完成 DNS 驗證。
+- [ ] 在 Search Console 提交 `https://vwake.app/sitemap.xml`。
+- [ ] 用 URL Inspection 確認 `/`、`/en/`、`/ja/` 的索引狀態；只有尚未索引或重要更新需要加速時才要求建立索引。
+- [ ] 選配：將 Search Console 網站匯入 [Bing Webmaster Tools](https://www.bing.com/webmasters)。
 
-- [ ] **驗證部署**
-  - [ ] `curl -I https://vwake.app/robots.txt` 回 200
-  - [ ] `curl -I https://vwake.app/sitemap.xml` 回 200
-  - [ ] 用 https://search.google.com/test/rich-results 測 JSON-LD 結構化資料
+## 品牌導流（不是搜尋排名保證）
+
+- [ ] App Store／Google Play 上架後，在商店頁加入 `https://vwake.app`。
+- [ ] 在官方 IG、X、Discord 等主要帳號加入官網連結。
+- [ ] 發布重大更新時，依實際受眾選擇平台宣傳，不為了「反向連結」大量鋪文。
