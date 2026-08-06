@@ -61,7 +61,7 @@ Keep the existing `.roster-stats`, `.rstat`, `.rstat-num`, `.rstat-label`, `.rst
 
 Use these exact localized values:
 
-- Chinese: `5000+`, `鬧鐘已響起`, `30+`, `VTuber 已上架`.
+- Chinese: `5000+`, `鬧鐘語音響起`, `30+`, `VTuber 已上架`.
 - English: `5,000+`, `alarm wake-ups`, `30+`, `VTubers live`.
 - Japanese: `5,000+`, `アラームが鳴った回数`, `30+`, `VTuber 出品中`.
 

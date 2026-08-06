@@ -6,7 +6,7 @@ const locales = [
   {
     file: 'index.html',
     primaryNumber: '5000+',
-    primaryLabel: '鬧鐘已響起',
+    primaryLabel: '鬧鐘語音響起',
     secondaryLabel: 'VTuber 已上架',
   },
   {
