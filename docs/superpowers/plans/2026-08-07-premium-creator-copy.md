@@ -32,7 +32,7 @@
 - Consumes: localized HTML strings and exact approved copy.
 - Produces: one test per locale plus consistent premium metadata, JSON-LD, and third-pillar content in all locales.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/premium-creator-copy.test.mjs` with a locale table containing the exact `meta`, `social`, `label`, `title`, `quote`, `description`, and `forbidden` values from the design spec. Implement these helpers:
 
@@ -58,7 +58,7 @@ function thirdPillar(html) {
 
 For each locale, parse the three meta descriptions, the JSON-LD `SoftwareApplication.description`, and the third pillar's four class values. Assert exact equality and assert that every forbidden phrase is absent from the joined changed surfaces.
 
-- [ ] **Step 2: Run the focused test and verify red**
+- [x] **Step 2: Run the focused test and verify red**
 
 Run:
 
@@ -68,15 +68,15 @@ node --test tests/premium-creator-copy.test.mjs
 
 Expected: three failures because the pages still contain the old transactional descriptions and passive-revenue pillar.
 
-- [ ] **Step 3: Replace the four description surfaces**
+- [x] **Step 3: Replace the four description surfaces**
 
 For each locale, use the design spec's Meta value for `<meta name="description">` and `SoftwareApplication.description`; use its Social value for `og:description` and `twitter:description`.
 
-- [ ] **Step 4: Replace the third pillar**
+- [x] **Step 4: Replace the third pillar**
 
 Replace the existing passive-revenue `pillar-num`, `pillar-title`, `pillar-quote`, and `pillar-desc` with the locale's exact Label, Title, Quote, and Description values from the design spec. Update the nearby HTML comment to `Lasting Value` or the localized equivalent without changing markup or styling.
 
-- [ ] **Step 5: Run focused and full verification**
+- [x] **Step 5: Run focused and full verification**
 
 Run:
 
@@ -88,7 +88,7 @@ git diff --check
 
 Expected: the focused tests pass 3/3, the complete suite passes with zero failures, and the diff check is clean.
 
-- [ ] **Step 6: Inspect scope and commit**
+- [x] **Step 6: Inspect scope and commit**
 
 Run:
 
@@ -141,4 +141,4 @@ Poll the three production pages for the new localized meta description and third
 
 - [ ] **Step 4: Report exact delivery state**
 
-Run `git ls-remote origin refs/heads/main`, compare it with `git rev-parse HEAD`, and report whether production contains the new copy. Leave Search Console, Bing, store, and social-account actions listed as user-authorized follow-ups rather than claiming they are complete.
+Run `git ls-remote origin refs/heads/main`, compare it with `git rev-parse HEAD`, and report whether production contains the new copy. Leave Search Console, Bing, store, and social-account actions listed as user-authorized follow-ups rather than claiming they are complete. After verification, mark Task 2's four steps complete, commit this plan-only progress update with `docs(site): record premium copy deployment`, push it, and confirm the final remote HEAD again; no additional content verification is required because that commit changes documentation only.
