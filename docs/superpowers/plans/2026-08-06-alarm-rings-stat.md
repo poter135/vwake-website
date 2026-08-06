@@ -2,18 +2,18 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Replace the weak four-item roster statistics with one prominent `5000+` alarm-rings metric and one secondary `30+` VTuber metric across all three locales.
+**Goal:** Replace the weak roster statistics with concise `5000+` alarm-rings and `30+` VTuber metrics across all three locales.
 
-**Architecture:** Keep the site dependency-free and static. A Node built-in test reads the three HTML documents and checks roster markup, locale copy, removed metrics, and responsive CSS; the implementation changes only the shared inline CSS pattern and roster-stat markup in each localized page.
+**Architecture:** Keep the site dependency-free and static. A Node built-in test reads the three HTML documents and checks roster markup, locale copy, removed metrics, and the original roster-stat CSS; the implementation changes only roster-stat markup in each localized page.
 
 **Tech Stack:** Static HTML/CSS, Node.js built-in `node:test`, Git.
 
 ## Global Constraints
 
 - `5000+` is a cumulative alarm-ring event count, not unique users, dates, or mornings.
-- Keep only `5000+` as the primary stat and `30+` as the secondary stat.
+- Keep only `5000+` and `30+`, using the original equal-weight roster-stat format.
 - Remove the `100+` voice count and `1500+` user count from the roster-stat area.
-- Preserve the existing purple gradient and VTuber marquee.
+- Preserve the existing purple gradient, sizing, spacing, and VTuber marquee.
 - Add no API, backend, framework, or runtime dependency.
 
 ---
@@ -29,19 +29,19 @@
 
 - [ ] **Step 1: Write the failing test**
 
-Create a `node:test` suite that extracts each `<div class="roster-stats">…</div>` block. Assert that the locale-specific block contains the primary number and label, supporting sentence, and secondary VTuber stat; assert that it excludes `100+` and `1500+`; assert each page defines `.rstat-primary`, `.rstat-support`, `.rstat-secondary`, and a mobile rule that vertically stacks `.roster-stats`.
+Create a `node:test` suite that extracts each `<div class="roster-stats">…</div>` block. Assert that the locale-specific block contains exactly two `.rstat` items with the alarm-rings and VTuber values; assert that it excludes `100+`, `1500+`, and special visual-hierarchy classes; assert each page retains the original roster-stat spacing and mobile sizing.
 
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `node --test tests/alarm-rings-stat.test.mjs`
 
-Expected: FAIL because the current roster blocks do not contain `5000+` or the new hierarchy classes.
+Expected: FAIL because the current roster blocks do not contain `5000+`.
 
 - [ ] **Step 3: Commit the red test with the implementation task**
 
 Do not commit the deliberately failing state separately; proceed directly to Task 2 while preserving evidence of the failing run in the working session.
 
-### Task 2: Implement the primary and secondary stat hierarchy
+### Task 2: Implement the concise roster statistics
 
 **Files:**
 - Modify: `index.html`
@@ -51,19 +51,19 @@ Do not commit the deliberately failing state separately; proceed directly to Tas
 
 **Interfaces:**
 - Consumes: the exact HTML contract asserted by Task 1.
-- Produces: localized, responsive roster statistics with one primary and one secondary metric.
+- Produces: localized, responsive roster statistics with two equal-weight metrics.
 
-- [ ] **Step 1: Replace roster-stat CSS in each page**
+- [ ] **Step 1: Preserve roster-stat CSS in each page**
 
-Keep `.roster-stats` as the container, add `.rstat-primary`, `.rstat-support`, and `.rstat-secondary`, and change the mobile rule to `flex-direction: column` with a reduced gap. The primary number remains gradient-filled and larger than the secondary number.
+Keep the existing `.roster-stats`, `.rstat`, `.rstat-num`, `.rstat-label`, `.rstat-sep`, and mobile rules unchanged. Add no glow, enlarged primary number, supporting paragraph, or special hierarchy class.
 
 - [ ] **Step 2: Replace roster-stat HTML in each page**
 
 Use these exact localized values:
 
-- Chinese: `5000+`, `鬧鐘已響起`, `Vwake 的聲音，已經叫醒粉絲超過五千次。`, `30+`, `VTuber 已上架`.
-- English: `5,000+`, `alarm wake-ups`, `Vwake voices have already woken fans more than five thousand times.`, `30+`, `VTubers live`.
-- Japanese: `5,000+`, `アラームが鳴った回数`, `Vwakeの声は、すでに5,000回以上ファンを目覚めさせています。`, `30+`, `VTuber 出品中`.
+- Chinese: `5000+`, `鬧鐘已響起`, `30+`, `VTuber 已上架`.
+- English: `5,000+`, `alarm wake-ups`, `30+`, `VTubers live`.
+- Japanese: `5,000+`, `アラームが鳴った回数`, `30+`, `VTuber 出品中`.
 
 - [ ] **Step 3: Run the focused test**
 
