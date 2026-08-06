@@ -2,14 +2,16 @@
 
 ## Goal
 
-Create a personal Codex skill that triggers when the user asks to wrap up, close out, finish, hand off, or check whether a task is truly done. The skill must turn vague “收尾” requests into an evidence-based audit without silently expanding authority.
+Create a personal Codex skill that triggers when the user asks to wrap up, close out, perform a completion audit, or check whether a task is truly done. The skill must turn vague “收尾” requests into an evidence-based audit without silently expanding authority or competing with delivery workflows.
 
 ## Installation and discovery
 
 - Skill name and folder: `closing-a-task`.
 - Install under `~/.codex/skills/closing-a-task` so it is available across projects.
 - Include `SKILL.md` and `agents/openai.yaml`; add no README or auxiliary documentation.
-- The description must cover Chinese and English trigger vocabulary, including: `收尾`, `結案`, `wrap up`, `finish`, `handoff`, `memory`, `stale docs`, `過期文件`, `聯動檔案`, and `有沒有漏掉`.
+- The description must cover Chinese and English completion-audit vocabulary, including: `收尾`, `結案`, `wrap up`, `completion audit`, `memory`, `stale docs`, `過期文件`, `聯動檔案`, and `有沒有漏掉`.
+- Bare `finish` and `handoff` are intentionally excluded because they overlap branch-integration and delivery skills.
+- When a request explicitly asks to push, create a PR, merge, publish, deploy, or integrate completed work, the matching delivery skill owns the workflow. Run this audit first only when the user also requests a completion audit.
 
 ## Audit contract
 

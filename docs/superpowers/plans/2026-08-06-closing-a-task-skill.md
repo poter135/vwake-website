@@ -61,7 +61,7 @@ Run the system `init_skill.py` with name `closing-a-task`, output path `/private
 
 - [x] **Step 2: Write minimal `SKILL.md`**
 
-Use only `name` and `description` in frontmatter. Keep the body under 500 words and encode the six ordered audit areas, evidence gate, safe-fix policy, authority boundary, concise report contract, baseline-derived red flags, quick reference, and one compact example.
+Use only `name` and `description` in frontmatter. Keep the body under 500 words and encode the routing boundary, six ordered audit areas, evidence gate, safe-fix policy, authority boundary, concise report contract, baseline-derived red flags, and quick reference.
 
 - [x] **Step 3: Validate structure and metadata**
 
@@ -112,3 +112,17 @@ Run `quick_validate.py` against the installed path, compare staged and installed
 - [x] **Step 3: Final repository and skill audit**
 
 Run the website’s existing `node --test`, `git diff --check`, and Git status checks. Report the installed skill path, validation evidence, evaluation results, and any remaining manual step such as starting a fresh session for catalog refresh.
+
+### Task 5: Prevent delivery-skill trigger overlap
+
+- [x] **Step 1: Baseline the ambiguous routing**
+
+Run five fresh routing samples containing both closeout language and explicit push, PR, merge, or deploy intent. Record whether `closing-a-task` is unnecessarily invoked.
+
+- [x] **Step 2: Narrow and synchronize the skill**
+
+Remove bare `finish` and `handoff` triggers, add a routing boundary that gives explicit delivery requests to the matching delivery or branch-finishing skill, and update the Codex source shared with Claude.
+
+- [x] **Step 3: Re-test and validate**
+
+Require five of five fresh samples to route explicit delivery requests without invoking `closing-a-task`; validate both the Codex and Claude skill paths.
