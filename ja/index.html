@@ -382,12 +382,26 @@
   }
 
   /* ROSTER stats */
-  .roster-stats { display: flex; align-items: center; justify-content: center; gap: 48px; margin: 4px 0 22px; }
+  .roster-stats { display: flex; align-items: center; justify-content: center; gap: 44px; margin: 26px 0 42px; }
   .rstat { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .rstat-num { font-size: 42px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .rstat-label { font-size: 14px; color: var(--text-muted); letter-spacing: 0.5px; }
-  .rstat-sep { width: 1px; height: 46px; background: rgba(255,255,255,0.1); }
-  @media (max-width: 540px) { .roster-stats { gap: 30px; } .rstat-num { font-size: 34px; } }
+  .rstat-primary { position: relative; isolation: isolate; min-width: 300px; padding: 20px 42px; }
+  .rstat-primary::before { content: ''; position: absolute; inset: -12px -34px; z-index: -1; border: 1px solid rgba(157,127,214,0.18); border-radius: 50%; background: radial-gradient(ellipse, rgba(124,92,191,0.18) 0%, rgba(124,92,191,0.04) 55%, transparent 72%); box-shadow: 0 0 50px rgba(124,92,191,0.12); }
+  .rstat-primary::after { content: ''; position: absolute; inset: -2px 4px; z-index: -1; border: 1px solid rgba(157,127,214,0.12); border-radius: 50%; }
+  .rstat-primary .rstat-num { font-size: 68px; font-weight: 900; letter-spacing: -3px; }
+  .rstat-primary .rstat-label { color: var(--text); font-size: 15px; font-weight: 600; letter-spacing: 1px; }
+  .rstat-support { max-width: 340px; margin-top: 5px; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+  .rstat-secondary { min-width: 150px; opacity: 0.78; }
+  .rstat-secondary .rstat-num { font-size: 32px; letter-spacing: -1px; }
+  .rstat-sep { width: 1px; height: 62px; background: rgba(255,255,255,0.1); }
+  @media (max-width: 540px) {
+    .roster-stats { flex-direction: column; gap: 24px; margin: 24px 0 36px; }
+    .rstat-primary { min-width: 0; width: 100%; max-width: 340px; padding: 18px 24px; }
+    .rstat-primary::before { inset: -10px 0; }
+    .rstat-primary .rstat-num { font-size: 54px; }
+    .rstat-sep { width: 72px; height: 1px; }
+  }
 
   /* ROSTER (marquee) */
   .roster-marquee {
@@ -995,11 +1009,13 @@
       <h2 class="section-title">この声たちは、もうファンを起こしています。</h2>
       <div class="divider"></div>
       <div class="roster-stats">
-        <div class="rstat"><span class="rstat-num">30+</span><span class="rstat-label">VTuber 出品中</span></div>
-        <div class="rstat-sep"></div>
-        <div class="rstat"><span class="rstat-num">100+</span><span class="rstat-label">ボイス収録</span></div>
-        <div class="rstat-sep"></div>
-        <div class="rstat"><span class="rstat-num">1500+</span><span class="rstat-label">ユーザー</span></div>
+        <div class="rstat rstat-primary">
+          <span class="rstat-num">5,000+</span>
+          <span class="rstat-label">アラームが鳴った回数</span>
+          <p class="rstat-support">Vwakeの声は、すでに5,000回以上ファンを目覚めさせています。</p>
+        </div>
+        <div class="rstat-sep" aria-hidden="true"></div>
+        <div class="rstat rstat-secondary"><span class="rstat-num">30+</span><span class="rstat-label">VTuber 出品中</span></div>
       </div>
     </div>
 
