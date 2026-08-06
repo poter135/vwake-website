@@ -7,14 +7,14 @@
   - [ ] 「Sitemap」→ 提交 `https://vwake.app/sitemap.xml`
   - [ ] 「網址審查」→ `https://vwake.app/` → 要求建立索引
   - [ ] 「網址審查」→ `https://vwake.app/en/` → 要求建立索引
+  - [ ] 「網址審查」→ `https://vwake.app/ja/` → 要求建立索引
 
 - [ ] **Bing Webmaster Tools** — https://www.bing.com/webmasters
   - [ ] 加入網站、提交 sitemap(可從 GSC 直接 import)
 
 - [ ] **OG 分享圖檢查**
-  - [ ] 目前用 `store_preview/storepreview1.png`,確認尺寸(理想 1200×630)
+  - [x] 三語首頁使用專屬 OG 圖：`assets/og-card.png`、`assets/og-card-en.png`、`assets/og-card-ja.png`（皆為 1200×630）
   - [ ] 用 https://www.opengraph.xyz/ 預覽分享效果
-  - [ ] 若需要專屬 OG 圖,做一張橫式 banner 放 `assets/og-image.png`
 
 - [ ] **反向連結**(讓 Google 把這站認成「Vwake 官方」)
   - [ ] App Store / Google Play 上架後,商店頁設定官網連結

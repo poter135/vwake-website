@@ -27,17 +27,17 @@
 - Consumes: `index.html`, `en/index.html`, and `ja/index.html` as UTF-8 text.
 - Produces: a Node test suite that validates `.roster-stats` content and responsive styling.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create a `node:test` suite that extracts each `<div class="roster-stats">…</div>` block. Assert that the locale-specific block contains exactly two `.rstat` items with the alarm-rings and VTuber values; assert that it excludes `100+`, `1500+`, and special visual-hierarchy classes; assert each page retains the original roster-stat spacing and mobile sizing.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `node --test tests/alarm-rings-stat.test.mjs`
 
 Expected: FAIL because the current roster blocks do not contain `5000+`.
 
-- [ ] **Step 3: Commit the red test with the implementation task**
+- [x] **Step 3: Commit the red test with the implementation task**
 
 Do not commit the deliberately failing state separately; proceed directly to Task 2 while preserving evidence of the failing run in the working session.
 
@@ -53,11 +53,11 @@ Do not commit the deliberately failing state separately; proceed directly to Tas
 - Consumes: the exact HTML contract asserted by Task 1.
 - Produces: localized, responsive roster statistics with two equal-weight metrics.
 
-- [ ] **Step 1: Preserve roster-stat CSS in each page**
+- [x] **Step 1: Preserve roster-stat CSS in each page**
 
 Keep the existing `.roster-stats`, `.rstat`, `.rstat-num`, `.rstat-label`, `.rstat-sep`, and mobile rules unchanged. Add no glow, enlarged primary number, supporting paragraph, or special hierarchy class.
 
-- [ ] **Step 2: Replace roster-stat HTML in each page**
+- [x] **Step 2: Replace roster-stat HTML in each page**
 
 Use these exact localized values:
 
@@ -65,19 +65,19 @@ Use these exact localized values:
 - English: `5,000+`, `alarm wake-ups`, `30+`, `VTubers live`.
 - Japanese: `5,000+`, `アラームが鳴った回数`, `30+`, `VTuber 出品中`.
 
-- [ ] **Step 3: Run the focused test**
+- [x] **Step 3: Run the focused test**
 
 Run: `node --test tests/alarm-rings-stat.test.mjs`
 
 Expected: PASS for all locale and style assertions.
 
-- [ ] **Step 4: Run repository checks**
+- [x] **Step 4: Run repository checks**
 
 Run: `git diff --check` and inspect `git diff -- index.html en/index.html ja/index.html tests/alarm-rings-stat.test.mjs`.
 
 Expected: no whitespace errors; only the intended roster-stat CSS, markup, and test change.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 Run:
 
@@ -98,13 +98,13 @@ git commit -m "feat(site): highlight alarm wake-up count"
 - Consumes: the committed implementation.
 - Produces: a tested commit pushed to the configured upstream branch.
 
-- [ ] **Step 1: Re-run final verification**
+- [x] **Step 1: Re-run final verification**
 
 Run: `node --test tests/alarm-rings-stat.test.mjs && git diff --check && git status --short`.
 
 Expected: tests pass, no whitespace errors, and the worktree is clean.
 
-- [ ] **Step 2: Push**
+- [x] **Step 2: Push**
 
 Run: `git push origin HEAD`.
 
