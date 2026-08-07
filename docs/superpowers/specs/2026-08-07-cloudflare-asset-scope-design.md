@@ -28,7 +28,7 @@ The initial exclusions are:
 
 ## Verification
 
-Add a regression test that checks the deployment boundary contains the required exclusions while preserving every known public root. Run the complete Node test suite. Run Wrangler's dry-run deployment and inspect its asset inventory to confirm no `.git` asset is collected and no file exceeds Cloudflare's limit. After pushing, verify the triggered Cloudflare build succeeds and the production page serves the new premium-creator copy.
+Use Wrangler itself as the regression reproducer: a temporary asset root containing a 26 MiB `.git/objects/pack` fixture must fail before `.assetsignore` is applied and pass afterward. Run the complete Node test suite, then run Wrangler's dry-run deployment against the real project to confirm there is no asset-size error. After pushing, verify the triggered Cloudflare build succeeds and the production page serves the new premium-creator copy.
 
 ## Scope
 

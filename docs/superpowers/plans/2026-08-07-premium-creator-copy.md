@@ -113,7 +113,7 @@ git commit -m "copy(site): align premium creator messaging"
 - Consumes: a clean, tested local `main` commit.
 - Produces: an updated `origin/main` and evidence-backed production status.
 
-- [ ] **Step 1: Run the pre-push gate**
+- [x] **Step 1: Run the pre-push gate**
 
 Run:
 
@@ -125,7 +125,7 @@ git status --short --branch
 
 Expected: all tests pass, no whitespace errors, and the worktree is clean with local `main` ahead of `origin/main`.
 
-- [ ] **Step 2: Push the authorized branch**
+- [x] **Step 2: Push the authorized branch**
 
 Run:
 
@@ -135,10 +135,12 @@ git push origin main
 
 Expected: `origin/main` advances to the local HEAD commit.
 
-- [ ] **Step 3: Wait for deployment and inspect live pages**
+- [x] **Step 3: Wait for deployment and inspect live pages**
 
 Poll the three production pages for the new localized meta description and third-pillar title, with a bounded wait. Also fetch `https://vwake.app/robots.txt` and `https://vwake.app/sitemap.xml` and require HTTP 200 plus the expected sitemap directive and localized URLs.
 
-- [ ] **Step 4: Report exact delivery state**
+- [x] **Step 4: Report exact delivery state**
 
 Run `git ls-remote origin refs/heads/main`, compare it with `git rev-parse HEAD`, and report whether production contains the new copy. Leave Search Console, Bing, store, and social-account actions listed as user-authorized follow-ups rather than claiming they are complete. After verification, mark Task 2's four steps complete, commit this plan-only progress update with `docs(site): record premium copy deployment`, push it, and confirm the final remote HEAD again; no additional content verification is required because that commit changes documentation only.
+
+Verified through final deployment commit `b1adc66`: the Cloudflare Workers build completed successfully, production returned all localized premium-creator content, and local `main` matched `origin/main`.
