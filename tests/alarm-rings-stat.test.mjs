@@ -25,10 +25,10 @@ const locales = [
 
 function rosterFragment(html) {
   const start = html.indexOf('<div class="roster-stats">');
-  const end = html.indexOf('<div class="hall-of-voices"', start);
+  const end = html.indexOf('<div class="roster-marquee">', start);
 
   assert.notEqual(start, -1, 'roster stats must exist');
-  assert.notEqual(end, -1, 'Hall of Voices must follow the stats');
+  assert.notEqual(end, -1, 'roster marquee must follow the stats');
   return html.slice(start, end);
 }
 
