@@ -1,5 +1,7 @@
 # Hall of Voices Roster Design
 
+> **Status:** Superseded on 2026-08-07 by [Two-Row Creator Marquee Design](./2026-08-07-two-row-creator-marquee-design.md). Retained as historical context only.
+
 ## Goal
 
 Replace the continuously scrolling “On Vwake” marquee with a more premium presentation that reflects the complete live App catalog while giving every creator equal long-term exposure.
