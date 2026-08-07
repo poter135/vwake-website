@@ -176,17 +176,17 @@ npx wrangler deploy --dry-run --outdir /tmp/vwake-hall-dry-run
 
 Expected: all tests pass, no whitespace errors, and Wrangler exits 0 without an asset-size error.
 
-- [ ] **Step 2: Commit the implementation**
+- [x] **Step 2: Commit the implementation**
 
 ```bash
 git add assets/hall-of-voices.css assets/hall-of-voices.mjs assets/creators/avatars tests/hall-of-voices-roster.test.mjs index.html en/index.html ja/index.html docs/superpowers/plans/2026-08-07-hall-of-voices-roster.md
 git commit -m "feat(site): add fair Hall of Voices roster"
 ```
 
-- [ ] **Step 3: Push and monitor automatic deployment**
+- [x] **Step 3: Push and monitor automatic deployment**
 
 Run `git push origin main`, then query GitHub check runs for the pushed commit. Require `Workers Builds: vwake-website` to complete with conclusion `success`.
 
-- [ ] **Step 4: Inspect production**
+- [x] **Step 4: Inspect production**
 
 Fetch `https://vwake.app/`, `/en/`, and `/ja/` with a commit cache-buster. Require each page to contain `data-hall-of-voices`, all 34 creator IDs, the shared module, and no `roster-marquee`. Confirm local HEAD equals `origin/main`, the worktree is clean, and mark every plan checkbox complete in a final documentation commit.
