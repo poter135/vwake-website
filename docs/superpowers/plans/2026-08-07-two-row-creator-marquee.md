@@ -228,14 +228,14 @@ npx --yes wrangler deploy --dry-run --outdir /tmp/vwake-two-row-dry-run
 
 Expected: all tests pass, no whitespace errors, Wrangler reads all assets and exits 0.
 
-- [ ] **Step 2: Commit the implementation**
+- [x] **Step 2: Commit the implementation**
 
 Stage only the shared CSS, 34 WebPs, three HTML pages, the two affected test files, and this plan. Commit with `feat(site): add two-row creator marquee`.
 
-- [ ] **Step 3: Push and monitor deployment**
+- [x] **Step 3: Push and monitor deployment**
 
 Push `main`, then query the check run for the new commit. Require `Workers Builds: vwake-website` to finish with conclusion `success`.
 
-- [ ] **Step 4: Verify production and finish the record**
+- [x] **Step 4: Verify production and finish the record**
 
 Fetch `https://vwake.app/`, `/en/`, and `/ja/` with a commit cache-buster. Require each page to contain the start/end markers, 34 accessible creator cards split 17/17, two decorative sequences, the shared stylesheet, no Hall of Voices markup, and no old `roster-marquee` wrapper. Verify representative WebPs return 200 and that local `HEAD` equals `origin/main`. Mark every checkbox complete in a final documentation commit, push it, monitor the final check, and require a clean worktree.
