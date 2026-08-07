@@ -1,0 +1,24 @@
+# Repository and local tooling
+**/.git
+.gitignore
+.gstack
+.superpowers
+.wrangler
+.vscode
+.idea
+**/.DS_Store
+**/Thumbs.db
+**/desktop.ini
+**/node_modules
+.dev.vars*
+.env*
+
+# Internal project files
+docs
+tests
+TODO.md
+wrangler.jsonc
+
+# Source material not referenced by the website
+new icon
+assets/*.source.html
