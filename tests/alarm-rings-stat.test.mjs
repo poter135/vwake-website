@@ -25,7 +25,9 @@ const locales = [
 
 function rosterFragment(html) {
   const start = html.indexOf('<div class="roster-stats">');
-  const end = html.indexOf('<div class="roster-marquee">', start);
+  const newBoundary = html.indexOf('<!-- CREATOR_MARQUEE_START -->', start);
+  const oldBoundary = html.indexOf('<div class="roster-marquee">', start);
+  const end = newBoundary === -1 ? oldBoundary : newBoundary;
 
   assert.notEqual(start, -1, 'roster stats must exist');
   assert.notEqual(end, -1, 'roster marquee must follow the stats');

@@ -31,7 +31,7 @@
 - Consumes: the three localized HTML files and `assets/creator-marquee.css`.
 - Produces: a canonical `expectedCreators` fixture and validation for two accessible 17-card lanes, decorative duplicates, direction, dimensions, asset integrity, and locale parity.
 
-- [ ] **Step 1: Write the failing roster mapping test**
+- [x] **Step 1: Write the failing roster mapping test**
 
 Create `tests/two-row-creator-marquee.test.mjs`. Define the exact 34 records from the approved spec as literals with `{ id, name, label, avatar: "/assets/creators/marquee/<id>.webp" }`. Extract markup between `<!-- CREATOR_MARQUEE_START -->` and `<!-- CREATOR_MARQUEE_END -->` from `index.html`, `en/index.html`, and `ja/index.html`.
 
@@ -49,7 +49,7 @@ For every record, assert the image uses its mapped WebP, `alt` equals the mapped
 
 Assert each page contains exactly two duplicate sequences with `aria-hidden="true"`, every duplicate image has `alt=""`, and no duplicate card has a `tabindex`.
 
-- [ ] **Step 2: Write the failing shared behavior assertions**
+- [x] **Step 2: Write the failing shared behavior assertions**
 
 Read `assets/creator-marquee.css` and assert the observable contract selectors exist:
 
@@ -67,11 +67,11 @@ assert.match(css, /min-width:\s*0/);
 assert.match(css, /-webkit-line-clamp:\s*2/);
 ```
 
-- [ ] **Step 3: Update the existing stats fragment boundary**
+- [x] **Step 3: Update the existing stats fragment boundary**
 
 Change `tests/alarm-rings-stat.test.mjs` so `rosterFragment()` ends at `<!-- CREATOR_MARQUEE_START -->`. Do not change any expected metric numbers, labels, or style assertions.
 
-- [ ] **Step 4: Run the focused tests and verify RED**
+- [x] **Step 4: Run the focused tests and verify RED**
 
 Run:
 
@@ -90,11 +90,11 @@ Expected: the new test fails because the pages still have a single `roster-marqu
 - Consumes: the verified normalized production avatars stored in Git commit `c997f78` under `assets/creators/avatars/`.
 - Produces: 34 center-cropped 160 × 160 WebP thumbnails named exactly by canonical creator ID.
 
-- [ ] **Step 1: Extract the verified source images to a temporary directory**
+- [x] **Step 1: Extract the verified source images to a temporary directory**
 
 Create a temporary directory with `mktemp -d`, then use `git archive c997f78 assets/creators/avatars` and extract it there. Do not restore the large source images into the current worktree.
 
-- [ ] **Step 2: Center-crop and encode every canonical image**
+- [x] **Step 2: Center-crop and encode every canonical image**
 
 For each creator, use the source extension recorded in `c997f78` (`.jpg` only for `xueying`, `miyuki_aimu`, `kinkinko`, and `yukichan`; `.png` for all others). Read width and height using `sips -g pixelWidth -g pixelHeight`, crop to a centered square with `sips --cropToHeightWidth <min> <min>`, resample to 160 × 160 with `sips --resampleHeightWidth 160 160`, and encode with:
 
@@ -104,7 +104,7 @@ cwebp -quiet -q 78 <square-png> -o assets/creators/marquee/<creatorId>.webp
 
 If any output exceeds 80 KiB, re-encode only that file at quality 70. Do not change creator IDs or substitute another creator's source image.
 
-- [ ] **Step 3: Validate the asset budget**
+- [x] **Step 3: Validate the asset budget**
 
 Run:
 
@@ -116,7 +116,7 @@ du -sk assets/creators/marquee
 
 Expected: 34 files, every file at most 80 KiB, total at most 2048 KiB.
 
-- [ ] **Step 4: Re-run the focused test**
+- [x] **Step 4: Re-run the focused test**
 
 Run `node --test tests/two-row-creator-marquee.test.mjs`.
 
@@ -134,7 +134,7 @@ Expected: asset existence, dimensions, and size-budget assertions pass; HTML and
 - Consumes: the 34 mapped WebP assets and exact canonical order from the spec.
 - Produces: two accessible 17-person sequences per locale and two decorative duplicates for seamless animation.
 
-- [ ] **Step 1: Create the shared stylesheet**
+- [x] **Step 1: Create the shared stylesheet**
 
 Implement `assets/creator-marquee.css` with these fixed variables and structures:
 
@@ -162,7 +162,7 @@ Cards use fixed border-box dimensions, an unshrinking 42 px portrait, `.creator-
 
 At `max-width: 620px`, set the card width to 166 px and duration to 68s. Under `prefers-reduced-motion: reduce`, remove animation and transforms, remove the mask, hide decorative sequences, and make each lane `overflow-x: auto` with touch scrolling.
 
-- [ ] **Step 2: Replace the Chinese marquee**
+- [x] **Step 2: Replace the Chinese marquee**
 
 Add `<link rel="stylesheet" href="/assets/creator-marquee.css">` in `<head>`. Remove the inline single-row marquee animation/card CSS but keep the existing stats CSS unchanged.
 
@@ -189,11 +189,11 @@ Replace the old roster wrapper with:
 
 Each accessible card is an `<article class="creator-marquee-card" data-creator-id="...">` containing the mapped WebP and exact mapped text. Each decorative card keeps the same `data-creator-id`, uses `alt=""`, and is nested under the hidden sequence.
 
-- [ ] **Step 3: Replace the English and Japanese marquees**
+- [x] **Step 3: Replace the English and Japanese marquees**
 
 Repeat the identical 34 records, order, lane split, labels, and avatar paths. Only localize the wrapper labels to `Vwake creator roster` and `Vwake クリエイター一覧`. Preserve all current localized section copy and metrics.
 
-- [ ] **Step 4: Run focused tests and verify GREEN**
+- [x] **Step 4: Run focused tests and verify GREEN**
 
 Run:
 
@@ -203,7 +203,7 @@ node --test tests/two-row-creator-marquee.test.mjs tests/alarm-rings-stat.test.m
 
 Expected: all mapping, lane, asset, styling, accessibility, localization-parity, and metric assertions pass.
 
-- [ ] **Step 5: Inspect desktop and mobile rendering**
+- [x] **Step 5: Inspect desktop and mobile rendering**
 
 Serve the repository locally and inspect `/#roster`, `/en/#roster`, and `/ja/#roster`. At desktop width, require two smooth opposite lanes, bounded two-line names, six or seven visible cards per lane, and no horizontal page overflow. At 390 × 844, require two or three visible cards per lane, no text overlap, and no horizontal page overflow. Enable reduced motion and verify duplicates are hidden and both lanes can be manually scrolled.
 
@@ -216,7 +216,7 @@ Serve the repository locally and inspect `/#roster`, `/en/#roster`, and `/ja/#ro
 - Consumes: completed pages, stylesheet, images, and tests.
 - Produces: verified commits on `origin/main` and a successful Cloudflare production deployment.
 
-- [ ] **Step 1: Run full local verification**
+- [x] **Step 1: Run full local verification**
 
 Run:
 

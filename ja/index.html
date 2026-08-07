@@ -68,6 +68,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/icon-512.png">
+<link rel="stylesheet" href="/assets/creator-marquee.css">
 <style>
   :root {
     --bg: #0a0a0a;
@@ -388,64 +389,6 @@
   .rstat-label { font-size: 14px; color: var(--text-muted); letter-spacing: 0.5px; }
   .rstat-sep { width: 1px; height: 46px; background: rgba(255,255,255,0.1); }
   @media (max-width: 540px) { .roster-stats { gap: 30px; } .rstat-num { font-size: 34px; } }
-
-  /* ROSTER (marquee) */
-  .roster-marquee {
-    position: relative;
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  }
-  .roster-track {
-    display: flex;
-    gap: 14px;
-    width: max-content;
-    animation: roster-scroll 60s linear infinite;
-  }
-  .roster-track:hover { animation-play-state: paused; }
-  @keyframes roster-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .roster-track { animation: none; }
-  }
-
-  .roster-card {
-    flex: 0 0 auto;
-    width: 132px;
-    background: var(--surface);
-    border-radius: 16px;
-    padding: 16px 12px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    text-align: center;
-  }
-  .roster-avatar {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: var(--gradient-soft);
-    margin: 0 auto 10px;
-    border: 2px solid rgba(124, 92, 191, 0.3);
-    overflow: hidden;
-  }
-  .roster-avatar img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .roster-name {
-    font-size: 13px; font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .roster-meta {
-    font-size: 11px; color: var(--text-muted);
-    margin-top: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 
   /* APP PREVIEW STRIP */
   .preview-frame { position: relative; }
@@ -1001,47 +944,510 @@
       </div>
     </div>
 
-    <div class="roster-marquee">
-      <div class="roster-track">
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/pyonchan.png" alt="ぴょんちゃん兔兔"></div><div class="roster-name">ぴょんちゃん兔兔</div><div class="roster-meta">Pyonchan</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/fingla.png" alt="Fingla"></div><div class="roster-name">Fingla 芬格拉</div><div class="roster-meta">Fingla</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/afeng.png" alt="Maple"></div><div class="roster-name">阿楓轟炸</div><div class="roster-meta">Maple</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/ohara-shiori.png" alt="小原栞"></div><div class="roster-name">小原栞</div><div class="roster-meta">Ohara Shiori</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/skymeowu.png" alt="SkyMeowu"></div><div class="roster-name">仙喵 SkyMeowu</div><div class="roster-meta">SkyMeowu</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/chimera.png" alt="Chimera"></div><div class="roster-name">奇美拉圈圈</div><div class="roster-meta">Chimera</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/maruru.png" alt="Maruru"></div><div class="roster-name">瑪露露 Maruru</div><div class="roster-meta">Maruru</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/shirakuma-koiyuki.png" alt="白熊恋雪"></div><div class="roster-name">白熊恋雪</div><div class="roster-meta">Shirokuma koiyuki</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/ribi.png" alt="Ribi"></div><div class="roster-name">莉比 Ribi</div><div class="roster-meta">Ribi</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/yukime.jpg" alt="Yukime"></div><div class="roster-name">雪迎</div><div class="roster-meta">Yukime</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/aquarius.png" alt="Aquarius"></div><div class="roster-name">水瓶罐子</div><div class="roster-meta">Aquarius</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/yukiha.png" alt="Yukiha"></div><div class="roster-name">雪羽</div><div class="roster-meta">Yukiha</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/eliannka.png" alt="Eliannka"></div><div class="roster-name">艾莉安卡</div><div class="roster-meta">Eliannka</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/miyuki-aimu.jpg" alt="深雪あいむ"></div><div class="roster-name">深雪あいむ</div><div class="roster-meta">Miyuki Aimu</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/abby-ruby.png" alt="Abby Ruby"></div><div class="roster-name">艾比露比</div><div class="roster-meta">Abby Ruby</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/aone-natsuo.png" alt="蒼音夏緒"></div><div class="roster-name">蒼音夏緒</div><div class="roster-meta">Aone Natsuo</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/kinkinko.jpg" alt="金金子"></div><div class="roster-name">金金子</div><div class="roster-meta">Kinkinko</div></div>
-        <div class="roster-card"><div class="roster-avatar"><img src="/assets/creators/avatars/yukishita-reiko.png" alt="雪下靈狐"></div><div class="roster-name">雪下靈狐</div><div class="roster-meta">Yukishita Reiko</div></div>
-
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/pyonchan.png" alt=""></div><div class="roster-name">ぴょんちゃん兔兔</div><div class="roster-meta">Pyonchan</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/fingla.png" alt=""></div><div class="roster-name">Fingla 芬格拉</div><div class="roster-meta">Fingla</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/afeng.png" alt=""></div><div class="roster-name">阿楓轟炸</div><div class="roster-meta">Maple</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/ohara-shiori.png" alt=""></div><div class="roster-name">小原栞</div><div class="roster-meta">Ohara Shiori</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/skymeowu.png" alt=""></div><div class="roster-name">仙喵 SkyMeowu</div><div class="roster-meta">SkyMeowu</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/chimera.png" alt=""></div><div class="roster-name">奇美拉圈圈</div><div class="roster-meta">Chimera</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/maruru.png" alt=""></div><div class="roster-name">瑪露露 Maruru</div><div class="roster-meta">Maruru</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/shirakuma-koiyuki.png" alt=""></div><div class="roster-name">白熊恋雪</div><div class="roster-meta">Shirokuma koiyuki</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/ribi.png" alt=""></div><div class="roster-name">莉比 Ribi</div><div class="roster-meta">Ribi</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/yukime.jpg" alt=""></div><div class="roster-name">雪迎</div><div class="roster-meta">Yukime</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/aquarius.png" alt=""></div><div class="roster-name">水瓶罐子</div><div class="roster-meta">Aquarius</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/yukiha.png" alt=""></div><div class="roster-name">雪羽</div><div class="roster-meta">Yukiha</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/eliannka.png" alt=""></div><div class="roster-name">艾莉安卡</div><div class="roster-meta">Eliannka</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/miyuki-aimu.jpg" alt=""></div><div class="roster-name">深雪あいむ</div><div class="roster-meta">Miyuki Aimu</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/abby-ruby.png" alt=""></div><div class="roster-name">艾比露比</div><div class="roster-meta">Abby Ruby</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/aone-natsuo.png" alt=""></div><div class="roster-name">蒼音夏緒</div><div class="roster-meta">Aone Natsuo</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/kinkinko.jpg" alt=""></div><div class="roster-name">金金子</div><div class="roster-meta">Kinkinko</div></div>
-        <div class="roster-card" aria-hidden="true"><div class="roster-avatar"><img src="/assets/creators/avatars/yukishita-reiko.png" alt=""></div><div class="roster-name">雪下靈狐</div><div class="roster-meta">Yukishita Reiko</div></div>
+    <!-- CREATOR_MARQUEE_START -->
+    <div class="creator-marquee" tabindex="0" aria-label="Vwake クリエイター一覧">
+      <div class="creator-marquee-lane creator-marquee-lane--left">
+        <div class="creator-marquee-track">
+          <div class="creator-marquee-sequence">
+            <!-- CREATOR_TOP_START -->
+        <article class="creator-marquee-card" data-creator-id="shiori">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/shiori.webp" alt="小原栞" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">小原栞</div>
+            <div class="creator-marquee-card-label">SHIORI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="allieanka">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/allieanka.webp" alt="艾莉安卡" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">艾莉安卡</div>
+            <div class="creator-marquee-card-label">ALLIEANKA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="zhaxia520">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/zhaxia520.webp" alt="炸蝦君" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">炸蝦君</div>
+            <div class="creator-marquee-card-label">ZHAXIA520</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yukiha">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yukiha.webp" alt="雪羽 Yuki" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">雪羽 Yuki</div>
+            <div class="creator-marquee-card-label">YUKIHA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="xunbaomao">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/xunbaomao.webp" alt="尋寶喵" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">尋寶喵</div>
+            <div class="creator-marquee-card-label">XUNBAOMAO</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aone_nao">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aone_nao.webp" alt="蒼音夏緒" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">蒼音夏緒</div>
+            <div class="creator-marquee-card-label">AONE NAO</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="sabina">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/sabina.webp" alt="人偶．薩賓娜／薩琪" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">人偶．薩賓娜／薩琪</div>
+            <div class="creator-marquee-card-label">SABINA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yabi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yabi.webp" alt="牙白不牙白" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">牙白不牙白</div>
+            <div class="creator-marquee-card-label">YABI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="ucrhlzl1kx0bzsiehkrfakrg">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/ucrhlzl1kx0bzsiehkrfakrg.webp" alt="芽瑪" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">芽瑪</div>
+            <div class="creator-marquee-card-label">YAMA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="quindaizier">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/quindaizier.webp" alt="奎因黛希爾" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">奎因黛希爾</div>
+            <div class="creator-marquee-card-label">QUINDAIZIER</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="ribi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/ribi.webp" alt="莉比 Ribi" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">莉比 Ribi</div>
+            <div class="creator-marquee-card-label">RIBI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="pyonchan">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/pyonchan.webp" alt="ぴょんちゃん兔兔" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">ぴょんちゃん兔兔</div>
+            <div class="creator-marquee-card-label">PYONCHAN</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="skymeowu">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/skymeowu.webp" alt="仙喵 SkyMeowu" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">仙喵 SkyMeowu</div>
+            <div class="creator-marquee-card-label">SKYMEOWU</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="chimera">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/chimera.webp" alt="奇美拉圈圈" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">奇美拉圈圈</div>
+            <div class="creator-marquee-card-label">CHIMERA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="luby_abby">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/luby_abby.webp" alt="露比艾比 Luby Abby" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">露比艾比 Luby Abby</div>
+            <div class="creator-marquee-card-label">LUBY ABBY</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="maple">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/maple.webp" alt="阿楓轟炸" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">阿楓轟炸</div>
+            <div class="creator-marquee-card-label">MAPLE</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aquariusgirl">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aquariusgirl.webp" alt="水瓶罐子" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">水瓶罐子</div>
+            <div class="creator-marquee-card-label">AQUARIUS</div>
+          </div>
+        </article>
+            <!-- CREATOR_TOP_END -->
+          </div>
+          <div class="creator-marquee-sequence" aria-hidden="true">
+            <!-- CREATOR_TOP_DUPLICATE_START -->
+        <article class="creator-marquee-card" data-creator-id="shiori">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/shiori.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">小原栞</div>
+            <div class="creator-marquee-card-label">SHIORI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="allieanka">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/allieanka.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">艾莉安卡</div>
+            <div class="creator-marquee-card-label">ALLIEANKA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="zhaxia520">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/zhaxia520.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">炸蝦君</div>
+            <div class="creator-marquee-card-label">ZHAXIA520</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yukiha">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yukiha.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">雪羽 Yuki</div>
+            <div class="creator-marquee-card-label">YUKIHA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="xunbaomao">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/xunbaomao.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">尋寶喵</div>
+            <div class="creator-marquee-card-label">XUNBAOMAO</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aone_nao">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aone_nao.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">蒼音夏緒</div>
+            <div class="creator-marquee-card-label">AONE NAO</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="sabina">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/sabina.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">人偶．薩賓娜／薩琪</div>
+            <div class="creator-marquee-card-label">SABINA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yabi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yabi.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">牙白不牙白</div>
+            <div class="creator-marquee-card-label">YABI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="ucrhlzl1kx0bzsiehkrfakrg">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/ucrhlzl1kx0bzsiehkrfakrg.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">芽瑪</div>
+            <div class="creator-marquee-card-label">YAMA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="quindaizier">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/quindaizier.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">奎因黛希爾</div>
+            <div class="creator-marquee-card-label">QUINDAIZIER</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="ribi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/ribi.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">莉比 Ribi</div>
+            <div class="creator-marquee-card-label">RIBI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="pyonchan">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/pyonchan.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">ぴょんちゃん兔兔</div>
+            <div class="creator-marquee-card-label">PYONCHAN</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="skymeowu">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/skymeowu.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">仙喵 SkyMeowu</div>
+            <div class="creator-marquee-card-label">SKYMEOWU</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="chimera">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/chimera.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">奇美拉圈圈</div>
+            <div class="creator-marquee-card-label">CHIMERA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="luby_abby">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/luby_abby.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">露比艾比 Luby Abby</div>
+            <div class="creator-marquee-card-label">LUBY ABBY</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="maple">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/maple.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">阿楓轟炸</div>
+            <div class="creator-marquee-card-label">MAPLE</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aquariusgirl">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aquariusgirl.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">水瓶罐子</div>
+            <div class="creator-marquee-card-label">AQUARIUS</div>
+          </div>
+        </article>
+            <!-- CREATOR_TOP_DUPLICATE_END -->
+          </div>
+        </div>
+      </div>
+      <div class="creator-marquee-lane creator-marquee-lane--right">
+        <div class="creator-marquee-track">
+          <div class="creator-marquee-sequence">
+            <!-- CREATOR_BOTTOM_START -->
+        <article class="creator-marquee-card" data-creator-id="fingla">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/fingla.webp" alt="芬格拉 Fingla" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">芬格拉 Fingla</div>
+            <div class="creator-marquee-card-label">FINGLA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="xueying">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/xueying.webp" alt="雪迎" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">雪迎</div>
+            <div class="creator-marquee-card-label">XUEYING</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="maruru">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/maruru.webp" alt="瑪露露 Maruru" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">瑪露露 Maruru</div>
+            <div class="creator-marquee-card-label">MARURU</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="koiyuki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/koiyuki.webp" alt="白熊 恋雪" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">白熊 恋雪</div>
+            <div class="creator-marquee-card-label">KOIYUKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="miyuki_aimu">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/miyuki_aimu.webp" alt="深雪あいむ" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">深雪あいむ</div>
+            <div class="creator-marquee-card-label">MIYUKI AIMU</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="kinkinko">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/kinkinko.webp" alt="金金子" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">金金子</div>
+            <div class="creator-marquee-card-label">KINKINKO</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="snowfox">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/snowfox.webp" alt="雪下靈狐" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">雪下靈狐</div>
+            <div class="creator-marquee-card-label">SNOWFOX</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="delvi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/delvi.webp" alt="黛菲 Delvi" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">黛菲 Delvi</div>
+            <div class="creator-marquee-card-label">DELVI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yufang">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yufang.webp" alt="月下香幽芳 YuFang" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">月下香幽芳 YuFang</div>
+            <div class="creator-marquee-card-label">YUFANG</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aya">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aya.webp" alt="赤羽亞矢 AYA" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">赤羽亞矢 AYA</div>
+            <div class="creator-marquee-card-label">AYA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="shiki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/shiki.webp" alt="嘻希呦" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">嘻希呦</div>
+            <div class="creator-marquee-card-label">SHIKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="tsugumi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/tsugumi.webp" alt="黛鶇" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">黛鶇</div>
+            <div class="creator-marquee-card-label">TSUGUMI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="elina">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/elina.webp" alt="宮森えりな" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">宮森えりな</div>
+            <div class="creator-marquee-card-label">ELINA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yukichan">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yukichan.webp" alt="小雪 Yukichan" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">小雪 Yukichan</div>
+            <div class="creator-marquee-card-label">YUKICHAN</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aki.webp" alt="Aki 安希" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">Aki 安希</div>
+            <div class="creator-marquee-card-label">AKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="hanasaki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/hanasaki.webp" alt="魔法少女花咲" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">魔法少女花咲</div>
+            <div class="creator-marquee-card-label">HANASAKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="somaru">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/somaru.webp" alt="水縹そまる" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">水縹そまる</div>
+            <div class="creator-marquee-card-label">SOMARU</div>
+          </div>
+        </article>
+            <!-- CREATOR_BOTTOM_END -->
+          </div>
+          <div class="creator-marquee-sequence" aria-hidden="true">
+            <!-- CREATOR_BOTTOM_DUPLICATE_START -->
+        <article class="creator-marquee-card" data-creator-id="fingla">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/fingla.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">芬格拉 Fingla</div>
+            <div class="creator-marquee-card-label">FINGLA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="xueying">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/xueying.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">雪迎</div>
+            <div class="creator-marquee-card-label">XUEYING</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="maruru">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/maruru.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">瑪露露 Maruru</div>
+            <div class="creator-marquee-card-label">MARURU</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="koiyuki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/koiyuki.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">白熊 恋雪</div>
+            <div class="creator-marquee-card-label">KOIYUKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="miyuki_aimu">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/miyuki_aimu.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">深雪あいむ</div>
+            <div class="creator-marquee-card-label">MIYUKI AIMU</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="kinkinko">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/kinkinko.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">金金子</div>
+            <div class="creator-marquee-card-label">KINKINKO</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="snowfox">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/snowfox.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">雪下靈狐</div>
+            <div class="creator-marquee-card-label">SNOWFOX</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="delvi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/delvi.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">黛菲 Delvi</div>
+            <div class="creator-marquee-card-label">DELVI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yufang">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yufang.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">月下香幽芳 YuFang</div>
+            <div class="creator-marquee-card-label">YUFANG</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aya">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aya.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">赤羽亞矢 AYA</div>
+            <div class="creator-marquee-card-label">AYA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="shiki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/shiki.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">嘻希呦</div>
+            <div class="creator-marquee-card-label">SHIKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="tsugumi">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/tsugumi.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">黛鶇</div>
+            <div class="creator-marquee-card-label">TSUGUMI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="elina">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/elina.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">宮森えりな</div>
+            <div class="creator-marquee-card-label">ELINA</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="yukichan">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/yukichan.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">小雪 Yukichan</div>
+            <div class="creator-marquee-card-label">YUKICHAN</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="aki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/aki.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">Aki 安希</div>
+            <div class="creator-marquee-card-label">AKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="hanasaki">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/hanasaki.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">魔法少女花咲</div>
+            <div class="creator-marquee-card-label">HANASAKI</div>
+          </div>
+        </article>
+        <article class="creator-marquee-card" data-creator-id="somaru">
+          <div class="creator-marquee-avatar"><img src="/assets/creators/marquee/somaru.webp" alt="" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="creator-marquee-card-copy">
+            <div class="creator-marquee-card-name">水縹そまる</div>
+            <div class="creator-marquee-card-label">SOMARU</div>
+          </div>
+        </article>
+            <!-- CREATOR_BOTTOM_DUPLICATE_END -->
+          </div>
+        </div>
       </div>
     </div>
+    <!-- CREATOR_MARQUEE_END -->
 
   </div>
 </section>
