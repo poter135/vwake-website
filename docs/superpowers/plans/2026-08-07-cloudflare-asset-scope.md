@@ -88,20 +88,22 @@ git commit -m "fix(deploy): exclude repository files from assets"
 - Consumes: GitHub `main` push and the existing Cloudflare Workers Builds integration.
 - Produces: A successful Cloudflare production build serving the latest website commit.
 
-- [ ] **Step 1: Push the implementation**
+- [x] **Step 1: Push the implementation**
 
 Run: `git push origin main`
 
 Expected: GitHub accepts the new commits and triggers `Workers Builds: vwake-website`.
 
-- [ ] **Step 2: Monitor the triggered check**
+- [x] **Step 2: Monitor the triggered check**
 
 Run: `gh api repos/poter135/vwake-website/commits/HEAD/check-runs`
 
 Expected: `Workers Builds: vwake-website` completes with conclusion `success`.
 
-- [ ] **Step 3: Verify production content**
+- [x] **Step 3: Verify production content**
 
 Run: `curl -fsSL "https://vwake.app/?deploy-check=<commit>"`
 
 Expected: the response includes the latest premium-creator title and `5000+`, proving production serves the new deployment rather than the previous build.
+
+Verified for implementation commit `70c14d2`: Cloudflare build `2aad9726-9ce2-4127-a7e7-7169aac6e52f` completed successfully, and production returned the expected title, `5000+`, and `鬧鐘語音響起`.
