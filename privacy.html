@@ -422,7 +422,7 @@
   <div class="container">
     <div class="legal-eyebrow"><span class="accent">Vwake</span>Privacy Policy</div>
     <h1 class="legal-title">隱私權政策</h1>
-    <div class="legal-meta">最後更新日期：2026 年 5 月</div>
+    <div class="legal-meta">最後更新日期：2026 年 8 月 22 日</div>
   </div>
 </section>
 
@@ -452,6 +452,14 @@
         <p>連結帳號為選用功能，目的是讓您在更換裝置或重新安裝後，可透過同一個 Google / Apple 帳號恢復 V 幣與語音包。您可隨時於應用程式內登出或刪除帳號。</p>
         <p><strong style="color: var(--text);">1.3 推播權杖（FCM Token）：</strong>為確保鬧鐘於應用程式被系統暫停時仍能準時觸發，本應用程式會儲存裝置的 Firebase Cloud Messaging 推播權杖至 Firestore 之 pending_alarms 集合。此權杖僅用於本應用程式自身的鬧鐘推播，不會分享至其他服務或廣告平台。</p>
         <p><strong style="color: var(--text);">1.4 裝置資訊：</strong>本應用程式可能收集基本裝置資訊（如裝置型號、作業系統版本）以用於除錯與相容性用途。</p>
+        <p><strong style="color: var(--text);">1.5 Vwake 第一方產品分析：</strong>當您使用本應用程式時，我們會透過 Usage v2 與 Firebase Analytics 自動收集產品使用資料，包括：</p>
+        <ul>
+          <li>鬧鐘與提醒的排程及生命週期事件、通知點擊、介面顯示，以及關閉、完成、稍後提醒與結果狀態</li>
+          <li>音源與備援播放分類，以及創作者、語音包與音檔的歸因識別碼</li>
+          <li>平台、App 版本與 build、作業系統版本、時區、事件 occurrence 識別碼與時間戳記</li>
+          <li>Firebase App Instance ID、裝置識別碼（Android 可能包含 Advertising ID）、由遮罩 IP 推估的概略位置，以及 App 內購買事件中的商品 ID、名稱與價格</li>
+        </ul>
+        <p>當您登入時，這些分析事件可與您的 Firebase 使用者 ID 連結。我們將其用於衡量產品成效、改善可靠性，以及進行創作者與合作組織的歸因分析；不會用於廣告或跨服務追蹤。</p>
       </section>
 
       <section class="legal-section">
@@ -464,10 +472,10 @@
           <li>Firebase Cloud Messaging（鬧鐘推播）</li>
           <li>Firebase Storage（語音包音訊檔案下載）</li>
         </ul>
-        <p>上述 Firebase 服務受 Google 隱私權政策約束（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）。</p>
+        <p>Firebase（包含 Firebase Analytics）依 Vwake 的指示，作為資料處理服務商提供上述服務。相關服務亦受 Google 隱私權政策約束（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）。</p>
         <p>當您使用「連結 Google」功能時，您與 Google 之間的資料交換另受 Google 隱私權政策約束。本應用程式僅向 Google 索取您的電子郵件地址與基本個人資料（如顯示名稱）。</p>
         <p>當您使用「連結 Apple」功能時，您與 Apple 之間的資料交換另受 Apple 隱私權政策約束（<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a>）。您可以使用 Apple 提供之「隱藏我的電子郵件」功能，本應用程式僅會取得 Apple 產生之中繼電子郵件地址，無法得知您的真實郵件地址。</p>
-        <p>本應用程式不使用任何廣告 SDK 或第三方追蹤/分析工具。</p>
+        <p>本應用程式不將資料用於廣告或跨服務追蹤。Firebase Analytics 僅作為 Vwake 第一方產品分析的處理服務。</p>
       </section>
 
       <section class="legal-section">
@@ -487,13 +495,15 @@
 
       <section class="legal-section">
         <h2>6. 資料保留與刪除</h2>
-        <p><strong style="color: var(--text);">6.1</strong> 雲端資料將持續保留至您主動要求刪除為止。</p>
-        <p><strong style="color: var(--text);">6.2</strong> 您可於應用程式內隨時刪除帳號（路徑：設定頁面 → 刪除帳號）。確認刪除後，伺服器將立即執行以下動作：</p>
+        <p><strong style="color: var(--text);">6.1</strong> Usage v2 分析證據保存 13 個月。其他雲端資料依提供服務、履行合約與法令要求所需期間保留，或保留至您主動要求刪除為止。</p>
+        <p><strong style="color: var(--text);">6.2</strong> 您可於應用程式內隨時刪除帳號（路徑：設定頁面 → 刪除帳號）。確認刪除後，帳號刪除流程將執行以下動作：</p>
         <ul>
           <li>刪除您在 users/{uid} 文件中的所有資料（V 幣餘額、已購買的語音包記錄、登入方式記錄等）</li>
           <li>刪除您在 pending_alarms 集合中所有待發鬧鐘紀錄</li>
+          <li>刪除帶有您 Firebase 使用者 ID 的 Usage v2 原始事件、衝突紀錄、occurrence、journey、projection 與本機待送 outbox</li>
           <li>刪除您在 Firebase Authentication 中的使用者紀錄</li>
         </ul>
+        <p>依法必須保存的財務紀錄將依獨立的財務保留政策繼續保存；其保留資料不得用於反查您的 Usage v2 分析 journey。</p>
         <p>完成後，您將以全新的匿名身份繼續使用本應用程式，原帳號之資料無法復原。</p>
         <p><strong style="color: var(--text);">6.3</strong> 若您無法存取應用程式，亦可透過 <a href="mailto:hello@vwake.app">hello@vwake.app</a> 申請刪除，我們將在 30 日內完成。</p>
         <p><strong style="color: var(--text);">6.4</strong> 解除安裝應用程式將刪除所有本機資料，但雲端資料需透過上述方式刪除。</p>

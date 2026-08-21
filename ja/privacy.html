@@ -428,7 +428,7 @@
   <div class="container">
     <div class="legal-eyebrow"><span class="accent">Vwake</span>プライバシーポリシー</div>
     <h1 class="legal-title">プライバシーポリシー</h1>
-    <div class="legal-meta">最終更新: 2026年5月</div>
+    <div class="legal-meta">最終更新: 2026年8月22日</div>
   </div>
 </section>
 
@@ -458,6 +458,14 @@
         <p>アカウント連携は任意の機能です。端末の機種変更や再インストール後も、同じ Google / Apple アカウントで V-Coin やボイスパックを復元できるようにするためのものです。アプリ内からいつでもサインアウトやアカウント削除を行えます。</p>
         <p><strong style="color: var(--text);">1.3 プッシュトークン（FCM Token）:</strong> アプリケーションが OS によって一時停止された場合でもアラームを時刻どおりに鳴らすため、本アプリケーションは端末の Firebase Cloud Messaging プッシュトークンを Firestore の <code>pending_alarms</code> コレクションに保存します。このトークンは本アプリケーションのアラーム通知のみに使用され、他のサービスや広告プラットフォームと共有されることはありません。</p>
         <p><strong style="color: var(--text);">1.4 端末情報:</strong> 本アプリケーションは、デバッグおよび互換性確認のため、基本的な端末情報（端末モデル、OS バージョンなど）を収集する場合があります。</p>
+        <p><strong style="color: var(--text);">1.5 Vwake のファーストパーティ製品分析:</strong> 本アプリケーションの利用時、当社は Usage v2 および Firebase Analytics を通じて、以下の製品利用データを自動的に収集します。</p>
+        <ul>
+          <li>アラーム／リマインダーのスケジュールおよびライフサイクルイベント、通知のクリック、UI 表示、dismiss、done、snooze、outcome の各状態</li>
+          <li>音源およびフォールバックの分類、クリエイター、ボイスパック、クリップのアトリビューション ID</li>
+          <li>プラットフォーム、アプリのバージョンと build、OS バージョン、タイムゾーン、occurrence 識別子、タイムスタンプ</li>
+          <li>Firebase App Instance ID、端末識別子（Android Advertising ID を含む場合があります）、マスクされた IP アドレスから推定されるおおよその位置情報、アプリ内購入イベントの商品 ID、名称、価格</li>
+        </ul>
+        <p>サインイン中は、これらの分析イベントがお客様の Firebase ユーザー ID と関連付けられる場合があります。当社は、製品効果の測定、信頼性の改善、ならびにクリエイターおよび提携組織のアトリビューション分析に利用します。広告またはサービスをまたぐトラッキングには利用しません。</p>
       </section>
 
       <section class="legal-section">
@@ -470,10 +478,10 @@
           <li>Firebase Cloud Messaging（アラーム通知）</li>
           <li>Firebase Storage（ボイスパック音声ファイルのダウンロード）</li>
         </ul>
-        <p>上記 Firebase サービスは Google プライバシーポリシー（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）に準拠します。</p>
+        <p>Firebase Analytics を含む Firebase は、Vwake の指示に従うデータ処理サービス事業者として上記サービスを提供します。これらのサービスには Google プライバシーポリシー（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>）も適用されます。</p>
         <p>「Google と連携」機能をご利用の場合、お客様と Google との間のデータのやり取りには、別途 Google プライバシーポリシーが適用されます。本アプリケーションが Google に対して要求する情報は、お客様のメールアドレスと基本的なプロフィール情報（表示名など）のみです。</p>
         <p>「Apple と連携」機能をご利用の場合、お客様と Apple との間のデータのやり取りには、別途 Apple プライバシーポリシー（<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a>）が適用されます。Apple の「メールを非公開」機能をご利用の場合、本アプリケーションが取得するのは Apple が生成した中継メールアドレスのみであり、お客様の実際のメールアドレスを知ることはできません。</p>
-        <p>本アプリケーションは、広告 SDK や第三者によるトラッキング・解析ツールを一切使用していません。</p>
+        <p>本アプリケーションは、データを広告またはサービスをまたぐトラッキングに利用しません。Firebase Analytics は、Vwake のファーストパーティ製品分析の処理サービスとしてのみ利用します。</p>
       </section>
 
       <section class="legal-section">
@@ -493,13 +501,15 @@
 
       <section class="legal-section">
         <h2>6. データの保持と削除</h2>
-        <p><strong style="color: var(--text);">6.1</strong> クラウドデータは、お客様が削除を申請されるまで保持されます。</p>
-        <p><strong style="color: var(--text);">6.2</strong> アプリ内からいつでもアカウントを削除できます（経路: 設定ページ → アカウントを削除）。確認後、サーバーは直ちに以下を実行します。</p>
+        <p><strong style="color: var(--text);">6.1</strong> Usage v2 の分析証拠は 13 か月間保持されます。その他のクラウドデータは、サービスの提供、契約の履行、法令遵守に必要な期間、またはお客様が削除を申請されるまで保持されます。</p>
+        <p><strong style="color: var(--text);">6.2</strong> アプリ内からいつでもアカウントを削除できます（経路: 設定ページ → アカウントを削除）。確認後、アカウント削除処理は以下を実行します。</p>
         <ul>
           <li><code>users/{uid}</code> ドキュメントのすべてのデータ（V-Coin 残高、購入済みボイスパックの記録、連携サインイン情報など）を削除</li>
           <li><code>pending_alarms</code> コレクション内のお客様の未配信アラーム記録をすべて削除</li>
+          <li>お客様の Firebase ユーザー ID を含む Usage v2 の raw event、conflict、occurrence、journey、projection、およびローカルの送信待ち outbox を削除</li>
           <li>Firebase Authentication 内のお客様のユーザーレコードを削除</li>
         </ul>
+        <p>法令により保持が必要な財務記録は、別途定める財務保持ポリシーに従って保持されます。保持された財務記録から、お客様の Usage v2 分析 journey を再構成することはできません。</p>
         <p>完了後は、新しい匿名ユーザーとして本アプリケーションを引き続きご利用いただけます。削除されたアカウントのデータを復元することはできません。</p>
         <p><strong style="color: var(--text);">6.3</strong> アプリにアクセスできない場合は、<a href="mailto:hello@vwake.app">hello@vwake.app</a> より削除をご申請いただくこともできます。当社は 30 日以内に削除を完了します。</p>
         <p><strong style="color: var(--text);">6.4</strong> 本アプリケーションをアンインストールすると、すべてのローカルデータは削除されますが、クラウドデータは上記いずれかの方法で削除する必要があります。</p>
