@@ -191,17 +191,9 @@
     pointer-events: none; z-index: 0;
   }
   .hero > * { position: relative; z-index: 1; }
-  .hero-eyebrow {
-    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--accent-light); font-weight: 600;
-    padding: 8px 18px; border-radius: 999px;
-    background: rgba(124, 92, 191, 0.12);
-    border: 1px solid rgba(124, 92, 191, 0.3);
-    margin-bottom: 28px;
-  }
   .hero-wordmark {
     font-size: 72px; font-weight: 900; letter-spacing: -2.5px;
-    line-height: 0.95; margin-bottom: 14px;
+    line-height: 0.95; margin-bottom: 24px;
   }
   .hero-wordmark .accent {
     background: var(--gradient);
@@ -261,70 +253,83 @@
     .section-title { font-size: 30px; }
   }
 
-  /* PILLARS */
-  .pillars-grid {
+  /* WHY VWAKE / RETENTION PROOF */
+  .why-metrics {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 960px;
+    margin: 0 auto;
   }
-  @media (max-width: 880px) { .pillars-grid { grid-template-columns: 1fr; } }
+  .why-metric {
+    position: relative;
+    overflow: hidden;
+    min-height: 190px;
+    padding: 30px 28px 26px;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+  }
+  .why-metric::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -80px;
+    top: -80px;
+    border-radius: 50%;
+    background: rgba(124, 92, 191, 0.14);
+    filter: blur(10px);
+    pointer-events: none;
+  }
+  .why-metric-featured { border-color: rgba(157, 127, 214, 0.32); }
+  .why-metric-number {
+    position: relative;
+    z-index: 1;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .why-metric-label {
+    position: relative;
+    z-index: 1;
+    margin-top: 18px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .why-metric-detail {
+    position: relative;
+    z-index: 1;
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .why-note {
+    max-width: 700px;
+    margin: 24px auto 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: center;
+  }
+  @media (max-width: 880px) {
+    .why-metrics { grid-template-columns: 1fr; max-width: 560px; }
+    .why-metric { min-height: 0; }
+  }
 
   /* ===== Morning Letters — dawn palette ===== */
-  :root {
-    --ml-coral: #FF8C7A;
-    --ml-apricot: #FFB78A;
-    --ml-lilac: #D49DFF;
-    --ml-dawn: linear-gradient(135deg, #FF8C7A 0%, #FFB78A 44%, #D49DFF 100%);
-  }
   #letters { position: relative; isolation: isolate; }
   #letters::before {
     content: ''; position: absolute; left: 0; right: 0; top: 0; height: 560px;
     background: radial-gradient(720px 340px at 50% -40px, rgba(255,140,122,0.15), rgba(212,157,255,0.07) 42%, transparent 72%);
     pointer-events: none; z-index: -1;
   }
-  .ml-defs { position: absolute; width: 0; height: 0; }
-  .ml-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
-  @media (max-width: 880px) { .ml-grid { grid-template-columns: 1fr; } }
-
-  .ml-card {
-    position: relative; overflow: hidden;
-    background: linear-gradient(180deg, rgba(42,26,45,0.5) 0%, var(--surface) 58%);
-    border: 1px solid rgba(255,140,122,0.14);
-    border-radius: var(--radius-card);
-    padding: 34px 30px 32px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-  .ml-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: var(--ml-dawn); opacity: 0.65;
-  }
-  .ml-card:hover { transform: translateY(-4px); border-color: rgba(255,140,122,0.42); }
-
-  .ml-icon {
-    width: 54px; height: 54px; border-radius: 16px;
-    display: grid; place-items: center;
-    background: rgba(255,140,122,0.10);
-    border: 1px solid rgba(255,140,122,0.22);
-    box-shadow: 0 0 0 6px rgba(255,140,122,0.045), 0 10px 26px -14px rgba(255,140,122,0.5);
-    margin-bottom: 22px;
-  }
-  .ml-icon svg { width: 27px; height: 27px; }
-
-  .ml-label {
-    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-    font-weight: 700; color: var(--ml-apricot); margin-bottom: 12px;
-  }
-  .ml-title {
-    font-size: 23px; font-weight: 800; letter-spacing: -0.6px;
-    line-height: 1.3; margin-bottom: 14px; color: var(--text);
-  }
-  .ml-quote {
-    font-size: 15px; font-weight: 500; color: var(--text);
-    margin-bottom: 14px; padding-left: 13px;
-    border-left: 2px solid var(--ml-coral); line-height: 1.55;
-  }
-  .ml-desc { font-size: 14.5px; color: var(--text-muted); line-height: 1.75; margin: 0; }
-
   .letters-banner {
     margin-top: 44px;
     border-radius: var(--radius-card);
@@ -333,54 +338,6 @@
     box-shadow: 0 20px 60px -30px rgba(0,0,0,0.9);
   }
   .letters-banner img { width: 100%; height: auto; display: block; }
-
-  .pillar {
-    background: var(--surface);
-    border-radius: var(--radius-card);
-    padding: 40px 36px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .pillar::before {
-    content: ''; position: absolute; top: 0; right: 0;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle at top right, rgba(124, 92, 191, 0.15), transparent 70%);
-    pointer-events: none;
-  }
-  .pillar:hover {
-    transform: translateY(-4px);
-    border-color: rgba(124, 92, 191, 0.4);
-    background: var(--surface-2);
-  }
-  .pillar-num {
-    font-size: 13px; letter-spacing: 4px; font-weight: 700;
-    color: var(--accent-light); margin-bottom: 16px;
-  }
-  .pillar-title {
-    font-size: 26px; font-weight: 800; letter-spacing: -0.8px;
-    line-height: 1.25; margin-bottom: 14px;
-  }
-  .pillar-quote {
-    font-size: 17px; font-weight: 500; color: var(--text);
-    margin-bottom: 18px; padding-left: 14px;
-    border-left: 2px solid var(--accent); line-height: 1.5;
-  }
-  .pillar-desc {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.75; margin-bottom: 20px;
-  }
-  .pillar-points { list-style: none; padding: 0; margin: 0; }
-  .pillar-points li {
-    font-size: 14px; color: var(--text-muted);
-    padding: 8px 0 8px 24px; position: relative;
-    line-height: 1.6;
-  }
-  .pillar-points li::before {
-    content: '→'; position: absolute; left: 0; top: 8px;
-    color: var(--accent-light); font-weight: 700;
-  }
 
   /* ROSTER stats */
   .roster-stats { display: flex; align-items: center; justify-content: center; gap: 48px; margin: 4px 0 22px; }
@@ -747,16 +704,12 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-eyebrow">VTUBERのために生まれた</div>
   <h1 class="hero-wordmark"><span class="accent">V</span>wake</h1>
   <p class="hero-tagline">
-    ファンが毎朝、目を覚ます<br>その最初の瞬間を。
+    VTuberの声をファンの日常へ。
   </p>
   <p class="hero-desc">
-    VwakeはVTuberのために作られた、まったく新しい交流のかたち。<br>
-    ファンはあなたの声で目を覚まし、有料でモーニングレターを送ります ——<br>
-    起きた瞬間から、毎日の一言の会話まで、<br>
-    あなたは録音して返信するだけ。
+    VwakeはVTuberのために作られた、新しい交流のかたちです。ファンの毎日に寄り添い、ボイスパックを身近な習慣へとつなげます。
   </p>
   <div class="hero-ctas">
     <button type="button" class="btn btn-primary" data-open-apply>
@@ -798,71 +751,36 @@
   </div>
 </section>
 
-<!-- ============ WHY VWAKE / PILLARS ============ -->
+<!-- ============ WHY VWAKE / RETENTION PROOF ============ -->
 <section class="section" id="why">
   <div class="container">
     <div class="section-header">
       <div class="section-label">Why Vwake · Vwakeを選ぶ理由</div>
-      <h2 class="section-title">あなたを、ファンの毎日の一部にする。</h2>
+      <h2 class="section-title">あなたの声を、ファンの生活へ。</h2>
       <div class="divider"></div>
-      <p class="section-desc">
-        他のプラットフォームはファンがファイルをダウンロードした瞬間に終わります。<br>
-        Vwakeは、あなたを朝の最初の1秒にします。
-      </p>
+      <p class="section-desc">他のグッズを大きく上回る利用頻度。あなたの声を一度きりの商品ではなく、ファンの日常に繰り返し届く存在へ。</p>
     </div>
 
-    <div class="pillars-grid">
-      <!-- Pillar 1: Daily Reach -->
-      <div class="pillar">
-        <div class="pillar-num">— 01 / DAILY REACH —</div>
-        <h3 class="pillar-title">毎朝、聴いてもらえる。</h3>
-        <p class="pillar-quote">
-          ファンがあなたの声をアラームに設定する = ファンが毎朝目覚めるたびに、あなたが現れる。
-        </p>
-        <p class="pillar-desc">
-          BoothやFanboxでは、ファンがボイスパックをダウンロードして数回聴いたら、それで終わり。Vwakeはあなたをファンの日常の一部にします — 目覚めた最初の声があなた、アラームを止めるその瞬間に呼ぶのはあなたの愛称。
-        </p>
-      </div>
+    <div class="why-metrics">
+      <article class="why-metric why-metric-featured">
+        <div class="why-metric-number">34.2%</div>
+        <div class="why-metric-label">購入後24〜30日目も利用</div>
+      </article>
 
-      <!-- Pillar 2: Integration -->
-      <div class="pillar">
-        <div class="pillar-num">— 02 / INTEGRATION —</div>
-        <h3 class="pillar-title">ボイスパックを目覚ましアプリに統合した、初めてのプラットフォーム。</h3>
-        <p class="pillar-quote">
-          アプリの切り替え不要。ファイル変換も不要。買って、ワンタップでアラームに設定。
-        </p>
-        <p class="pillar-desc">
-          他のプラットフォーム:ファイルをダウンロード → 自分で管理 → 目覚ましアプリを探す → 取り込む。Vwakeはアプリに最初から組み込まれているので、ファンはタップ1回で購入、タップ1回で設定。摩擦が低いほど、転換率は高くなります。
-        </p>
-      </div>
+      <article class="why-metric why-metric-featured">
+        <div class="why-metric-number">21.8%</div>
+        <div class="why-metric-label">購入後54〜60日目も利用</div>
+      </article>
+
+      <article class="why-metric">
+        <div class="why-metric-number">25.6%</div>
+        <div class="why-metric-label">購入者が2つ以上のボイスパックを購入</div>
+      </article>
     </div>
 
-    <!-- Second row: Lasting Value + Audience Expansion -->
-    <div class="pillars-grid" style="margin-top: 24px;">
-      <!-- Pillar 3: Lasting Value -->
-      <div class="pillar">
-        <div class="pillar-num">— 03 / LASTING VALUE —</div>
-        <h3 class="pillar-title">一つひとつの声を、ファンの日常へ。</h3>
-        <p class="pillar-quote">
-          作品はコレクションで終わらず、ファンが毎朝あなたに会う習慣になります。
-        </p>
-        <p class="pillar-desc">
-          出品・販売・決済・カスタマーサポートはVwakeが担い、あなたは創作に集中できます。音声作品はファンの日常で使われ続け、継続的な収益シェアとともに長期的な価値を育てます。モーニングレターは、届けたいときにより深い交流を加えられます。
-        </p>
-      </div>
-
-      <!-- Pillar 4: Audience Expansion -->
-      <div class="pillar">
-        <div class="pillar-num">— 04 / AUDIENCE EXPANSION —</div>
-        <h3 class="pillar-title">プラットフォームの流入が、あなたの新しいファンに。</h3>
-        <p class="pillar-quote">
-          毎朝アラームを止めるためにアプリを開く — 次に出会う声は、あなたかもしれない。
-        </p>
-        <p class="pillar-desc">
-          Vwakeの中核となる体験は「毎朝、推しに起こされる」こと。アラーム解除後はそのままボイス商店へ移動するため、すべてのユーザーが1日に1回必ず商店を通ります。他箱のファン、個人勢の視聴者、VTuber文化に触れたばかりの新規ユーザーが商店を見ているとき、あなたの声と人設に惹かれて新しいファンになる可能性が高くなります。
-        </p>
-      </div>
-    </div>
+    <p class="why-note">
+      集計方法：購入後 cohort。観察期間を完了したユーザーのみを算入。方向性の legacy telemetry、2026年9月7日時点。
+    </p>
   </div>
 </section>
 
@@ -874,54 +792,8 @@
       <h2 class="section-title">ファンを起こしたあと、会話はそこから始まります。</h2>
       <div class="divider"></div>
       <p class="section-desc">
-        アラームはあなたをファンの「最初の1秒」に。モーニングレターは、その1秒を会話へと続け、もう一つの収益源を開きます。<br>
-        起きた最初の1秒から、毎日の会話まで —— 同じ毎日のループ。
+        モーニングレターでファンと一対一のつながりを築き、一人ひとりに向けた返信で、声の体験を継続的な会話へと広げます。
       </p>
-    </div>
-
-    <svg class="ml-defs" aria-hidden="true"><defs>
-      <linearGradient id="mlDawnGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-        <stop offset="0" stop-color="#FF8C7A"/>
-        <stop offset="0.5" stop-color="#FFB78A"/>
-        <stop offset="1" stop-color="#D49DFF"/>
-      </linearGradient>
-    </defs></svg>
-
-    <div class="ml-grid">
-      <div class="ml-card">
-        <div class="ml-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="url(#mlDawnGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6.5 16a5.5 5.5 0 0 1 11 0"/>
-            <line x1="12" y1="3" x2="12" y2="5.5"/>
-            <line x1="4.4" y1="8.4" x2="6.1" y2="10.1"/>
-            <line x1="19.6" y1="8.4" x2="17.9" y2="10.1"/>
-            <line x1="2.5" y1="16" x2="5" y2="16"/>
-            <line x1="19" y1="16" x2="21.5" y2="16"/>
-            <line x1="3.5" y1="20" x2="20.5" y2="20"/>
-          </svg>
-        </div>
-        <div class="ml-label">最初の1秒</div>
-        <h3 class="ml-title">アラームを止めた次の瞬間、ファンはあなたに話しかけたい。</h3>
-        <p class="ml-quote">きっかけはアラームのすぐ後ろ。別の導線は要りません。</p>
-        <p class="ml-desc">
-          あなたの声で目を覚まし、アラームを止めた — その余韻こそ、ファンが最もあなたに返したい瞬間です。レターの送信時間帯はファンの現地の午前中に限定し、その感情を受け止めます。
-        </p>
-      </div>
-
-      <div class="ml-card">
-        <div class="ml-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="url(#mlDawnGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18.5 13.5a1.8 1.8 0 0 0 1.8-1.8V6.3a1.8 1.8 0 0 0-1.8-1.8H8.2a1.8 1.8 0 0 0-1.8 1.8"/>
-            <path d="M16 17.7a1.8 1.8 0 0 1-1.8 1.8H8.4L4.7 22.3v-11a1.8 1.8 0 0 1 1.8-1.8h7.7A1.8 1.8 0 0 1 16 11.3z"/>
-          </svg>
-        </div>
-        <div class="ml-label">深いつながり</div>
-        <h3 class="ml-title">ただ聴くだけでなく、あなたに聴いてもらえる。</h3>
-        <p class="ml-quote">一方向の配信が、1対1の非公開の会話に。</p>
-        <p class="ml-desc">
-          ファンはテキストのレターを送り、料金を払ってあなたに返信を頼みます。あなたはテキストで返すことも、その場で録音・音声ファイルをアップロードして返すこともできます。返信はそのファンだけに届く、その人専用の「おはよう」です。
-        </p>
-      </div>
     </div>
 
     <div class="letters-banner">

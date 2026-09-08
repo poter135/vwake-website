@@ -191,17 +191,9 @@
     pointer-events: none; z-index: 0;
   }
   .hero > * { position: relative; z-index: 1; }
-  .hero-eyebrow {
-    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--accent-light); font-weight: 600;
-    padding: 8px 18px; border-radius: 999px;
-    background: rgba(124, 92, 191, 0.12);
-    border: 1px solid rgba(124, 92, 191, 0.3);
-    margin-bottom: 28px;
-  }
   .hero-wordmark {
     font-size: 72px; font-weight: 900; letter-spacing: -2.5px;
-    line-height: 0.95; margin-bottom: 14px;
+    line-height: 0.95; margin-bottom: 24px;
   }
   .hero-wordmark .accent {
     background: var(--gradient);
@@ -261,70 +253,83 @@
     .section-title { font-size: 30px; }
   }
 
-  /* PILLARS */
-  .pillars-grid {
+  /* WHY VWAKE / RETENTION PROOF */
+  .why-metrics {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 960px;
+    margin: 0 auto;
   }
-  @media (max-width: 880px) { .pillars-grid { grid-template-columns: 1fr; } }
+  .why-metric {
+    position: relative;
+    overflow: hidden;
+    min-height: 190px;
+    padding: 30px 28px 26px;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+  }
+  .why-metric::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -80px;
+    top: -80px;
+    border-radius: 50%;
+    background: rgba(124, 92, 191, 0.14);
+    filter: blur(10px);
+    pointer-events: none;
+  }
+  .why-metric-featured { border-color: rgba(157, 127, 214, 0.32); }
+  .why-metric-number {
+    position: relative;
+    z-index: 1;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .why-metric-label {
+    position: relative;
+    z-index: 1;
+    margin-top: 18px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .why-metric-detail {
+    position: relative;
+    z-index: 1;
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .why-note {
+    max-width: 700px;
+    margin: 24px auto 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: center;
+  }
+  @media (max-width: 880px) {
+    .why-metrics { grid-template-columns: 1fr; max-width: 560px; }
+    .why-metric { min-height: 0; }
+  }
 
   /* ===== Morning Letters — dawn palette ===== */
-  :root {
-    --ml-coral: #FF8C7A;
-    --ml-apricot: #FFB78A;
-    --ml-lilac: #D49DFF;
-    --ml-dawn: linear-gradient(135deg, #FF8C7A 0%, #FFB78A 44%, #D49DFF 100%);
-  }
   #letters { position: relative; isolation: isolate; }
   #letters::before {
     content: ''; position: absolute; left: 0; right: 0; top: 0; height: 560px;
     background: radial-gradient(720px 340px at 50% -40px, rgba(255,140,122,0.15), rgba(212,157,255,0.07) 42%, transparent 72%);
     pointer-events: none; z-index: -1;
   }
-  .ml-defs { position: absolute; width: 0; height: 0; }
-  .ml-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
-  @media (max-width: 880px) { .ml-grid { grid-template-columns: 1fr; } }
-
-  .ml-card {
-    position: relative; overflow: hidden;
-    background: linear-gradient(180deg, rgba(42,26,45,0.5) 0%, var(--surface) 58%);
-    border: 1px solid rgba(255,140,122,0.14);
-    border-radius: var(--radius-card);
-    padding: 34px 30px 32px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-  .ml-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: var(--ml-dawn); opacity: 0.65;
-  }
-  .ml-card:hover { transform: translateY(-4px); border-color: rgba(255,140,122,0.42); }
-
-  .ml-icon {
-    width: 54px; height: 54px; border-radius: 16px;
-    display: grid; place-items: center;
-    background: rgba(255,140,122,0.10);
-    border: 1px solid rgba(255,140,122,0.22);
-    box-shadow: 0 0 0 6px rgba(255,140,122,0.045), 0 10px 26px -14px rgba(255,140,122,0.5);
-    margin-bottom: 22px;
-  }
-  .ml-icon svg { width: 27px; height: 27px; }
-
-  .ml-label {
-    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-    font-weight: 700; color: var(--ml-apricot); margin-bottom: 12px;
-  }
-  .ml-title {
-    font-size: 23px; font-weight: 800; letter-spacing: -0.6px;
-    line-height: 1.3; margin-bottom: 14px; color: var(--text);
-  }
-  .ml-quote {
-    font-size: 15px; font-weight: 500; color: var(--text);
-    margin-bottom: 14px; padding-left: 13px;
-    border-left: 2px solid var(--ml-coral); line-height: 1.55;
-  }
-  .ml-desc { font-size: 14.5px; color: var(--text-muted); line-height: 1.75; margin: 0; }
-
   .letters-banner {
     margin-top: 44px;
     border-radius: var(--radius-card);
@@ -333,54 +338,6 @@
     box-shadow: 0 20px 60px -30px rgba(0,0,0,0.9);
   }
   .letters-banner img { width: 100%; height: auto; display: block; }
-
-  .pillar {
-    background: var(--surface);
-    border-radius: var(--radius-card);
-    padding: 40px 36px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .pillar::before {
-    content: ''; position: absolute; top: 0; right: 0;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle at top right, rgba(124, 92, 191, 0.15), transparent 70%);
-    pointer-events: none;
-  }
-  .pillar:hover {
-    transform: translateY(-4px);
-    border-color: rgba(124, 92, 191, 0.4);
-    background: var(--surface-2);
-  }
-  .pillar-num {
-    font-size: 13px; letter-spacing: 4px; font-weight: 700;
-    color: var(--accent-light); margin-bottom: 16px;
-  }
-  .pillar-title {
-    font-size: 26px; font-weight: 800; letter-spacing: -0.8px;
-    line-height: 1.25; margin-bottom: 14px;
-  }
-  .pillar-quote {
-    font-size: 17px; font-weight: 500; color: var(--text);
-    margin-bottom: 18px; padding-left: 14px;
-    border-left: 2px solid var(--accent); line-height: 1.5;
-  }
-  .pillar-desc {
-    font-size: 15px; color: var(--text-muted);
-    line-height: 1.75; margin-bottom: 20px;
-  }
-  .pillar-points { list-style: none; padding: 0; margin: 0; }
-  .pillar-points li {
-    font-size: 14px; color: var(--text-muted);
-    padding: 8px 0 8px 24px; position: relative;
-    line-height: 1.6;
-  }
-  .pillar-points li::before {
-    content: '→'; position: absolute; left: 0; top: 8px;
-    color: var(--accent-light); font-weight: 700;
-  }
 
   /* ROSTER stats */
   .roster-stats { display: flex; align-items: center; justify-content: center; gap: 48px; margin: 4px 0 22px; }
@@ -747,16 +704,12 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-eyebrow">專為 VTUBER 而生</div>
   <h1 class="hero-wordmark"><span class="accent">V</span>wake</h1>
   <p class="hero-tagline">
-    掌握粉絲每天起床的<br>第一個時刻。
+    把 VTuber 的聲音帶入生活。
   </p>
   <p class="hero-desc">
-    Vwake 是專為 VTuber 打造的全新互動模式。<br>
-    粉絲用你的聲音當鬧鐘醒來,再付費寄早安信給你 ——<br>
-    從起床的第一秒,到每天的一句對話,<br>
-    你只要錄音、回信。
+    Vwake 是專為 VTuber 打造的全新互動模式，讓粉絲每天都能在熟悉的聲音裡開始一天，也讓你的作品延伸成持續發生的陪伴。
   </p>
   <div class="hero-ctas">
     <button type="button" class="btn btn-primary" data-open-apply>
@@ -798,70 +751,36 @@
   </div>
 </section>
 
-<!-- ============ WHY VWAKE / PILLARS ============ -->
+<!-- ============ WHY VWAKE / RETENTION PROOF ============ -->
 <section class="section" id="why">
   <div class="container">
     <div class="section-header">
       <div class="section-label">Why Vwake · 為什麼選 Vwake</div>
-      <h2 class="section-title">讓你每天出現在粉絲生活裡的那一刻。</h2>
+      <h2 class="section-title">讓你的聲音真正進入粉絲的生活</h2>
       <div class="divider"></div>
-      <p class="section-desc">
-        其他平台賣完一個檔案就結束;Vwake 把你變成粉絲每天起床第一秒。
-      </p>
+      <p class="section-desc">遠高於其他周邊的使用頻率，讓你的聲音從一次性的商品，成為粉絲日常裡會反覆回來使用的陪伴。</p>
     </div>
 
-    <div class="pillars-grid">
-      <!-- Pillar 1: 每日觸達 -->
-      <div class="pillar">
-        <div class="pillar-num">— 01 / 每日觸達 —</div>
-        <h3 class="pillar-title">每天聽,不只聽一次。</h3>
-        <p class="pillar-quote">
-          粉絲設你的聲音當鬧鐘 = 你在粉絲每天起床時都出現一次。
-        </p>
-        <p class="pillar-desc">
-          Booth、Fanbox 賣語音包,粉絲下載後會聽兩三次然後忘掉。Vwake 把你變成日常 — 起床第一秒就是你,關掉鬧鐘的瞬間是對你的暱稱。
-        </p>
-      </div>
+    <div class="why-metrics">
+      <article class="why-metric why-metric-featured">
+        <div class="why-metric-number">34.2%</div>
+        <div class="why-metric-label">購買後第 24–30 天仍使用</div>
+      </article>
 
-      <!-- Pillar 2: 整合 = 摩擦最低 -->
-      <div class="pillar">
-        <div class="pillar-num">— 02 / 整合 / Integration —</div>
-        <h3 class="pillar-title">第一個將語音包與鬧鐘 App 整合的平台。</h3>
-        <p class="pillar-quote">
-          粉絲不用切換 App、不用轉檔。買完直接設成鬧鐘。
-        </p>
-        <p class="pillar-desc">
-          其他平台買語音包 = 下載檔案 + 自己處理 + 找鬧鐘 App 設定。Vwake 直接內建在 App 裡,粉絲一鍵購買、一鍵設定。摩擦越低,你的轉換越高。
-        </p>
-      </div>
+      <article class="why-metric why-metric-featured">
+        <div class="why-metric-number">21.8%</div>
+        <div class="why-metric-label">購買後第 54–60 天仍使用</div>
+      </article>
+
+      <article class="why-metric">
+        <div class="why-metric-number">25.6%</div>
+        <div class="why-metric-label">買家購買超過一個語音包</div>
+      </article>
     </div>
 
-    <!-- Second row: 長期價值 + 拓展觀眾 -->
-    <div class="pillars-grid" style="margin-top: 24px;">
-      <!-- Pillar 3: 長期價值 -->
-      <div class="pillar">
-        <div class="pillar-num">— 03 / 長期價值 / LASTING VALUE —</div>
-        <h3 class="pillar-title">讓每一段聲音，持續陪伴粉絲。</h3>
-        <p class="pillar-quote">
-          作品不只被收藏，更成為粉絲每天回到你的理由。
-        </p>
-        <p class="pillar-desc">
-          Vwake 負責上架、銷售、金流與客服，讓你專注創作。每一組語音都能在粉絲的日常中持續被使用，並透過穩定分潤累積長期價值；早安信則讓你在想互動時，延伸更深的陪伴。
-        </p>
-      </div>
-
-      <!-- Pillar 4: 拓展觀眾 -->
-      <div class="pillar">
-        <div class="pillar-num">— 04 / 拓展觀眾 / Audience Expansion —</div>
-        <h3 class="pillar-title">平台流量,變成你的新粉絲。</h3>
-        <p class="pillar-quote">
-          用戶每天打開 App 解鬧鐘 — 下一個被聽見的聲音可能就是你。
-        </p>
-        <p class="pillar-desc">
-          Vwake 的核心流程是「每天起床被推叫醒」,鬧鐘解除後會自動進入語音商店,等於每位用戶每天必經商店一次。當其他箱粉絲、個人勢觀眾、剛入坑 VTuber 的新觀眾在商店瀏覽時,很容易因你的聲音特質與人設而產生興趣,進而成為新粉絲。
-        </p>
-      </div>
-    </div>
+    <p class="why-note">
+      數據口徑：付費後 cohort，僅計入已完成觀察窗口的使用者；方向性 legacy telemetry，資料截至 2026-09-07。
+    </p>
   </div>
 </section>
 
@@ -873,56 +792,8 @@
       <h2 class="section-title">你把粉絲叫醒之後,對話才剛開始。</h2>
       <div class="divider"></div>
       <p class="section-desc">
-        鬧鐘讓你成為粉絲每天的第一秒;早安信讓那一秒延續成一段對話,並多開一條收益。<br>
-        從起床第一秒,到每天的一段對話 —— 同一個每日迴圈。
+        使用早安信與粉絲建立一對一連結，讓每位粉絲都能收到只屬於自己的回覆，將一次聲音體驗延伸成持續互動。
       </p>
-    </div>
-
-    <svg class="ml-defs" aria-hidden="true"><defs>
-      <linearGradient id="mlDawnGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-        <stop offset="0" stop-color="#FF8C7A"/>
-        <stop offset="0.5" stop-color="#FFB78A"/>
-        <stop offset="1" stop-color="#D49DFF"/>
-      </linearGradient>
-    </defs></svg>
-
-    <div class="ml-grid">
-      <!-- 起床第一刻 -->
-      <div class="ml-card">
-        <div class="ml-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="url(#mlDawnGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6.5 16a5.5 5.5 0 0 1 11 0"/>
-            <line x1="12" y1="3" x2="12" y2="5.5"/>
-            <line x1="4.4" y1="8.4" x2="6.1" y2="10.1"/>
-            <line x1="19.6" y1="8.4" x2="17.9" y2="10.1"/>
-            <line x1="2.5" y1="16" x2="5" y2="16"/>
-            <line x1="19" y1="16" x2="21.5" y2="16"/>
-            <line x1="3.5" y1="20" x2="20.5" y2="20"/>
-          </svg>
-        </div>
-        <div class="ml-label">起床第一刻</div>
-        <h3 class="ml-title">鬧鐘關掉的下一秒,他想跟你說話。</h3>
-        <p class="ml-quote">觸發點就長在鬧鐘之後,你不必另外導流。</p>
-        <p class="ml-desc">
-          粉絲被你的聲音叫醒、關掉鬧鐘 —— 那股餘溫正是他最想回應你的時刻。早安信的寄信窗口限定當地上午,接住的就是這段情緒。
-        </p>
-      </div>
-
-      <!-- 深度交流 -->
-      <div class="ml-card">
-        <div class="ml-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="url(#mlDawnGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18.5 13.5a1.8 1.8 0 0 0 1.8-1.8V6.3a1.8 1.8 0 0 0-1.8-1.8H8.2a1.8 1.8 0 0 0-1.8 1.8"/>
-            <path d="M16 17.7a1.8 1.8 0 0 1-1.8 1.8H8.4L4.7 22.3v-11a1.8 1.8 0 0 1 1.8-1.8h7.7A1.8 1.8 0 0 1 16 11.3z"/>
-          </svg>
-        </div>
-        <div class="ml-label">深度交流</div>
-        <h3 class="ml-title">他不再只是聽你,他能被你聽見。</h3>
-        <p class="ml-quote">單向廣播,變成一對一、不公開的對話。</p>
-        <p class="ml-desc">
-          粉絲寄一封文字早安信給你並付費,請你用文字或語音回覆 —— 你可以在後台打字,也可以直接錄音或上傳音檔。回覆只有他看得到,是專屬於他的一句早安。
-        </p>
-      </div>
     </div>
 
     <div class="letters-banner">
