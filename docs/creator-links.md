@@ -22,13 +22,14 @@ cannot be counted by Firebase. The Worker does not log the token or user agent.
 
 The iOS Universal Links association file is at
 `/.well-known/apple-app-site-association`. The linked iOS app needs the matching
-`applinks:vwake.app` entitlement and in-app URL handling. Android App Links also
-require `/.well-known/assetlinks.json`, which must contain the **Google Play App
-Signing certificate SHA-256 fingerprint**. Do not substitute an upload-key or AAB
-file digest. This file remains pending until the fingerprint is verified in Play
-Console.
+`applinks:vwake.app` entitlement and in-app URL handling. Android App Links use
+`/.well-known/assetlinks.json` with the **Google Play App Signing certificate**
+SHA-256 fingerprint. This fingerprint was read from Play Console → Vwake →
+Play App Signing → Digital Asset Links on 2026-09-29. Do not substitute an
+upload-key fingerprint or AAB file digest. The Android app still needs a matching
+verified intent filter and in-app URL handling.
 
 Run local tests with `node --test tests/*.test.mjs`. After deployment, check the
-association file returns `200` with `application/json`, then verify known and
+association files return `200` with `application/json` and no redirects, then verify known and
 unknown creator URLs on both platforms. App Link behavior needs a released app
 build and a real device to validate.

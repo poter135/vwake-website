@@ -132,6 +132,7 @@ test('Cloudflare configuration keeps the Worker source private and serves AASA a
   assert.ok(!ignoredAssets.split('\n').includes('.well-known'));
   assert.ok(!ignoredAssets.split('\n').includes('_headers'));
   assert.match(headers, /\/\.well-known\/apple-app-site-association\n\s+Content-Type: application\/json/);
+  assert.match(headers, /\/\.well-known\/assetlinks\.json\n\s+Content-Type: application\/json/);
 });
 
 test('association file lists the iOS app and excludes website pages', async () => {
@@ -142,4 +143,20 @@ test('association file lists the iOS app and excludes website pages', async () =
   for (const path of ['/', '/privacy.html', '/en/*', '/ja/*', '/assets/*', '/.well-known/*']) {
     assert.ok(detail.components.some((entry) => entry['/'] === path && entry.exclude === true), path);
   }
+});
+
+test('Android asset links use the Play app-signing certificate', async () => {
+  const statements = JSON.parse(await readFile(new URL('../.well-known/assetlinks.json', import.meta.url), 'utf8'));
+  assert.deepEqual(statements, [
+    {
+      relation: ['delegate_permission/common.handle_all_urls'],
+      target: {
+        namespace: 'android_app',
+        package_name: 'com.vwake.vwake',
+        sha256_cert_fingerprints: ['C1:73:5E:90:6C:CC:3E:22:21:93:E2:E1:B9:FD:A5:BE:08:B0:55:79:15:36:8C:69:08:F7:AF:A6:8F:C1:DF:3A'],
+      },
+    },
+  ]);
+  const fingerprint = statements[0].target.sha256_cert_fingerprints[0];
+  assert.match(fingerprint, /^([0-9A-F]{2}:){31}[0-9A-F]{2}$/);
 });
