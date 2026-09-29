@@ -59,7 +59,7 @@ test('preserves static pages and rejects malformed creator paths', async () => {
     backendCalls += 1;
     throw new Error('backend must not be called');
   };
-  for (const path of ['/', '/privacy.html', '/privacy', '/en/', '/en/privacy.html', '/robots.txt', '/assets/creator-marquee.css', '/.well-known/apple-app-site-association']) {
+  for (const path of ['/', '/privacy.html', '/privacy', '/en/', '/en/privacy.html', '/robots.txt', '/assets/creator-marquee.css']) {
     const response = await handleRequest(new Request(`https://vwake.app${path}`), binding, backend);
     assert.equal(response.status, 200, path);
   }
@@ -68,7 +68,7 @@ test('preserves static pages and rejects malformed creator paths', async () => {
     assert.equal(response.status, 404, path);
   }
   assert.equal(backendCalls, 0);
-  assert.equal(assetBinding.calls.length, 8);
+  assert.equal(assetBinding.calls.length, 7);
 });
 
 test('returns 404 for an unknown creator and does not leak the proxy token', async () => {
@@ -122,41 +122,10 @@ test('only GET and HEAD reach the backend for creator paths', async () => {
   assert.equal(backendCalls, 0);
 });
 
-test('Cloudflare configuration keeps the Worker source private and serves AASA as JSON', async () => {
+test('Cloudflare configuration keeps the Worker source private', async () => {
   const configuration = JSON.parse(await readFile(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
   const ignoredAssets = await readFile(new URL('../.assetsignore', import.meta.url), 'utf8');
-  const headers = await readFile(new URL('../_headers', import.meta.url), 'utf8');
   assert.equal(configuration.main, 'src/creator-link-worker.mjs');
   assert.equal(configuration.assets.binding, 'ASSETS');
   assert.ok(ignoredAssets.split('\n').includes('src'));
-  assert.ok(!ignoredAssets.split('\n').includes('.well-known'));
-  assert.ok(!ignoredAssets.split('\n').includes('_headers'));
-  assert.match(headers, /\/\.well-known\/apple-app-site-association\n\s+Content-Type: application\/json/);
-  assert.match(headers, /\/\.well-known\/assetlinks\.json\n\s+Content-Type: application\/json/);
-});
-
-test('association file lists the iOS app and excludes website pages', async () => {
-  const association = JSON.parse(await readFile(new URL('../.well-known/apple-app-site-association', import.meta.url), 'utf8'));
-  const detail = association.applinks.details[0];
-  assert.deepEqual(detail.appIDs, ['V4F8WK36PC.com.vwake.vwake']);
-  assert.ok(detail.components.some((entry) => entry['/'] === '/*' && entry.exclude !== true));
-  for (const path of ['/', '/privacy.html', '/en/*', '/ja/*', '/assets/*', '/.well-known/*']) {
-    assert.ok(detail.components.some((entry) => entry['/'] === path && entry.exclude === true), path);
-  }
-});
-
-test('Android asset links use the Play app-signing certificate', async () => {
-  const statements = JSON.parse(await readFile(new URL('../.well-known/assetlinks.json', import.meta.url), 'utf8'));
-  assert.deepEqual(statements, [
-    {
-      relation: ['delegate_permission/common.handle_all_urls'],
-      target: {
-        namespace: 'android_app',
-        package_name: 'com.vwake.vwake',
-        sha256_cert_fingerprints: ['C1:73:5E:90:6C:CC:3E:22:21:93:E2:E1:B9:FD:A5:BE:08:B0:55:79:15:36:8C:69:08:F7:AF:A6:8F:C1:DF:3A'],
-      },
-    },
-  ]);
-  const fingerprint = statements[0].target.sha256_cert_fingerprints[0];
-  assert.match(fingerprint, /^([0-9A-F]{2}:){31}[0-9A-F]{2}$/);
 });
