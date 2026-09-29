@@ -16,6 +16,7 @@
 # Internal project files
 docs
 tests
+src
 TODO.md
 wrangler.jsonc
 

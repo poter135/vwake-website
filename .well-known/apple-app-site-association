@@ -1,0 +1,36 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["V4F8WK36PC.com.vwake.vwake"],
+        "components": [
+          {"/": "/", "exclude": true},
+          {"/": "/en", "exclude": true},
+          {"/": "/en/*", "exclude": true},
+          {"/": "/ja", "exclude": true},
+          {"/": "/ja/*", "exclude": true},
+          {"/": "/assets", "exclude": true},
+          {"/": "/assets/*", "exclude": true},
+          {"/": "/store_preview", "exclude": true},
+          {"/": "/store_preview/*", "exclude": true},
+          {"/": "/new%20icon", "exclude": true},
+          {"/": "/new%20icon/*", "exclude": true},
+          {"/": "/.well-known/*", "exclude": true},
+          {"/": "/index.html", "exclude": true},
+          {"/": "/index", "exclude": true},
+          {"/": "/privacy.html", "exclude": true},
+          {"/": "/privacy", "exclude": true},
+          {"/": "/terms.html", "exclude": true},
+          {"/": "/terms", "exclude": true},
+          {"/": "/eula.html", "exclude": true},
+          {"/": "/eula", "exclude": true},
+          {"/": "/robots.txt", "exclude": true},
+          {"/": "/robots", "exclude": true},
+          {"/": "/sitemap.xml", "exclude": true},
+          {"/": "/sitemap", "exclude": true},
+          {"/": "/*"}
+        ]
+      }
+    ]
+  }
+}
