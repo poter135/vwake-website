@@ -94,8 +94,9 @@ export async function handleRequest(request, env, fetchImpl = fetch) {
     } else {
       console.error(`Creator link backend returned status ${backendResponse.status}`);
     }
-  } catch {
-    console.error('Creator link backend is unavailable');
+  } catch (error) {
+    const reason = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+    console.error('Creator link backend is unavailable', reason.replaceAll(env.CREATOR_LINK_PROXY_TOKEN, '[redacted]').slice(0, 200));
   }
 
   return redirect(fallback);
