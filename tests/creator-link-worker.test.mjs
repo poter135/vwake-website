@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
-import { handleRequest } from '../src/creator-link-worker.mjs';
+import worker, { handleRequest } from '../src/creator-link-worker.mjs';
 
 const endpoint = 'https://example.cloudfunctions.net/creatorLinkRedirect';
 const token = 'test-only-secret';
@@ -24,6 +24,27 @@ function env(assetBinding = assets()) {
     ASSETS: assetBinding,
   };
 }
+
+test('Cloudflare fetch entrypoint accepts an execution context and reaches the backend', async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (url) => {
+    calls.push(new URL(url));
+    return new Response('internal detail', { status: 404 });
+  };
+  try {
+    const response = await worker.fetch(
+      new Request('https://vwake.app/nobody', { headers: { 'user-agent': 'Mozilla/5.0 (iPhone)' } }),
+      env(),
+      { waitUntil() {} },
+    );
+    assert.equal(response.status, 404);
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].searchParams.get('slug'), 'nobody');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
 
 test('proxies a valid creator ID to the backend and redirects without caching', async () => {
   const calls = [];

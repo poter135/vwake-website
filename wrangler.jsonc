@@ -6,6 +6,9 @@
   "observability": {
     "enabled": true
   },
+  "vars": {
+    "CREATOR_LINK_BACKEND_URL": "https://asia-east1-vwake-2026.cloudfunctions.net/resolveCreatorShortLink"
+  },
   "assets": {
     "directory": ".",
     "binding": "ASSETS"
