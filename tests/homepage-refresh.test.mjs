@@ -6,7 +6,7 @@ const locales = [
   {
     file: 'index.html',
     tagline: '把 VTuber 的聲音帶入生活',
-    heroDescription: 'Vwake 是專為 VTuber 打造的全新互動模式，讓粉絲每天都能在熟悉的聲音裡開始一天，也讓你的作品延伸成持續發生的陪伴。',
+    heroDescription: 'Vwake 是專為 VTuber 打造的語音平台。粉絲可以用你的聲音設定鬧鐘，也能在日常中播放，讓熟悉的聲音陪伴每一天。',
     title: '讓你的聲音真正進入粉絲的生活',
     whyDescription: '遠高於其他周邊的使用頻率，讓你的聲音從一次性的商品，成為粉絲日常裡會反覆回來使用的陪伴。',
     oldDescription: '粉絲購買你的聲音後，仍會在第 30 天與第 60 天回來使用。',
@@ -18,7 +18,7 @@ const locales = [
   {
     file: 'en/index.html',
     tagline: "Bringing VTuber voices into fans’ daily lives.",
-    heroDescription: 'Vwake is a new way to interact with fans, built for VTubers—turning a voice pack into a familiar part of their daily routine.',
+    heroDescription: 'Vwake is a voice platform built for VTubers. Fans can set your voice as their alarm or listen throughout the day, bringing a familiar voice into their everyday lives.',
     title: 'Bring your voice into your fans’ lives.',
     whyDescription: 'Used far more often than other merch, your voice becomes a familiar part of fans’ routines instead of a one-time purchase.',
     oldDescription: 'Fans keep coming back to use your voice weeks after they buy it.',
@@ -30,7 +30,7 @@ const locales = [
   {
     file: 'ja/index.html',
     tagline: 'VTuberの声をファンの日常へ。',
-    heroDescription: 'VwakeはVTuberのために作られた、新しい交流のかたちです。ファンの毎日に寄り添い、ボイスパックを身近な習慣へとつなげます。',
+    heroDescription: 'VwakeはVTuberのためのボイスプラットフォームです。ファンはあなたの声をアラームに設定したり、日常の中で再生したりして、いつもの声と一緒に毎日を過ごせます。',
     title: 'あなたの声を、ファンの生活へ。',
     whyDescription: '他のグッズを大きく上回る利用頻度。あなたの声を一度きりの商品ではなく、ファンの日常に繰り返し届く存在へ。',
     oldDescription: 'ファンは購入後も、何週間もあなたの声を使い続けます。',
