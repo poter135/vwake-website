@@ -5,19 +5,19 @@ import test from 'node:test';
 const locales = [
   {
     file: 'index.html',
-    primaryNumber: '5000+',
+    primaryNumber: '10,000+',
     primaryLabel: '鬧鐘語音響起',
     secondaryLabel: 'VTuber 已上架',
   },
   {
     file: 'en/index.html',
-    primaryNumber: '5,000+',
+    primaryNumber: '10,000+',
     primaryLabel: 'alarm wake-ups',
     secondaryLabel: 'VTubers live',
   },
   {
     file: 'ja/index.html',
-    primaryNumber: '5,000+',
+    primaryNumber: '10,000+',
     primaryLabel: 'アラームが鳴った回数',
     secondaryLabel: 'VTuber 出品中',
   },
@@ -42,7 +42,7 @@ for (const locale of locales) {
     assert.equal((roster.match(/class="rstat"/g) ?? []).length, 2);
     assert.ok(roster.includes(locale.primaryNumber));
     assert.ok(roster.includes(locale.primaryLabel));
-    assert.ok(roster.includes('30+'));
+    assert.ok(roster.includes('50+'));
     assert.ok(roster.includes(locale.secondaryLabel));
     assert.ok(!roster.includes('rstat-primary'));
     assert.ok(!roster.includes('rstat-secondary'));
